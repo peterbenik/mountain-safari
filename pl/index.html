@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mountain Safari — Przewodnicy wysokogórscy Tatry Wysokie</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Licencjonowani przewodnicy wysokogórscy IFMGA/UIAGM w Tatrach Wysokich. Prywatne wejścia szyte na miarę — od łatwych wypraw po wymagające szczyty." />
+<link rel="canonical" href="https://www.mountainsafari.sk/pl/index.html" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  /* Keep these hex values in sync with the CSS custom properties in the <style> block below. */
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy900: '#141B2E',
+          navy800: '#1A2234',
+          royal: '#1E40C4',
+          royalDark: '#16309A',
+          periwinkle: '#7B96C9',
+          galleryBg: '#5B6472',
+          cream: '#F5F0E6',
+          ink: '#1A1A1A',
+          muted: '#6B7280',
+          surface: '#FFFFFF',
+          hairline: '#E5E7EB',
+        },
+        borderRadius: {
+          pill: '999px',
+          card: '20px',
+        },
+        fontFamily: {
+          display: ['Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  /* ===== DESIGN TOKENS — provisional; confirm exact brand hex once guidelines are finalized ===== */
+  :root {
+    --navy-900: #141B2E;
+    --navy-800: #1A2234;
+    --royal: #1E40C4;
+    --royal-dark: #16309A;
+    --periwinkle: #7B96C9;
+    --gallery-bg: #5B6472;
+    --cream: #F5F0E6;
+    --ink: #1A1A1A;
+    --muted: #6B7280;
+    --surface: #FFFFFF;
+    --hairline: #E5E7EB;
+
+    --radius-pill: 999px;
+    --radius-card: 20px;
+
+    --space-section: clamp(4rem, 8vw, 8rem);
+
+    --shadow-card: 0 8px 24px -8px rgba(30, 64, 196, 0.22), 0 2px 8px -2px rgba(20, 27, 46, 0.14);
+    --shadow-card-hover: 0 16px 40px -12px rgba(30, 64, 196, 0.32), 0 4px 12px -2px rgba(20, 27, 46, 0.18);
+    --shadow-floating: 0 24px 64px -16px rgba(20, 27, 46, 0.45), 0 8px 24px -4px rgba(30, 64, 196, 0.25);
+
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { -webkit-tap-highlight-color: transparent; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--surface);
+    line-height: 1.7;
+  }
+
+  .font-display { font-family: 'Sora', ui-sans-serif, system-ui, sans-serif; }
+  .font-serif { font-family: '"Playfair Display"', Georgia, serif; }
+
+  h1, h2, h3, .heading-tight { letter-spacing: -0.03em; }
+
+  /* ===== GLOBAL FOCUS STATE — every interactive element inherits this, including JS-rendered ones ===== */
+  a, button, [tabindex] { outline: none; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+  textarea:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--royal);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ===== GRAIN TEXTURE — applied only to dark/moody sections (hero, testimonials, final-cta) ===== */
+  .grain { position: relative; isolation: isolate; }
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== BUTTONS — single source of truth for hover/focus/active on every pill CTA ===== */
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-pill);
+    padding: 0.9rem 1.85rem;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 220ms var(--ease-spring), box-shadow 220ms var(--ease-spring), background-color 200ms var(--ease-smooth), color 200ms var(--ease-smooth);
+  }
+  .btn-pill:hover { transform: translateY(-2px) scale(1.015); }
+  .btn-pill:active { transform: translateY(0) scale(0.98); }
+  .btn-pill:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .btn-pill--primary {
+    background: var(--royal);
+    color: var(--cream);
+    box-shadow: var(--shadow-card);
+  }
+  .btn-pill--primary:hover { background: var(--royal-dark); box-shadow: var(--shadow-card-hover); }
+
+  .btn-pill--secondary {
+    background: var(--periwinkle);
+    color: var(--navy-900);
+    box-shadow: 0 6px 18px -6px rgba(123, 150, 201, 0.5);
+  }
+  .btn-pill--secondary:hover { background: #6a86bd; }
+
+  .btn-pill--ghost {
+    background: transparent;
+    color: var(--cream);
+    border-color: rgba(245, 240, 230, 0.4);
+  }
+  .btn-pill--ghost:hover { background: rgba(245, 240, 230, 0.12); border-color: rgba(245, 240, 230, 0.7); }
+
+  .btn-pill--outline-ink {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--hairline);
+  }
+  .btn-pill--outline-ink:hover { border-color: var(--royal); color: var(--royal); }
+
+  /* ===== GLOW — reserved for the recurring page-level CTAs (nav/hero/section CTAs), not the tour-card buttons ===== */
+  .btn-pill--primary.btn-pill--glow {
+    box-shadow: 0 0 22px -2px rgba(30, 64, 196, 0.5), 0 10px 24px -8px rgba(30, 64, 196, 0.4), 0 2px 8px -2px rgba(20, 27, 46, 0.16);
+  }
+  .btn-pill--primary.btn-pill--glow:hover {
+    box-shadow: 0 0 30px 0px rgba(30, 64, 196, 0.65), 0 14px 32px -8px rgba(30, 64, 196, 0.5), 0 4px 12px -2px rgba(20, 27, 46, 0.2);
+  }
+  .btn-pill--secondary.btn-pill--glow {
+    box-shadow: 0 0 20px -2px rgba(123, 150, 201, 0.55), 0 8px 20px -6px rgba(123, 150, 201, 0.4);
+  }
+  .btn-pill--secondary.btn-pill--glow:hover {
+    box-shadow: 0 0 26px 0px rgba(123, 150, 201, 0.7), 0 10px 24px -6px rgba(123, 150, 201, 0.5);
+  }
+
+  /* ===== IMAGE TREATMENT — gradient overlay + color-tinted multiply, applied via one utility ===== */
+  .media { position: relative; overflow: hidden; background: var(--navy-800); }
+  .media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    background: linear-gradient(to top, rgba(20, 27, 46, 0.85), rgba(20, 27, 46, 0.1) 55%);
+  }
+  .media-overlay { position: absolute; inset: 0; z-index: 2; }
+  .media.final-cta-media::after {
+    background: linear-gradient(to top, rgba(20, 27, 46, 0.43), rgba(20, 27, 46, 0.05) 55%);
+  }
+  /* Final-CTA copy: each sentence is its own <p>; `gap` is the spacing between them — tune it here. */
+  .final-cta-copy { display: flex; flex-direction: column; gap: 0.9rem; }
+
+  /* ===== ABOUT DUO PORTRAIT — two individual guide photos staggered in place of one joint photo ===== */
+  .duo-portrait { position: relative; }
+  .duo-portrait::before {
+    content: '';
+    position: absolute;
+    inset: -8%;
+    z-index: 0;
+    background: radial-gradient(ellipse 60% 60% at 30% 25%, rgba(123, 150, 201, 0.28), transparent 70%);
+  }
+  .duo-portrait__photo {
+    position: absolute;
+    width: 62%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-card);
+    border: 0;
+    padding: 0;
+    appearance: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: box-shadow 320ms var(--ease-spring), transform 320ms var(--ease-spring);
+  }
+  .duo-portrait__slot-back { top: 0; left: 0; }
+  .duo-portrait__slot-front { bottom: 0; right: 0; }
+  .duo-portrait__photo.is-back { z-index: 1; box-shadow: var(--shadow-card); }
+  .duo-portrait__photo.is-front { z-index: 2; box-shadow: 0 0 0 4px var(--surface), var(--shadow-floating); }
+  .duo-portrait__photo:hover { transform: translateY(-4px); }
+  .duo-portrait__photo:focus-visible { outline: 2px solid var(--royal); outline-offset: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .duo-portrait__photo { transition: none; }
+  }
+  .duo-portrait__label {
+    position: absolute;
+    z-index: 3;
+    left: 0.9rem;
+    bottom: 0.9rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-pill);
+    background: rgba(20, 27, 46, 0.55);
+    backdrop-filter: blur(6px);
+    color: var(--cream);
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== DEPTH LAYERS ===== */
+  .surface-base { box-shadow: none; }
+  .surface-elevated { box-shadow: var(--shadow-card); transition: transform 240ms var(--ease-spring), box-shadow 240ms var(--ease-spring); }
+  .surface-elevated:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+  .surface-floating { box-shadow: var(--shadow-floating); }
+
+  .hairline { border-color: var(--hairline); }
+  section[id] { scroll-margin-top: 5rem; }
+
+  /* ===== HEADER ===== */
+  #site-header { transition: background-color 260ms var(--ease-smooth), box-shadow 260ms var(--ease-smooth), border-color 260ms var(--ease-smooth); }
+  #site-header.is-scrolled { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); box-shadow: 0 4px 24px -8px rgba(20, 27, 46, 0.12); border-bottom: 1px solid var(--hairline); }
+  #site-header .nav-link { color: var(--cream); transition: color 200ms var(--ease-smooth), opacity 200ms; opacity: 0.9; }
+  #site-header.is-scrolled .nav-link { color: var(--ink); }
+  #site-header .nav-link:hover { opacity: 1; color: var(--royal); }
+  #site-header .logo-text { color: var(--cream); transition: color 260ms var(--ease-smooth); }
+  #site-header.is-scrolled .logo-text { color: var(--navy-900); }
+  #site-header .hamburger-line { color: var(--cream); transition: color 260ms var(--ease-smooth); }
+  #site-header.is-scrolled .hamburger-line { color: var(--navy-900); }
+  #site-header .nav-phone-link { color: var(--cream); opacity: 0.9; transition: color 200ms var(--ease-smooth), opacity 200ms; }
+  #site-header.is-scrolled .nav-phone-link { color: var(--navy-900); }
+  #site-header .nav-phone-link:hover { opacity: 1; color: var(--royal); }
+  /* ===== LANGUAGE SWITCHER (SK | PL) — filled by renderLangSwitcher() in main.js/tour.js ===== */
+  .lang-switcher { gap: 6px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; }
+  .lang-switcher__item { padding: 4px 2px; transition: color 200ms var(--ease-smooth), opacity 200ms; }
+  .lang-switcher__sep { opacity: 0.35; }
+  #site-header .lang-switcher { color: var(--cream); }
+  #site-header.is-scrolled .lang-switcher { color: var(--navy-900); }
+  .lang-switcher a.lang-switcher__item { opacity: 0.65; text-decoration: none; }
+  .lang-switcher a.lang-switcher__item:hover { opacity: 1; color: var(--royal); }
+  .lang-switcher a.lang-switcher__item:focus-visible { outline: 2px solid var(--royal); outline-offset: 2px; border-radius: 4px; opacity: 1; }
+  .lang-switcher a.lang-switcher__item:active { opacity: 1; }
+  .lang-switcher__item--active { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+  #mobile-menu .lang-switcher { color: var(--navy-900); font-size: 1rem; }
+
+  #mobile-menu { transform: translateX(100%); transition: transform 320ms var(--ease-smooth); }
+  #mobile-menu.is-open { transform: translateX(0); }
+  #mobile-menu-backdrop { opacity: 0; pointer-events: none; transition: opacity 260ms var(--ease-smooth); }
+  #mobile-menu-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+  /* ===== HERO ===== */
+  #hero { min-height: 100svh; }
+  .hero-copy-shadow { text-shadow: 0 4px 28px rgba(10, 14, 24, 0.7), 0 2px 8px rgba(10, 14, 24, 0.6), 0 1px 2px rgba(10, 14, 24, 0.5); }
+  .trust-badge {
+    width: 147px; height: 147px; border-radius: 999px;
+    overflow: hidden;
+    animation: badge-float 4.5s var(--ease-smooth) infinite;
+  }
+  @keyframes badge-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trust-badge { animation: none; }
+  }
+
+  /* ===== PROCESS TIMELINE ===== */
+  #process-steps { position: relative; padding-top: 1.5rem; }
+  .process-track {
+    position: absolute;
+    top: 50%;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    transform: translateY(-50%);
+    background-image: repeating-linear-gradient(90deg, var(--cream) 0 10px, transparent 10px 22px);
+    opacity: 0.4;
+    z-index: 0;
+    animation: process-track-flow 3.2s ease-in-out infinite alternate;
+  }
+  @keyframes process-track-flow {
+    from { background-position-x: 0; }
+    to { background-position-x: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .process-track { animation: none; }
+  }
+  .process-card { position: relative; z-index: 1; padding-top: 2rem; }
+  .process-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ===== PROCESS BACKGROUND — faint topographic contours + glow, keyed to the dark navy panel ===== */
+  .process-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: 360px 360px;
+    opacity: 0.09;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%237B96C9' stroke-width='1.2'%3E%3Cpath d='M-40 50 Q 50 10, 140 50 T 320 50 T 500 50'/%3E%3Cpath d='M-40 120 Q 50 80, 140 120 T 320 120 T 500 120'/%3E%3Cpath d='M-40 190 Q 50 150, 140 190 T 320 190 T 500 190'/%3E%3Cpath d='M-40 260 Q 50 220, 140 260 T 320 260 T 500 260'/%3E%3Cpath d='M-40 330 Q 50 290, 140 330 T 320 330 T 500 330'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .process-pattern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 55% 40% at 22% 15%, rgba(30, 64, 196, 0.35), transparent 70%),
+      radial-gradient(ellipse 45% 35% at 82% 85%, rgba(123, 150, 201, 0.18), transparent 70%);
+  }
+
+  /* ===== TOUR CARDS ===== */
+  .tour-card { background: var(--surface); border-radius: var(--radius-card); overflow: hidden; }
+  .tour-card .tour-media { aspect-ratio: 4 / 3; }
+  .tour-card .tour-media::after { background: linear-gradient(to top, rgba(20, 27, 46, 0.32), rgba(20, 27, 46, 0) 32%); }
+  .tour-card .info-strip { transform: translateY(50%); box-shadow: var(--shadow-card); z-index: 2; }
+  .star { color: var(--royal); }
+  .star--empty { color: var(--hairline); }
+
+  /* ===== SEASON TOGGLE ===== */
+  .season-pill {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--hairline);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color 200ms var(--ease-smooth), color 200ms var(--ease-smooth), border-color 200ms var(--ease-smooth), box-shadow 220ms var(--ease-spring), transform 220ms var(--ease-spring);
+  }
+  .season-pill:hover { color: var(--ink); border-color: var(--royal); }
+  .season-pill:active { transform: scale(0.97); }
+  .season-pill[aria-pressed="true"] { background: var(--royal); border-color: var(--royal); color: var(--cream); box-shadow: var(--shadow-card); }
+  .season-pill[aria-pressed="true"]:hover { color: var(--cream); }
+
+  .season-group { opacity: 1; transform: translateY(0); transition: opacity 220ms var(--ease-smooth), transform 220ms var(--ease-smooth); }
+  .season-group.is-entering { opacity: 0; transform: translateY(6px); }
+  @media (prefers-reduced-motion: reduce) { .season-group { transition: none; } }
+  /* Mobile only (single-column, below Tailwind's sm=640px): collapsed groups show the first 3 cards;
+     the "show all" button reveals the rest. Above sm the grid is multi-column, so all cards show. */
+  @media (max-width: 639.98px) {
+    .season-group.is-collapsed .grid > .tour-card:nth-child(n+4) { display: none; }
+  }
+
+  .tour-more-note-link { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--hairline); transition: color 200ms var(--ease-smooth), text-decoration-color 200ms var(--ease-smooth); }
+  .tour-more-note-link:hover { color: var(--royal); text-decoration-color: var(--royal); }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonial-card wistia-player { display: block; width: 100%; }
+  .testimonial-card wistia-player:not(:defined) { background: center / contain no-repeat var(--wistia-swatch); filter: blur(5px); padding-top: 177.78%; }
+
+  /* ===== TESTIMONIALS BACKGROUND — layered radial gradients + fine grain for depth on the light surface, same base color ===== */
+  .testimonials-bg { position: relative; isolation: isolate; }
+  .testimonials-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(640px 480px at 8% 0%, rgba(30, 64, 196, 0.06), transparent 70%),
+      radial-gradient(720px 560px at 100% 100%, rgba(123, 150, 201, 0.10), transparent 70%);
+  }
+  .testimonials-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery-item { overflow: hidden; border-radius: 14px; cursor: zoom-in; }
+  .gallery-item img { transition: transform 420ms var(--ease-smooth); }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-bg-photo { filter: grayscale(0.4) brightness(0.7) blur(2px); transform: scale(1.05); }
+  .gallery-bg-scrim { background: linear-gradient(180deg, rgba(20, 27, 46, 0.8), rgba(20, 27, 46, 0.88)); }
+
+  /* ===== LIGHTBOX ===== */
+  #lightbox { background: rgba(20, 27, 46, 0.92); }
+
+  /* ===== FAQ TOPOGRAPHIC TEXTURE — subtle contour-line motif behind the accordion cards ===== */
+  .topo { position: relative; isolation: isolate; }
+  .topo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-size: 220px 220px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%231E40C4' stroke-width='1.2'%3E%3Cpath d='M-20 24 Q 35 2, 90 24 T 200 24 T 310 24'/%3E%3Cpath d='M-20 68 Q 35 46, 90 68 T 200 68 T 310 68'/%3E%3Cpath d='M-20 112 Q 35 90, 90 112 T 200 112 T 310 112'/%3E%3Cpath d='M-20 156 Q 35 134, 90 156 T 200 156 T 310 156'/%3E%3Cpath d='M-20 200 Q 35 178, 90 200 T 200 200 T 310 200'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .topo > * { position: relative; z-index: 1; }
+
+  /* ===== FAQ ACCORDION (CSS grid-rows trick — no JS height measuring) ===== */
+  .faq-panel-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease-smooth); }
+  .faq-item.is-open .faq-panel-wrap { grid-template-rows: 1fr; }
+  .faq-panel-inner { overflow: hidden; }
+  .faq-chevron { transition: transform 280ms var(--ease-spring); }
+  .faq-item.is-open .faq-chevron { transform: rotate(180deg); }
+  .faq-more-link { color: var(--royal); font-weight: 500; text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 3px; transition: color 200ms var(--ease-smooth), text-decoration-color 200ms var(--ease-smooth); }
+  .faq-more-link:hover { color: var(--royal-dark); text-decoration-color: var(--royal); }
+  .faq-more-link:active { color: var(--royal-dark); }
+  .faq-more-link:focus-visible { outline: 2px solid var(--royal); outline-offset: 3px; border-radius: 4px; }
+
+  /* ===== MODAL / LIGHTBOX SHARED OVERLAY ===== */
+  .overlay-backdrop { background: rgba(20, 27, 46, 0.6); backdrop-filter: blur(3px); }
+  .modal-panel, .lightbox-panel { animation: pop-in 260ms var(--ease-spring); }
+  @keyframes pop-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @media (prefers-reduced-motion: reduce) { .modal-panel, .lightbox-panel { animation: none; } }
+
+  .field-error { color: #B3261E; font-size: 0.8rem; margin-top: 0.35rem; }
+  .field-input.is-invalid { border-color: #B3261E !important; }
+  .required-mark { color: #B3261E; }
+
+  .spinner { width: 1rem; height: 1rem; border-radius: 999px; border: 2px solid rgba(245,240,230,0.4); border-top-color: var(--cream); animation: spin 700ms linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ===== WHATSAPP FAB ===== */
+  #whatsapp-fab { opacity: 0; transform: translateY(16px) scale(0.9); transition: opacity 420ms var(--ease-spring) 400ms, transform 420ms var(--ease-spring) 400ms; }
+  #whatsapp-fab.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+  #whatsapp-fab:hover { transform: translateY(-3px) scale(1.05); }
+
+  /* ===== SECTION REVEAL ON SCROLL ===== */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 640ms var(--ease-smooth), transform 640ms var(--ease-smooth); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body class="bg-surface text-ink antialiased">
+
+<!-- Shared icon sprite — referenced via <use> to avoid duplicating SVG markup across dynamically rendered cards -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.6 6.3 11.6 7 12.24a.75.75 0 0 0 1 0c.7-.64 7-6.64 7-12.24C19.5 5.36 16.14 2 12 2Zm0 10.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm.75 5v5.25l4.25 2.5-.75 1.25-5-3V7h1.5Z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.4 2 7.1 5.6L18.6 7H4.4ZM4 8.5V17h16V8.5l-7.4 5.8a1 1 0 0 1-1.2 0L4 8.5Z"/></symbol>
+  <symbol id="icon-route" viewBox="0 0 24 24"><path fill="currentColor" d="M4 5a2 2 0 1 1 3.5 1.3l3 3.7h3l3-3.7A2 2 0 1 1 18 6.7l-3.4 4.2a2 2 0 0 1-1.55.74h-2.1a2 2 0 0 1-1.55-.74L6 6.7A2 2 0 0 1 4 5Zm.5 12a2 2 0 1 1 3.5-1.3v.05h8v-.05A2 2 0 1 1 19.5 17a2 2 0 0 1-3.9.7H8.4a2 2 0 0 1-3.9-.7Z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.7 2.9 5.88 6.5.94-4.7 4.58 1.1 6.47L12 17.4l-5.8 3.17 1.1-6.47-4.7-4.58 6.5-.94L12 2.7Z"/></symbol>
+  <symbol id="icon-chevron" viewBox="0 0 24 24"><path fill="currentColor" d="M6.7 8.7 12 14l5.3-5.3 1.4 1.4-6.7 6.7-6.7-6.7 1.4-1.4Z"/></symbol>
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.8l4.6-4.6L11 5l-7 7 7 7 1.4-1.4L7.8 13H20v-2Z"/></symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path fill="currentColor" d="M4 13h12.2l-4.6 4.6L13 19l7-7-7-7-1.4 1.4L16.2 11H4v2Z"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5-11-6.5Z"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4 17.6 5 12 10.6 6.4 5Z"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/></symbol>
+  <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17 14.2c-.3-.15-1.7-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.36-1.47-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.9-2.18-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.5.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.35ZM12 2a10 10 0 0 0-8.5 15.3L2 22l4.85-1.47A10 10 0 1 0 12 2Zm0 18.2a8.16 8.16 0 0 1-4.17-1.14l-.3-.18-3.05.93.94-2.97-.2-.31A8.2 8.2 0 1 1 12 20.2Z"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 4.1 2.9 3.5 3.4 3 4 3h3.5c.6 0 1.1.5 1.1 1.1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8Z"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2 4.5 5.1v6.1c0 5 3.2 8.9 7.5 10.6 4.3-1.7 7.5-5.6 7.5-10.6V5.1L12 2.2Zm-1.1 12.8-3-3 1.4-1.4 1.6 1.6 4.6-4.6 1.4 1.4-6 6Z"/></symbol>
+  <symbol id="icon-quote" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5 6C6.5 7.3 5 9.6 5 12.6c.5-.3 1.1-.4 1.7-.4 1.7 0 3 1.3 3 3s-1.3 3-3 3-3.3-1.4-3.3-4.1c0-4.2 2.3-7.3 6-8.9L9.5 6Zm9 0c-3 1.3-4.5 3.6-4.5 6.6.5-.3 1.1-.4 1.7-.4 1.7 0 3 1.3 3 3s-1.3 3-3 3-3.3-1.4-3.3-4.1c0-4.2 2.3-7.3 6-8.9L18.5 6Z"/></symbol>
+</svg>
+
+<!-- ============ HEADER / NAV ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 sm:gap-2.5 shrink-0" aria-label="Mountain Safari — domov">
+      <img src="../brand_assets/logo.webp" alt="" width="40" height="40" class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg shrink-0" />
+      <span class="logo-text font-display font-extrabold text-base sm:text-lg tracking-tight whitespace-nowrap" data-content="nav.logoText">Mountain Safari</span>
+    </a>
+    <!-- Mobile-only language switcher: sits next to the wordmark; mr-auto keeps
+         it left-clustered with the logo while phone + hamburger stay right. -->
+    <div class="lang-switcher flex lg:hidden items-center shrink-0 ml-3 mr-auto" aria-label="Jazyk / Język"></div>
+    <nav class="hidden lg:flex items-center gap-8" id="nav-links" aria-label="Hlavná navigácia"></nav>
+    <div class="flex items-center gap-1.5 sm:gap-4 min-w-0">
+      <a href="#" id="nav-phone-link" class="nav-phone-link inline-flex items-center gap-1.5 sm:gap-2 p-2 sm:p-0 font-medium text-xs sm:text-sm min-w-0" data-content-href="nav.phone" data-content-href-prefix="tel:" data-content-aria-label="nav.phoneAriaLabel">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" style="fill:currentColor" aria-hidden="true"><use href="#icon-phone"/></svg>
+        <span class="hidden sm:inline truncate" data-content="nav.phoneDisplay">…</span>
+      </a>
+      <div class="lang-switcher hidden lg:flex items-center shrink-0" aria-label="Jazyk / Język"></div>
+      <button type="button" class="btn-pill btn-pill--primary btn-pill--glow hidden sm:inline-flex shrink-0" data-open-modal data-content="nav.ctaLabel">Rezervovať</button>
+      <button type="button" id="hamburger-btn" class="lg:hidden p-2 -mr-2 shrink-0" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6 hamburger-line" style="fill:currentColor" aria-hidden="true"><use href="#icon-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile slide-in menu -->
+<div id="mobile-menu-backdrop" class="fixed inset-0 bg-navy900/60 z-[55] lg:hidden"></div>
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-[82%] max-w-sm bg-surface z-[60] lg:hidden shadow-2xl flex flex-col p-8" role="dialog" aria-modal="true" aria-label="Mobilné menu" hidden>
+  <div class="flex items-center justify-between mb-10">
+    <span class="font-display font-bold text-navy900">Menu</span>
+    <button type="button" id="mobile-menu-close" class="p-2 -mr-2" aria-label="Zavrieť menu">
+      <svg class="w-6 h-6 text-navy900" style="fill:currentColor" aria-hidden="true"><use href="#icon-close"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-6" id="mobile-nav-links" aria-label="Mobilná navigácia"></nav>
+  <div class="lang-switcher flex items-center mt-8" aria-label="Jazyk / Język"></div>
+  <a href="#" class="inline-flex items-center gap-2.5 mt-10 font-display font-semibold text-navy900" data-content-href="nav.phone" data-content-href-prefix="tel:" data-content-aria-label="nav.phoneAriaLabel">
+    <svg class="w-5 h-5 text-royal shrink-0" style="fill:currentColor" aria-hidden="true"><use href="#icon-phone"/></svg>
+    <span data-content="nav.phoneDisplay">…</span>
+  </a>
+  <button type="button" class="btn-pill btn-pill--primary btn-pill--glow mt-6" data-open-modal data-content="nav.ctaLabel">Rezervovať</button>
+</div>
+
+<!-- ============ 1. HERO ============ -->
+<section id="hero" class="relative flex items-end lg:items-center grain overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden">
+    <img data-content-src="hero.bgImage" data-content-alt="hero.bgImageAlt" src="" alt="" loading="eager" width="1920" height="1200" class="w-full h-full object-cover" />
+  </div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(20,27,46,0.38) 0%, rgba(20,27,46,0.28) 28%, rgba(20,27,46,0.68) 60%, rgba(20,27,46,0.9) 100%), radial-gradient(ellipse 60% 45% at 50% 62%, rgba(10,14,24,0.35), transparent 70%), radial-gradient(circle at 15% 20%, rgba(30,64,196,0.12), transparent 45%);"></div>
+
+  <div class="trust-badge absolute top-24 right-6 sm:right-10 flex items-center justify-center" aria-hidden="false">
+    <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-cover" />
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-48 sm:pb-40 pt-40 w-full reveal text-center">
+    <h1 class="hero-copy-shadow font-display font-extrabold text-cream text-4xl sm:text-6xl lg:text-7xl leading-[0.98] heading-tight max-w-5xl mx-auto">
+      <span data-content="hero.heading">Čas na vaše ďalšie dobrodružstvo.</span>
+    </h1>
+    <p class="hero-copy-shadow mt-6 text-cream text-lg max-w-xl mx-auto" data-content="hero.subheading">Naplánujeme ho za vás.</p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <a href="#tours" class="btn-pill btn-pill--primary btn-pill--glow" data-content="hero.ctaLabel">Rezervovať</a>
+      <button type="button" class="btn-pill btn-pill--ghost" data-open-modal data-content="hero.ctaSecondaryLabel">Mám otázku</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. ABOUT ============ -->
+<section id="about" class="py-[var(--space-section)] bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl heading-tight mb-6" data-content="about.heading">Kto by s vami išiel?</h2>
+      <div class="space-y-5 leading-relaxed text-muted text-lg max-w-lg" data-content="about.paragraph">…</div>
+      <div class="flex flex-wrap gap-4 mt-8">
+        <a href="#" class="btn-pill btn-pill--primary btn-pill--glow inline-flex items-center gap-2" data-content-href="nav.phone" data-content-href-prefix="tel:" data-content-aria-label="nav.phoneAriaLabel">
+          <svg class="w-5 h-5 shrink-0" style="fill:currentColor" aria-hidden="true"><use href="#icon-phone"/></svg>
+          <span data-content="about.ctaPrimaryLabel">Zavolajte nám</span>
+        </a>
+        <button type="button" class="btn-pill btn-pill--outline-ink" data-open-modal data-content="about.ctaSecondaryLabel">Napíšte nám</button>
+      </div>
+    </div>
+    <div id="about-duo-portrait" class="duo-portrait reveal" style="aspect-ratio: 1/1;">
+      <button type="button" class="duo-portrait__photo duo-portrait__slot-front media is-front">
+        <img data-content-src="about.photoAnton" data-content-alt="about.photoAntonAlt" src="" alt="" loading="lazy" width="720" height="900" />
+        <span class="duo-portrait__label" data-content="about.nameAnton">Anton</span>
+      </button>
+      <button type="button" class="duo-portrait__photo duo-portrait__slot-back media is-back">
+        <img data-content-src="about.photoStefan" data-content-alt="about.photoStefanAlt" src="" alt="" loading="lazy" width="720" height="900" />
+        <span class="duo-portrait__label" data-content="about.nameStefan">Štefan</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. TOURS ============ -->
+<section id="tours" class="py-[var(--space-section)] bg-cream/40">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-8 reveal">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl heading-tight" data-content="toursSection.heading">Ktorý je váš vysnívaný vrch?</h2>
+    </div>
+    <div id="season-toggle" class="flex items-center justify-center gap-3 mb-14 reveal" role="group"></div>
+    <p id="season-live-region" class="sr-only" aria-live="polite"></p>
+    <div id="tours-grid"></div>
+    <div class="flex flex-wrap items-center justify-center gap-4 mt-14 reveal">
+      <a href="#" class="btn-pill btn-pill--primary btn-pill--glow inline-flex items-center gap-2" data-content-href="nav.phone" data-content-href-prefix="tel:" data-content-aria-label="nav.phoneAriaLabel">
+        <svg class="w-5 h-5 shrink-0" style="fill:currentColor" aria-hidden="true"><use href="#icon-phone"/></svg>
+        <span data-content="toursSection.callCtaLabel">Zavolajte nám</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PROCESS ============ -->
+<section id="process" class="relative py-[var(--space-section)] bg-navy900 grain overflow-hidden">
+  <div class="process-pattern absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <h2 class="font-display font-bold text-cream text-3xl sm:text-4xl heading-tight" data-content="process.heading">Ako to prebieha?</h2>
+    </div>
+    <div id="process-steps" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10"></div>
+    <div class="text-center mt-14 reveal">
+      <button type="button" class="btn-pill btn-pill--primary btn-pill--glow" data-open-modal data-content="process.ctaLabel">Rezervovať</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. TESTIMONIALS ============ -->
+<section id="testimonials" class="py-[var(--space-section)] bg-surface overflow-hidden testimonials-bg">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl heading-tight text-center max-w-2xl mx-auto mb-14 reveal" data-content="testimonialsSection.heading">Skúsenosti našich verných klientov:</h2>
+
+    <div id="testimonial-track" class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 max-w-[380px] lg:max-w-[1120px] mx-auto reveal" role="group" aria-label="Videoreferencie klientov"></div>
+
+    <div class="text-center mt-14 reveal">
+      <button type="button" class="btn-pill btn-pill--secondary btn-pill--glow" data-open-modal data-content="testimonialsSection.ctaLabel">Rezervovať</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. GALLERY ============ -->
+<section id="gallery" class="relative py-[var(--space-section)] bg-galleryBg overflow-hidden">
+  <div class="absolute inset-0">
+    <img data-content-src="gallerySection.bgImage" data-content-alt="gallerySection.bgImageAlt" src="" alt="" loading="lazy" class="gallery-bg-photo w-full h-full object-cover" />
+    <div class="gallery-bg-scrim absolute inset-0"></div>
+  </div>
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="bg-surface rounded-card surface-floating p-6 sm:p-12 reveal">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl heading-tight text-center mb-10" data-content="gallerySection.heading">Galéria</h2>
+      <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6"></div>
+      <div class="text-center mt-10">
+        <button type="button" class="btn-pill btn-pill--primary btn-pill--glow" data-open-modal data-content="gallerySection.ctaLabel">Rezervovať</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. FAQ ============ -->
+<section id="faq" class="py-[var(--space-section)] bg-surface topo">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl heading-tight text-center mb-14 reveal" data-content="faqSection.heading">Časté otázky</h2>
+    <div id="faq-list" class="flex flex-col gap-4 reveal"></div>
+    <p class="text-center text-sm text-muted mt-8 reveal">
+      <span data-content="faqSection.morePrompt">Nenašli ste odpoveď na svoju otázku?</span>
+      <a href="https://www.mountainsafari.sk/faq/" class="faq-more-link" data-content-href="faqSection.moreLinkHref" data-content="faqSection.moreLinkLabel">Pozrite si všetky časté otázky</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 8. FINAL CTA ============ -->
+<section class="pt-[var(--space-section)] bg-surface topo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="relative bg-navy900 grain rounded-card surface-floating overflow-hidden grid lg:grid-cols-2 items-center reveal">
+      <div class="p-10 sm:p-16">
+        <div class="final-cta-copy mb-8 max-w-md">
+          <p class="font-display font-bold text-cream text-2xl sm:text-3xl heading-tight" data-content="finalCta.line1">Ak chcete prekonať svoje limity a mať zážitok na celý život…</p>
+          <p class="text-cream/80 text-base sm:text-lg leading-relaxed" data-content="finalCta.line2">Rezervujte si cestu na vrchol s horským vodcom, ktorému môžete veriť.</p>
+        </div>
+        <button type="button" class="btn-pill btn-pill--primary btn-pill--glow" data-open-modal data-content="finalCta.ctaLabel">Rezervovať si termín</button>
+      </div>
+      <div class="hidden lg:block media final-cta-media self-stretch h-full">
+        <img data-content-src="finalCta.cutoutImage" data-content-alt="finalCta.cutoutAlt" src="" alt="" loading="lazy" width="640" height="760" style="object-position: 50% 70%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="py-16 bg-surface topo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="bg-cream/40 rounded-card px-8 py-10 sm:px-12 reveal">
+      <div class="text-center text-royal text-sm font-semibold uppercase tracking-wide mb-8" data-content="finalCta.trustHeading">S kým spolupracujeme</div>
+      <div id="partner-logos" class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 9. FOOTER ============ -->
+<footer class="bg-navy900 text-cream pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-14 border-b border-white/10">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <img src="../brand_assets/logo.webp" alt="" width="36" height="36" class="w-8 h-8 rounded-lg shrink-0" />
+        <span class="font-display font-extrabold text-lg" data-content="footer.logoText">Mountain Safari</span>
+      </div>
+    </div>
+    <div>
+      <div class="font-display font-semibold text-sm text-cream/50 uppercase tracking-wide mb-4" data-content="footer.linksHeading">Navigácia</div>
+      <nav class="flex flex-col gap-3" id="footer-nav-links"></nav>
+    </div>
+    <div>
+      <div class="font-display font-semibold text-sm text-cream/50 uppercase tracking-wide mb-4" data-content="footer.guidesHeading">Sprievodcovia</div>
+      <div id="footer-guides" class="flex flex-col gap-4"></div>
+    </div>
+    <div>
+      <div class="font-display font-semibold text-sm text-cream/50 uppercase tracking-wide mb-4">Kontakt</div>
+      <a id="footer-email" href="#" class="block text-cream/80 hover:text-periwinkle mb-4 text-sm transition-colors" data-content-href="footer.email" data-content-href-prefix="mailto:" data-content="footer.email"></a>
+      <div id="footer-socials" class="flex gap-4"></div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-8 flex flex-col sm:flex-row justify-between gap-3 text-cream/50 text-xs">
+    <span data-content="footer.credentialsNote">IFMGA · UIAGM · IVBV</span>
+    <span id="footer-copyright"></span>
+  </div>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div id="booking-modal-backdrop" class="fixed inset-0 z-[80] overlay-backdrop flex items-center justify-center p-4" hidden>
+  <div id="booking-modal" class="modal-panel bg-surface rounded-card surface-floating w-full max-w-lg max-h-[90vh] overflow-y-auto p-7 sm:p-9" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="flex items-center justify-between mb-6">
+      <h2 id="modal-title" class="font-display font-bold text-2xl heading-tight" data-content="modal.title">Rezervovať výstup</h2>
+      <button type="button" id="modal-close" class="p-2 -mr-2 text-muted hover:text-royal transition-colors" aria-label="Zavrieť">
+        <svg class="w-5 h-5" style="fill:currentColor" aria-hidden="true"><use href="#icon-close"/></svg>
+      </button>
+    </div>
+
+    <form id="booking-form" novalidate>
+      <div class="flex flex-col gap-5">
+        <div>
+          <label for="field-name" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.name.label">Meno a priezvisko</span><span class="required-mark" aria-hidden="true"> *</span></label>
+          <input id="field-name" name="name" type="text" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.name.placeholder" required />
+          <p class="field-error" data-error-for="name" hidden></p>
+        </div>
+        <div>
+          <label for="field-phone" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.phone.label">Telefón</span><span class="required-mark" aria-hidden="true"> *</span></label>
+          <input id="field-phone" name="phone" type="tel" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.phone.placeholder" required />
+          <p class="field-error" data-error-for="phone" hidden></p>
+        </div>
+        <div>
+          <label for="field-email" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.email.label">E-mail</span><span class="required-mark" aria-hidden="true"> *</span></label>
+          <input id="field-email" name="email" type="email" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.email.placeholder" required />
+          <p class="field-error" data-error-for="email" hidden></p>
+        </div>
+        <div>
+          <label for="field-tour" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.tour.label">Ktorý výstup</span><span class="required-mark" aria-hidden="true"> *</span></label>
+          <select id="field-tour" name="tour" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5 bg-surface" required></select>
+          <p class="field-error" data-error-for="tour" hidden></p>
+        </div>
+        <div>
+          <label for="field-date" class="block text-sm font-medium mb-1.5" data-content="modal.fields.date.label">Preferovaný termín</label>
+          <input id="field-date" name="date" type="text" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.date.placeholder" />
+        </div>
+        <div>
+          <label for="field-message" class="block text-sm font-medium mb-1.5" data-content="modal.fields.message.label">Správa</label>
+          <textarea id="field-message" name="message" rows="3" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5 resize-none" data-content-placeholder="modal.fields.message.placeholder"></textarea>
+        </div>
+      </div>
+
+      <p id="form-error-banner" class="field-error mt-5" role="alert" aria-live="polite" hidden></p>
+
+      <button type="submit" id="modal-submit" class="btn-pill btn-pill--primary w-full mt-6">
+        <span id="modal-submit-label" data-content="modal.submitLabel">Odoslať dopyt</span>
+        <span id="modal-spinner" class="spinner" style="border-color: rgba(30,64,196,0.3); border-top-color: var(--cream);" hidden></span>
+      </button>
+
+      <a id="modal-whatsapp-link" data-whatsapp-link href="#" class="block text-center text-sm text-royal hover:text-royalDark mt-4 transition-colors" data-content="modal.whatsappFallbackLabel">Radšej cez WhatsApp?</a>
+    </form>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" class="fixed inset-0 z-[80] flex items-center justify-center p-4" hidden>
+  <div class="lightbox-panel relative max-w-4xl w-full">
+    <button type="button" id="lightbox-close" class="absolute -top-12 right-0 text-cream/80 hover:text-cream p-2" aria-label="Zavrieť galériu">
+      <svg class="w-6 h-6" style="fill:currentColor" aria-hidden="true"><use href="#icon-close"/></svg>
+    </button>
+    <img id="lightbox-image" src="" alt="" class="w-full h-auto rounded-card" />
+    <button type="button" id="lightbox-prev" class="absolute left-2 top-1/2 -translate-y-1/2 text-cream/80 hover:text-cream p-3" aria-label="Predchádzajúci obrázok">
+      <svg class="w-6 h-6" style="fill:currentColor" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+    </button>
+    <button type="button" id="lightbox-next" class="absolute right-2 top-1/2 -translate-y-1/2 text-cream/80 hover:text-cream p-3" aria-label="Ďalší obrázok">
+      <svg class="w-6 h-6" style="fill:currentColor" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ============ WHATSAPP FAB ============ -->
+<a id="whatsapp-fab" href="#" target="_blank" rel="noopener" data-whatsapp-link
+   class="fixed bottom-6 right-6 z-[65] w-14 h-14 rounded-full flex items-center justify-center text-white"
+   style="background:#25D366; box-shadow: 0 12px 32px -8px rgba(37,211,102,0.55), 0 4px 12px -2px rgba(20,27,46,0.25);">
+  <svg class="w-7 h-7" style="fill:currentColor" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+</a>
+
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/76mzm8drx9.js" async type="module"></script>
+<script src="https://fast.wistia.com/embed/9i0tnerz8t.js" async type="module"></script>
+<script src="https://fast.wistia.com/embed/lzcq83z32w.js" async type="module"></script>
+
+<script src="content.js"></script>
+<script src="../main.js"></script>
+</body>
+</html>

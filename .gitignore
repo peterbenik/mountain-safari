@@ -1,0 +1,10 @@
+node_modules/
+
+# Local screenshot output from screenshot.mjs — large and regenerable.
+temporary screenshots/
+
+# Internal client strategy doc: usability-test quotes, pricing tactics.
+# Deliberately kept out of the public repo.
+PROPOSAL.md
+
+.DS_Store

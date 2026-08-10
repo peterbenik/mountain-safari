@@ -1,0 +1,130 @@
+/* ==========================================================================
+   TOUR DETAIL PAGE — styles specific to /tury/<slug>.html
+   Builds on the shared design tokens in theme.css. Kept separate so theme.css
+   stays a byte-for-byte extract of the homepage's styles.
+   ========================================================================== */
+
+/* ===== HERO ===== */
+.tour-hero { position: relative; min-height: 66vh; display: flex; align-items: flex-end; overflow: hidden; }
+@media (min-width: 1024px) { .tour-hero { min-height: 72vh; } }
+.tour-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tour-hero__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20,27,46,0.30) 0%, rgba(20,27,46,0.22) 26%, rgba(20,27,46,0.66) 58%, rgba(20,27,46,0.94) 100%),
+    radial-gradient(ellipse 62% 46% at 30% 70%, rgba(10,14,24,0.32), transparent 72%),
+    radial-gradient(circle at 12% 18%, rgba(30,64,196,0.16), transparent 46%);
+}
+.tour-hero__meta-pill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(245,240,230,0.12);
+  border: 1px solid rgba(245,240,230,0.22);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem; font-weight: 500;
+}
+
+/* ===== SECTION RHYTHM ===== */
+.tour-section { scroll-margin-top: 6rem; }
+.tour-section + .tour-section { margin-top: clamp(2.75rem, 5vw, 4.5rem); }
+.section-eyebrow {
+  font-family: 'Playfair Display', Georgia, serif; font-style: italic;
+  color: var(--royal); opacity: 0.6; font-size: 0.95rem;
+  letter-spacing: 0; margin-bottom: 0.35rem;
+}
+.tour-prose p { color: var(--muted); line-height: 1.75; }
+.tour-prose p + p { margin-top: 1rem; }
+
+/* ===== QUICK-FACT / SPEC LIST ===== */
+.spec-list { display: grid; gap: 0.9rem; }
+.spec-row { display: flex; align-items: center; gap: 0.85rem; }
+.spec-row__icon {
+  width: 2.35rem; height: 2.35rem; border-radius: 12px; flex-shrink: 0;
+  display: grid; place-items: center;
+  background: rgba(30,64,196,0.08); color: var(--royal);
+}
+.spec-row__label { color: var(--muted); font-size: 0.8rem; }
+.spec-row__value { font-weight: 600; font-size: 0.95rem; line-height: 1.2; }
+
+/* ===== PRICING ===== */
+.price-grid { display: grid; gap: 0.75rem; }
+.price-card {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 14px; padding: 1rem 1.25rem;
+  transition: border-color 220ms var(--ease-smooth), box-shadow 220ms var(--ease-smooth), transform 220ms var(--ease-spring);
+}
+.price-card:hover { border-color: rgba(30,64,196,0.35); box-shadow: var(--shadow-card); transform: translateY(-2px); }
+.price-card__label { font-weight: 600; }
+.price-card__price { font-family: 'Sora', sans-serif; font-weight: 700; color: var(--royal); white-space: nowrap; }
+.price-card__unit { color: var(--muted); font-size: 0.82rem; font-weight: 500; margin-left: 0.4rem; }
+
+/* ===== ROUTES TABLE ===== */
+.routes-table { width: 100%; border-collapse: collapse; }
+.routes-table th, .routes-table td { text-align: left; padding: 0.85rem 0.5rem; border-bottom: 1px solid var(--hairline); }
+.routes-table th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+.routes-table td { font-size: 0.92rem; }
+.routes-table td:first-child { font-weight: 600; }
+.routes-table tr:last-child td { border-bottom: none; }
+
+/* ===== CHECKLISTS ===== */
+.checklist { display: grid; gap: 0.7rem; }
+.checklist li { display: flex; gap: 0.7rem; align-items: flex-start; color: var(--ink); font-size: 0.92rem; line-height: 1.5; }
+.checklist__icon { flex-shrink: 0; width: 1.35rem; height: 1.35rem; margin-top: 0.05rem; }
+.checklist--yes .checklist__icon { color: #1E9E64; }
+.checklist--no .checklist__icon { color: var(--muted); }
+
+/* ===== GALLERY (reuses lightbox from theme.css) ===== */
+.tour-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+@media (min-width: 640px) { .tour-gallery { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
+.tour-gallery .gallery-item { aspect-ratio: 3 / 4; }
+
+/* ===== PUNCTUALITY DISCLAIMER (red alert under the meeting section) ===== */
+.tour-alert {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  max-width: 42rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(179, 38, 30, 0.07);
+  border: 1px solid rgba(179, 38, 30, 0.22);
+  border-left: 3px solid #B3261E;
+  color: #B3261E;
+}
+.tour-alert__icon { margin-top: 0.1rem; }
+.tour-alert p { color: #B3261E; font-size: 0.9rem; line-height: 1.55; }
+.tour-alert strong { font-weight: 700; }
+
+/* ===== POLICIES ===== */
+.policy-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 1.25rem 1.4rem; }
+.policy-card h3 { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.98rem; margin-bottom: 0.35rem; }
+.policy-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+/* ===== STICKY BOOKING SIDEBAR ===== */
+.tour-sidebar { position: sticky; top: 6rem; }
+.tour-booking-card {
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-card);
+  padding: 1.5rem; box-shadow: var(--shadow-card);
+}
+
+/* ===== MOBILE STICKY CTA BAR ===== */
+.tour-mobile-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--hairline);
+  box-shadow: 0 -8px 24px -12px rgba(20,27,46,0.25);
+  transform: translateY(110%); transition: transform 380ms var(--ease-spring);
+}
+.tour-mobile-cta.is-visible { transform: translateY(0); }
+@media (min-width: 1024px) { .tour-mobile-cta { display: none !important; } }
+
+/* ===== SEASON TOGGLE (reuses .season-pill visuals from theme.css) ===== */
+.tour-pricing-panel[hidden] { display: none; }
+
+/* ===== REVEAL STAGGER (works with the .reveal observer in tour.js) ===== */
+.tour-section .reveal { transition-delay: 60ms; }
