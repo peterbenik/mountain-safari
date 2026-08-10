@@ -301,6 +301,22 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+  /* Mobile variant: sits in the flow above the headline rather than floating
+     over it, so it can't collide however many lines the headline wraps to.
+     Smaller, with the float travel scaled down to match. */
+  .trust-badge--inline {
+    width: 84px; height: 84px;
+    animation-name: badge-float-sm;
+  }
+  /* The emblem is not centred inside uiagm-1.webp: the ink spans x 65-224 of a
+     300px-wide asset, so its centre sits 5px left of the asset's. object-fit:
+     cover crops symmetrically and inherits that offset, leaving the mark visibly
+     left of the circle. 45.9% re-centres the emblem in the round frame. */
+  .trust-badge--inline img { object-position: 45.9% 50%; }
+  @keyframes badge-float-sm {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .trust-badge { animation: none; }
   }
@@ -552,11 +568,16 @@
   </div>
   <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(20,27,46,0.38) 0%, rgba(20,27,46,0.28) 28%, rgba(20,27,46,0.68) 60%, rgba(20,27,46,0.9) 100%), radial-gradient(ellipse 60% 45% at 50% 62%, rgba(10,14,24,0.35), transparent 70%), radial-gradient(circle at 15% 20%, rgba(30,64,196,0.12), transparent 45%);"></div>
 
-  <div class="trust-badge absolute top-24 right-6 sm:right-10 flex items-center justify-center" aria-hidden="false">
+  <!-- Floating badge: sm+ only. Below that it would overlap the headline, which
+       wraps to four lines on narrow screens — the inline badge below stands in. -->
+  <div class="trust-badge absolute top-24 right-6 sm:right-10 hidden sm:flex items-center justify-center" aria-hidden="false">
     <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-cover" />
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-48 sm:pb-40 pt-40 w-full reveal text-center">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-48 sm:pb-40 pt-32 sm:pt-40 w-full reveal text-center">
+    <div class="trust-badge trust-badge--inline mx-auto mb-6 flex sm:hidden items-center justify-center">
+      <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-cover" />
+    </div>
     <h1 class="hero-copy-shadow font-display font-extrabold text-cream text-4xl sm:text-6xl lg:text-7xl leading-[0.98] heading-tight max-w-5xl mx-auto">
       <span data-content="hero.heading">Čas na vaše ďalšie dobrodružstvo.</span>
     </h1>
