@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mountain Safari — Przewodnicy wysokogórscy Tatry Wysokie</title>
 <meta name="robots" content="noindex, nofollow" />
-<meta name="description" content="Licencjonowani przewodnicy wysokogórscy IFMGA/UIAGM w Tatrach Wysokich. Prywatne wejścia szyte na miarę — od łatwych wypraw po wymagające szczyty." />
+<meta name="description" content="Licencjonowani przewodnicy wysokogórscy IVBV/UIAGM/IFMGA w Tatrach Wysokich. Prywatne wejścia szyte na miarę — od łatwych wypraw po wymagające szczyty." />
 <link rel="canonical" href="https://www.mountainsafari.sk/pl/index.html" />
 
 
@@ -285,9 +285,14 @@
   /* ===== HERO ===== */
   #hero { min-height: 100svh; }
   .hero-copy-shadow { text-shadow: 0 4px 28px rgba(10, 14, 24, 0.7), 0 2px 8px rgba(10, 14, 24, 0.6), 0 1px 2px rgba(10, 14, 24, 0.5); }
+  /* The seal artwork runs edge-to-edge in the source file, so the round mask would
+     shave its outer ring. Padding keeps the ring inside the disc; the white ground
+     matches the artwork's own background, so the two read as one chip. */
   .trust-badge {
     width: 147px; height: 147px; border-radius: 999px;
     overflow: hidden;
+    background: #fff;
+    padding: 11px;
     animation: badge-float 4.5s var(--ease-smooth) infinite;
   }
   @keyframes badge-float {
@@ -299,13 +304,9 @@
      Smaller, with the float travel scaled down to match. */
   .trust-badge--inline {
     width: 84px; height: 84px;
+    padding: 6px; /* scaled down with the badge */
     animation-name: badge-float-sm;
   }
-  /* The emblem is not centred inside uiagm-1.webp: the ink spans x 65-224 of a
-     300px-wide asset, so its centre sits 5px left of the asset's. object-fit:
-     cover crops symmetrically and inherits that offset, leaving the mark visibly
-     left of the circle. 45.9% re-centres the emblem in the round frame. */
-  .trust-badge--inline img { object-position: 45.9% 50%; }
   @keyframes badge-float-sm {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
@@ -367,6 +368,20 @@
   .tour-card .tour-media { aspect-ratio: 4 / 3; }
   .tour-card .tour-media::after { background: linear-gradient(to top, rgba(20, 27, 46, 0.32), rgba(20, 27, 46, 0) 32%); }
   .tour-card .info-strip { transform: translateY(50%); box-shadow: var(--shadow-card); z-index: 2; }
+  /* The card photo is a link to the detail page (see renderTourCard in main.js). The overlay
+     sits above .media::after; .info-strip shares z-index 2 but comes later in the DOM, so it
+     stays painted on top and the pill itself is not a click target.
+     KEEP IN SYNC with the same block in assets/theme.css, which styles the related-tours
+     cards on /tury/<slug>.html — this file does not load theme.css. */
+  .tour-card .tour-media-link { position: absolute; inset: 0; z-index: 2; }
+  .tour-card .tour-media img { transition: transform 320ms var(--ease-spring); }
+  .tour-card .tour-media:hover img { transform: scale(1.04); }
+  .tour-card .tour-media:active img { transform: scale(1.01); }
+  @media (prefers-reduced-motion: reduce) {
+    .tour-card .tour-media img { transition: none; }
+    .tour-card .tour-media:hover img,
+    .tour-card .tour-media:active img { transform: none; }
+  }
   .star { color: var(--royal); }
   .star--empty { color: var(--hairline); }
 
@@ -564,12 +579,12 @@
   <!-- Floating badge: sm+ only. Below that it would overlap the headline, which
        wraps to four lines on narrow screens — the inline badge below stands in. -->
   <div class="trust-badge absolute top-24 right-6 sm:right-10 hidden sm:flex items-center justify-center" aria-hidden="false">
-    <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-cover" />
+    <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-contain" />
   </div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-48 sm:pb-40 pt-32 sm:pt-40 w-full reveal text-center">
     <div class="trust-badge trust-badge--inline mx-auto mb-6 flex sm:hidden items-center justify-center">
-      <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-cover" />
+      <img data-content-src="hero.badgeImage" data-content-alt="hero.badgeImageAlt" src="" alt="" loading="lazy" width="147" height="147" class="w-full h-full object-contain" />
     </div>
     <h1 class="hero-copy-shadow font-display font-extrabold text-cream text-4xl sm:text-6xl lg:text-7xl leading-[0.98] heading-tight max-w-5xl mx-auto">
       <span data-content="hero.heading">Čas na vaše ďalšie dobrodružstvo.</span>
@@ -724,7 +739,7 @@
       <nav class="flex flex-col gap-3" id="footer-nav-links"></nav>
     </div>
     <div>
-      <div class="font-display font-semibold text-sm text-cream/50 uppercase tracking-wide mb-4" data-content="footer.guidesHeading">Sprievodcovia</div>
+      <div class="font-display font-semibold text-sm text-cream/50 uppercase tracking-wide mb-4" data-content="footer.guidesHeading">Vodcovia</div>
       <div id="footer-guides" class="flex flex-col gap-4"></div>
     </div>
     <div>
@@ -734,7 +749,7 @@
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-8 flex flex-col sm:flex-row justify-between gap-3 text-cream/50 text-xs">
-    <span data-content="footer.credentialsNote">IFMGA · UIAGM · IVBV</span>
+    <span data-content="footer.credentialsNote">IVBV/UIAGM/IFMGA</span>
     <span id="footer-copyright"></span>
   </div>
 </footer>

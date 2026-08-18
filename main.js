@@ -59,6 +59,21 @@
       const val = resolvePath(el.getAttribute('data-content-aria-label'));
       if (val) el.setAttribute('aria-label', val);
     });
+    linkifyNahvsr();
+  }
+
+  // The footer credentials line ends with a NAHVSR mention (SK "členovia NAHVSR",
+  // PL "członkowie NAHVSR"). Content strings are plain text set via textContent,
+  // so the outbound link is added here instead of embedding markup in content.js.
+  function linkifyNahvsr() {
+    document.querySelectorAll('[data-content="footer.credentialsNote"]').forEach((el) => {
+      const text = el.textContent;
+      if (!text.includes('NAHVSR')) return;
+      el.innerHTML = escapeHtml(text).replace(
+        'NAHVSR',
+        '<a href="https://www.nahvsr.sk/" target="_blank" rel="noopener noreferrer" class="underline decoration-cream/25 underline-offset-2 hover:text-periwinkle hover:decoration-periwinkle active:text-periwinkle transition-colors">NAHVSR</a>'
+      );
+    });
   }
 
   function buildStars(difficulty) {
@@ -198,6 +213,12 @@
     const priceHtml = tour.priceFrom != null
       ? `<span class="text-muted text-xs uppercase tracking-wide">${escapeHtml(toursSection.priceFromLabel)}</span><span class="font-display font-bold text-lg text-royal">${tour.priceFrom} ${escapeHtml(tour.currency)}</span>`
       : `<span class="font-display font-bold text-base text-royal">${escapeHtml(toursSection.priceOnRequestLabel)}</span>`;
+    // The photo doubles as a link to the same detail page — a far bigger tap target than the
+    // button alone, especially on mobile. Kept out of the a11y tree (aria-hidden + tabindex="-1")
+    // so it doesn't announce as a duplicate link; "Viac info" below stays the keyboard/SR path.
+    const mediaLink = tour.slug
+      ? `<a href="tury/${tour.slug}.html" class="tour-media-link" tabindex="-1" aria-hidden="true"></a>`
+      : '';
     // "Viac info" links to the tour's detail page when it has a slug; falls back to the booking modal otherwise.
     const infoCta = tour.slug
       ? `<a href="tury/${tour.slug}.html" class="btn-pill btn-pill--outline-ink !px-4 !py-2 text-sm flex-1" data-tour-id="${tour.id}">${escapeHtml(toursSection.ctaLabel)}</a>`
@@ -207,6 +228,7 @@
         <div class="relative">
           <div class="tour-media media">
             <img src="${imgUrl(tour.image)}" alt="${escapeHtml(tour.imageAlt)}" loading="lazy" width="720" height="520" />
+            ${mediaLink}
           </div>
           <div class="info-strip absolute left-4 right-4 bottom-0 bg-surface rounded-lg px-4 py-2.5 flex items-center justify-between text-sm">
             <span class="flex items-center gap-1.5 font-medium">

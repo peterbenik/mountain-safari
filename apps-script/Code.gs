@@ -40,7 +40,7 @@ function emailShell(bodyHtml) {
           bodyHtml +
         '</div>' +
         '<div style="padding:20px 32px;background:' + BRAND.cream + ';color:' + BRAND.muted + ';font-size:12px;">' +
-          BUSINESS_NAME + ' · IFMGA / UIAGM / IVBV licencovaní horskí sprievodcovia' +
+          BUSINESS_NAME + ' · IVBV/UIAGM/IFMGA licencovaní horskí vodcovia' +
         '</div>' +
       '</div>' +
     '</div>'
@@ -117,7 +117,7 @@ function doPost(e) {
         '<p style="margin:0 0 16px;">ďakujeme za váš záujem o výstup <b>' + vystup + '</b>' +
           (termin !== '—' ? ' v termíne <b>' + termin + '</b>' : '') + '. Vašu rezerváciu sme prijali a náš tím ju už spracováva.</p>' +
         '<p style="margin:0 0 16px;">Ozveme sa vám <b>do 24 hodín</b> s podrobnosťami k výstupu, dostupnými termínmi a ďalšími krokmi.</p>' +
-        '<p style="margin:0 0 16px;">Naši horskí sprievodcovia sú licencovaní IFMGA / UIAGM / IVBV — takže sa môžete spoľahnúť, že vaše hory budú v tých najistejších rukách.</p>' +
+        '<p style="margin:0 0 16px;">Naši horskí vodcovia sú licencovaní IVBV/UIAGM/IFMGA — takže sa môžete spoľahnúť, že vaše hory budú v tých najistejších rukách.</p>' +
         '<p style="margin:0 0 24px;">Potrebujete niečo doriešiť skôr? Ozvite sa nám priamo cez WhatsApp:</p>' +
         '<p style="margin:0 0 8px;text-align:center;">' +
           '<a href="' + waLink + '" style="display:inline-block;background:' + BRAND.royal + ';color:#FFFFFF;text-decoration:none;padding:12px 28px;border-radius:999px;font-weight:bold;">Napísať na WhatsApp</a>' +
@@ -129,7 +129,7 @@ function doPost(e) {
         'ďakujeme za váš záujem o výstup ' + vystup +
           (termin !== '—' ? ' v termíne ' + termin : '') + '. Vašu rezerváciu sme prijali a náš tím ju už spracováva.\n\n' +
         'Ozveme sa vám do 24 hodín s podrobnosťami k výstupu, dostupnými termínmi a ďalšími krokmi.\n\n' +
-        'Naši horskí sprievodcovia sú licencovaní IFMGA / UIAGM / IVBV.\n\n' +
+        'Naši horskí vodcovia sú licencovaní IVBV/UIAGM/IFMGA.\n\n' +
         'Potrebujete niečo doriešiť skôr? Napíšte nám na WhatsApp: ' + waLink + '\n\n' +
         'Tešíme sa na spoločný výstup!\nS pozdravom,\n' + BUSINESS_NAME;
 

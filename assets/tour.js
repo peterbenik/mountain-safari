@@ -54,6 +54,20 @@
       const val = resolvePath(el.getAttribute('data-content-aria-label'));
       if (val) el.setAttribute('aria-label', val);
     });
+    linkifyNahvsr();
+  }
+  // The footer credentials line ends with a NAHVSR mention (SK "členovia NAHVSR",
+  // PL "członkowie NAHVSR"). Content strings are plain text set via textContent,
+  // so the outbound link is added here instead of embedding markup in content.js.
+  function linkifyNahvsr() {
+    document.querySelectorAll('[data-content="footer.credentialsNote"]').forEach((el) => {
+      const text = el.textContent;
+      if (!text.includes('NAHVSR')) return;
+      el.innerHTML = escapeHtml(text).replace(
+        'NAHVSR',
+        '<a href="https://www.nahvsr.sk/" target="_blank" rel="noopener noreferrer" class="underline decoration-cream/25 underline-offset-2 hover:text-periwinkle hover:decoration-periwinkle active:text-periwinkle transition-colors">NAHVSR</a>'
+      );
+    });
   }
   function buildStars(difficulty) {
     let html = '';
@@ -496,7 +510,7 @@
     return `
       <article class="tour-card surface-elevated flex flex-col">
         <div class="relative">
-          <div class="tour-media media"><img src="${imgUrl(t.image)}" alt="${escapeHtml(t.imageAlt)}" loading="lazy" width="720" height="520" /></div>
+          <div class="tour-media media"><img src="${imgUrl(t.image)}" alt="${escapeHtml(t.imageAlt)}" loading="lazy" width="720" height="520" />${t.slug ? `<a href="${href}" class="tour-media-link" tabindex="-1" aria-hidden="true"></a>` : ''}</div>
           <div class="info-strip absolute left-4 right-4 bottom-0 bg-surface rounded-lg px-4 py-2.5 flex items-center justify-between text-sm">
             <span class="flex items-center gap-1.5 font-medium"><svg class="w-4 h-4 text-royal" style="fill:currentColor" aria-hidden="true"><use href="#icon-clock"/></svg>${escapeHtml(t.duration)}</span>
             <span class="flex items-center gap-1.5"><span class="text-muted text-xs font-medium">${escapeHtml(content.toursSection.difficultyLabel)}</span>${buildStars(t.difficulty)}</span>

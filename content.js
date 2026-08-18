@@ -6,19 +6,20 @@
   <script src="content.js"> tag in index.html for <script src="content.pl.js">.
   main.js never contains hard-coded copy — it only reads from window.MS_CONTENT.
 
-  DRAFT-CONTENT FLAG: all 8 "leto" tours and the single "zima" tour
-  (zimny-lomnicky-stit) are confirmed with real copy/pricing from the
-  client. The rest of the winter catalogue (skialp + kurzy tours) was
-  removed on request and is being re-added one tour at a time as the
-  client sends real data — not a placeholder scaffold anymore. Still
-  missing everywhere: real photography (using placehold.co for
-  Matterhorn/Eiger/Lomnický štít). See README "Placeholder checklist".
+  DRAFT-CONTENT FLAG: the client replaced the summer lineup on 2026-08-18.
+  Mnich, Grossglockner, Matterhorn, Eiger and Obergabelhorn were dropped;
+  Lomnický štít, Ľadový štít, Vysoká and Monte Rosa were added in their place.
+  All 7 "leto" tours and the single "zima" tour (zimny-lomnicky-stit) now have
+  real copy, pricing and photography. The rest of the winter catalogue (skialp
+  + kurzy) was removed on request and is being re-added one tour at a time.
+  OPEN: Monte Rosa has no `included` list, and the monte-rosa-leto source photo
+  is only 800x400 — soft on the detail-page hero. Both need client input.
 */
 window.MS_CONTENT = {
   meta: {
     lang: "sk",
-    siteTitle: "Mountain Safari — Horskí sprievodcovia Vysoké Tatry",
-    metaDescription: "IFMGA/UIAGM licencovaní horskí sprievodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru — od ľahkých túr po náročné štíty.",
+    siteTitle: "Mountain Safari — Horskí vodcovia Vysoké Tatry",
+    metaDescription: "IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru — od ľahkých túr po náročné štíty.",
   },
 
   nav: {
@@ -41,11 +42,11 @@ window.MS_CONTENT = {
   hero: {
     bgImage: "brand_assets/Background.jpg",
     bgImageAlt: "Panoráma zasneženého tatranského hrebeňa za úsvitu",
-    badgeImage: "brand_assets/uiagm-1.webp",
-    badgeImageAlt: "IFMGA / UIAGM / IVBV — certifikát horského sprievodcu",
+    badgeImage: "brand_assets/ivbv-ifmga-uiagm.webp",
+    badgeImageAlt: "IVBV/UIAGM/IFMGA — certifikát horského vodcu",
     eyebrow: "Vysoké Tatry — zážitok na celý život",
     heading: "Dobrodružstvo, na ktoré budete spomínať celý život.",
-    subheading: "Horskí vodcovia UIAGM/IFMGA do Vysokých Tatier a Álp",
+    subheading: "Horskí vodcovia IVBV/UIAGM/IFMGA do Vysokých Tatier a Álp",
     ctaLabel: "Vyberte si vrchol",
     ctaHref: "#tours",
     ctaSecondaryLabel: "Mám otázku",
@@ -56,7 +57,7 @@ window.MS_CONTENT = {
     heading: "Kto na vás dá pozor?",
     paragraph: [
       "Voláme sa Anton Sedlák a Štefan Krasňan.",
-      "Sme dvaja horskí vodcovia s medzinárodnou licenciou **UIAGM** a **IFMGA** a máme za sebou stovky úspešných výstupov vo Vysokých Tatrách a v Alpách.",
+      "Sme dvaja horskí vodcovia s medzinárodnou licenciou **IVBV/UIAGM/IFMGA** a máme za sebou stovky úspešných výstupov vo Vysokých Tatrách a v Alpách.",
       "Tempo a trasu vám vždy nastavíme na mieru, aby ste to nielen zvládli, ale aj si to užili.",
       "Ak sú podmienky v deň výstupu nepriaznivé, nemáme problém **preložiť váš termín** alebo **vrátiť vám peniaze**.",
       "Váš zážitok z cesty na vrchol je pre nás priorita a urobíme všetko pre to, aby ste svoje limity prekonali tým najbezpečnejším spôsobom.",
@@ -66,9 +67,9 @@ window.MS_CONTENT = {
     ctaPrimaryLabel: "Zavolajte nám",
     ctaSecondaryLabel: "Napíšte nám",
     photoAnton: "brand_assets/Anton.jpg",
-    photoAntonAlt: "Anton Sedlák, horský vodca IFMGA/UIAGM",
+    photoAntonAlt: "Anton Sedlák, horský vodca IVBV/UIAGM/IFMGA",
     photoStefan: "brand_assets/stefan-krasnan.jpg",
-    photoStefanAlt: "Štefan Krasňan, horský vodca IFMGA/UIAGM",
+    photoStefanAlt: "Štefan Krasňan, horský vodca IVBV/UIAGM/IFMGA",
     nameAnton: "Anton",
     nameStefan: "Štefan",
   },
@@ -107,7 +108,7 @@ window.MS_CONTENT = {
       id: "gerlach",
       slug: "gerlachovsky-stit",
       name: "Gerlachovský štít",
-      location: "2655 m.n.m.",
+      location: "2655 m n.m.",
       duration: "1 deň",
       difficulty: 3,
       priceFrom: 430,
@@ -119,7 +120,7 @@ window.MS_CONTENT = {
       featured: true,
       image: "brand_assets/Gerlachovský.jpeg",
       imageAlt: "Výstup na Gerlachovský štít, najvyšší vrch Slovenska",
-      description: "Najvyšší vrch Slovenska, dostupný jedine s horským vodcom. Výstup vedie zo Sliezskeho domu cez Velickú dolinu a exponovanú Velickú próbu istenú lanom. Z vrcholu sa otvára výhľad na celé Tatry a kus Slovenska, aký zdola nikdy neuvidíte.",
+      description: "Výstup vedie zo Sliezskeho domu cez Velickú dolinu a exponovanú Velickú próbu istenú lanom. Z vrcholu sa otvára výhľad na celé Tatry a kus Slovenska, aký zdola nikdy neuvidíte.",
       link: "https://www.mountainsafari.sk/kurzy/gerlachovsky-stit/",
       meetingPoint: "Tatranská Polianka, Vysoké Tatry",
       meetingTime: "cca 4:00 – 7:30 (podľa sezóny a počasia)",
@@ -140,7 +141,7 @@ window.MS_CONTENT = {
         { name: "Martinova cesta", duration: "10–12 h", maxGroup: 2 },
       ],
       included: [
-        "Plánovanie a realizácia horským vodcom UIAGM vrátane jeho nákladov",
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
         "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
       ],
       excluded: [
@@ -148,106 +149,129 @@ window.MS_CONTENT = {
       ],
     },
     {
-      id: "mnich",
-      slug: "mnich-druhy-mnich",
-      name: "Mnich a Druhý Mních",
-      location: "Druhý Mních 2172 m.n.m.",
+      id: "lomnicky",
+      slug: "lomnicky-stit",
+      name: "Lomnický štít",
+      location: "2634 m n.m.",
       duration: "1 deň",
       difficulty: 2,
-      priceFrom: 440,
+      priceFrom: 390,
       currency: "€",
       season: "leto",
-      region: "tatry", // technically Poľské Tatry — no separate bucket in the data model, see report
-      guideRatio: "2:1",
+      region: "tatry",
+      guideRatio: "3:1",
       showOnLp: true,
-      featured: true,
-      image: "brand_assets/Mníchovia.jpg",
-      imageAlt: "Výstup na Mnich a Druhý Mních v poľských Tatrách",
-      description: "Výstup na Mnich je skvelou príležitosťou začať dobrodružstvo zdolávania náročných tatranských štítov, ktoré nie sú dostupné turistickými chodníkmi. Výstup je horolezeckého charakteru, ale technická náročnosť je prístupná každému zdatnému turistovi.",
-      link: "https://www.mountainsafari.sk/kurzy/mnich-a-zadni-mnich-v-polskych-tatrach/",
-      meetingPoint: "Parkovisko na hraničnom prechode Lysá Poľana",
+      image: "brand_assets/lomnicky-stit-leto.webp",
+      imageAlt: "Letný výstup na Lomnický štít vo Vysokých Tatrách",
+      description: "Jeden z najvyšších a najikonickejších vrcholov Slovenska. Výstup na Lomnický štít vedie divokým vysokohorským terénom, mimo značených turistických chodníkov, cez skalné pasáže a exponované úseky istené lanom. Odmenou je vrchol vo výške 2 634 m a jedinečný výhľad na Vysoké Tatry, Belianske Tatry aj hlboko do slovenského a poľského vnútrozemia.",
+      meetingPoint: "Tatranská Lomnica, Vysoké Tatry",
+      meetingTime: "8:00",
       pricingDetail: [
-        { label: "1 osoba", price: 440, unit: "€" },
-        { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
+        { label: "1 osoba", price: 390, unit: "€" },
+        { label: "2 osoby", price: 430, unit: "€ (215 €/os.)" },
+        { label: "3 osoby", price: 450, unit: "€ (150 €/os.)" },
+      ],
+      longDescription: [
+        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine — tempo aj konkrétnu trasu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
+        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a počas náročných pasáží ste istení lanom a neustále pod dohľadom vodcu. Cieľom nie je len stáť na vrchole Lomnického štítu — ale zažiť Tatry z perspektívy, ktorú z turistického chodníka nikdy neuvidíte.",
+      ],
+      routes: [
+        { name: "Klasická cesta", duration: "6 h", maxGroup: 3 },
+        { name: "Téryho kuloár", duration: "7 h", maxGroup: 2 },
+        { name: "Medené lávky", duration: "8 h", maxGroup: 2 },
+        { name: "Birkenmajerova hrana", duration: "6 h", maxGroup: 2 },
       ],
       included: [
-        "Plánovanie a realizácia horským vodcom UIAGM vrátane jeho nákladov",
-        "Požičanie výstroje (prilba, sedačka)",
-        "Doprava Lysá Poľana – Morské Oko",
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
+        "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
+      ],
+      excluded: [
+        "Transport Tatranská Lomnica – Lomnické sedlo a späť: cca 40 €/osoba (www.vt.sk)",
+      ],
+    },
+    {
+      id: "ladovy",
+      slug: "ladovy-stit",
+      name: "Ľadový štít",
+      location: "2627 m n.m.",
+      duration: "1 deň",
+      difficulty: 3,
+      priceFrom: 430,
+      currency: "€",
+      season: "leto",
+      region: "tatry",
+      guideRatio: "3:1",
+      showOnLp: true,
+      image: "brand_assets/ladovy-stit-leto.webp",
+      imageAlt: "Výstup na Ľadový štít, tretí najvyšší vrch Slovenska",
+      description: "Tretí najvyšší vrch Slovenska a jeden z najmohutnejších tatranských štítov. Výstup na Ľadový štít (2 627 m) vedie nádherným vysokohorským prostredím Malej Studenej doliny, okolo Téryho chaty a ďalej mimo značených turistických chodníkov cez strmé skalné a exponované hrebene. Z vrcholu sa otvára fantastický výhľad na najvyššie štíty Vysokých Tatier a okolité doliny.",
+      meetingPoint: "Hrebienok alebo Téryho chata",
+      meetingTime: "Hrebienok 4:00 – 6:00, Téryho chata 7:00 – 8:00",
+      pricingDetail: [
+        { label: "1 osoba", price: 430, unit: "€" },
+        { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
+        { label: "3 osoby", price: 500, unit: "€ (167 €/os.)" },
+      ],
+      longDescription: [
+        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine — tempo aj priebeh výstupu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
+        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a v exponovaných pasážach ste istení lanom a pod neustálym dohľadom vodcu. Ľadový štít nie je len ďalší vrchol — je to poctivý vysokohorský deň v srdci Tatier a zážitok, na ktorý sa nezabúda.",
+      ],
+      routes: [
+        { name: "Cesta cez Ľadového koňa", duration: "6 h", maxGroup: 3 },
+        { name: "Hrebeň Ľadových štítov", duration: "7 h", maxGroup: 2 },
+      ],
+      included: [
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
+        "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
+      ],
+    },
+    {
+      id: "vysoka",
+      slug: "vysoka",
+      name: "Vysoká",
+      location: "2547 m n.m.",
+      duration: "1 deň",
+      difficulty: 3,
+      priceFrom: 430,
+      currency: "€",
+      season: "leto",
+      region: "tatry",
+      guideRatio: "3:1",
+      showOnLp: true,
+      image: "brand_assets/vysoka-leto.webp",
+      imageAlt: "Výstup na Vysokú vo Vysokých Tatrách",
+      description: "Jeden z najkrajších a najcharakteristickejších vrcholov Vysokých Tatier. Vysoká (2 547 m) so svojím typickým dvojvrcholom patrí medzi tatranské klasiky. Výstup vedie cez Mengusovskú dolinu, okolo Popradského plesa a ďalej divokým vysokohorským terénom mimo značených turistických chodníkov. Záverečné skalné a exponované pasáže absolvujete istení lanom.",
+      meetingPoint: "Popradské pleso",
+      meetingTime: "4:00 – 6:00",
+      pricingDetail: [
+        { label: "1 osoba", price: 430, unit: "€" },
+        { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
+        { label: "3 osoby", price: 500, unit: "€ (167 €/os.)" },
+      ],
+      longDescription: [
+        "Z vrcholu sa otvára nádherný výhľad na Gerlach, Rysy, Končistú aj okolité tatranské doliny.",
+        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine — tempo aj trasu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
+        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a počas náročnejších pasáží ste istení lanom a pod dohľadom vodcu. Vysoká ponúka presne to, čo si človek predstaví pod skutočným tatranským dobrodružstvom — dlhý horský deň, lezenie, expozíciu a vrchol, na ktorý vedie cesta ďaleko od turistických chodníkov.",
+      ],
+      routes: [
+        { name: "Klasická cesta", duration: "8 h", maxGroup: 3 },
+        { name: "Koruna Vysokej", duration: "10 h", maxGroup: 2 },
+      ],
+      included: [
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
+        "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
+      ],
+      excluded: [
+        "Transport Popradské Pleso zastávka TEŽ – Hotel Popradské pleso: 10 €/osoba",
       ],
     },
 
-    /* ===== LETO — Alpy (flagship trio: Grossglockner, Matterhorn, Mont Blanc) ===== */
-    {
-      id: "grossglockner",
-      slug: "letny-grossglockner",
-      name: "Letný Grossglockner",
-      location: "3798 m.n.m.",
-      duration: "1 deň",
-      difficulty: 2,
-      priceFrom: 650,
-      currency: "€",
-      season: "leto",
-      region: "alpy",
-      guideRatio: "2:1",
-      showOnLp: true,
-      image: "brand_assets/Letný grossglockner.jpg",
-      imageAlt: "Výstup na Grossglockner, najvyšší vrch Rakúska",
-      description: "Najvyšší vrch Rakúska a kráľ Vysokých Taur, ktorý sa do neba týči ako skalno-ľadovcová pyramída. Z vrcholu sa pred vami otvorí jeden z najďalekejších výhľadov vo Východných Alpách.",
-      link: "https://www.mountainsafari.sk/kurzy/letny-grossglockner-najvyssi-stit-rakuska/",
-      pricingDetail: [
-        { label: "1 osoba", price: 650, unit: "€" },
-      ],
-      longDescription: [
-        "Grossglockner (3 798 m) je najvyšší vrch Rakúska a kráľ Vysokých Taur (Hohe Tauern). Jeho skalno-ľadovcová pyramída patrí k najvýraznejším štítom celých Álp — väčšie prevýšenie nad okolím má v Alpách už len Mont Blanc. Prvovýstup sa podaril v roku 1800.",
-        "Sprievodcovský výstup vedie klasickou normálkou (obtiažnosť PD) cez ľadovec a záverečný skalnatý hrebeň ku Glocknerscharte a na vrchol. Východiskom býva najvyššie položená rakúska chata Erzherzog-Johann-Hütte (Adlersruhe). Pod vrcholom sa rozprestiera najväčší rakúsky ľadovec Pasterze.",
-      ],
-    },
-    {
-      id: "matterhorn",
-      slug: "matterhorn",
-      name: "Matterhorn",
-      location: "4478 m.n.m.",
-      duration: "2 dni",
-      difficulty: 5,
-      priceFrom: 1400,
-      currency: "€",
-      season: "leto",
-      region: "alpy",
-      guideRatio: "1:1",
-      showOnLp: true,
-      featured: true,
-      image: "brand_assets/Matterhorn.webp",
-      imageAlt: "Výstup na Matterhorn nad Zermattom vo Švajčiarsku",
-      description: "Ikona Álp a jeden z najfotografovanejších vrcholov na svete. Náročný, exponovaný výstup po hrebeni Hörnligrat, vedený jeden na jedného s IFMGA vodcom pre maximálnu bezpečnosť a tempo šité na mieru.",
-      link: "https://www.mountainsafari.sk/kurzy/vystup-na-matterhorn-4478m/",
-      meetingPoint: "Zermatt, Švajčiarsko",
-      route: "Hörnli hrebeň (Hörnligrat)",
-      routeDuration: "cca 8 h (výstup 4 h, zostup 4 h)",
-      pricingDetail: [
-        { label: "1 osoba, bez aklimatizačnej túry", price: 1400, unit: "€/osoba" },
-        { label: "1 osoba, s aklimatizačnou túrou", price: 1900, unit: "€/osoba" },
-      ],
-      requirements: [
-        "Extrémne dobrá kondícia — prevýšenie 1500+ m, 10+ h aktivity",
-        "Exponované hrebeňové úseky s rizikom pádu",
-        "Nutná predchádzajúca aklimatizácia",
-        "Zručnosť s mačkami a cepínom (sneh, ľad, skala)",
-        "Exponovaný terén 3.–4. stupňa UIAA",
-      ],
-      included: [
-        "Plánovanie a realizácia horským vodcom UIAGM",
-        "Požičanie výstroje (cepín, mačky, prilba, sedačka)",
-      ],
-      excluded: [
-        "Ubytovanie a strava na chate Hörnli (cca 150 €/noc s polpenziou)",
-      ],
-    },
+    /* ===== LETO — Alpy ===== */
     {
       id: "montblanc",
       slug: "mont-blanc",
       name: "Mont Blanc",
-      location: "4808 m.n.m.",
+      location: "4808 m n.m.",
       duration: "5 dní",
       difficulty: 3,
       priceFrom: 1700,
@@ -266,7 +290,7 @@ window.MS_CONTENT = {
         { label: "Aklimatizačná túra (Francúzsko)", price: 600, unit: "€/deň" },
         { label: "Aklimatizačná túra (Švajčiarsko)", price: 800, unit: "€/deň" },
       ],
-      pricingNote: "Program sa uvádza aj ako „od 2 900 €“ za celý 5-dňový program vrátane aklimatizácie a nocľahu na chate.",
+      pricingNote: "Program sa uvádza aj ako „od 2 900 €“ za celý 5-dňový program vrátane aklimatizácie.",
       requirements: [
         "Bezpečná chôdza v náročnom exponovanom teréne",
         "Isté používanie mačiek a cepínu na ľade a firne",
@@ -274,80 +298,52 @@ window.MS_CONTENT = {
         "Výborná fyzická kondícia",
       ],
       included: [
-        "Plánovanie a realizácia horským vodcom UIAGM",
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA",
         "Požičanie výstroje (cepín, mačky)",
       ],
       excluded: [
         "Ubytovanie a polpenzia na chatách, doprava lanovkami",
       ],
     },
-
-    /* ===== LETO — Alpy (zvyšné túry, zobrazené na žiadosť klienta) ===== */
     {
-      id: "eiger",
-      slug: "eiger",
-      name: "Eiger",
-      location: "3970 m.n.m.",
-      duration: "2 dni",
-      difficulty: 4,
-      priceFrom: 1500,
-      currency: "€",
-      season: "leto",
-      region: "alpy",
-      guideRatio: "1:1",
-      showOnLp: true,
-      image: "brand_assets/Eiger.webp",
-      imageAlt: "Výstup na Eiger v Bernských Alpách",
-      description: "Výstup na Eiger znamená zaradiť sa medzi elitných horolezcov. Táto hora je známa svojou dramatickou severnou stenou (Nordwand), ktorá získala prezývku „Stena smrti“. Pre mnohých horolezcov je výstup na Eiger nielen technickou výzvou, ale aj cestou do histórie alpského horolezectva.",
-      link: "https://www.mountainsafari.sk/kurzy/vystup-na-eiger-3970m/",
-      pricingDetail: [{ label: "1 osoba", price: 1500, unit: "€/osoba" }],
-      longDescription: [
-        "Eiger (3 970 m) v Bernských Alpách patrí k najznámejším a najrešpektovanejším štítom Álp. Preslávila ho takmer 1 800 m vysoká severná stena (Nordwand), pre svoju smrteľnú povesť prezývaná aj Mordwand — jedna z najväčších stien v celých Alpách. Prvovýstup na vrchol sa uskutočnil v roku 1858.",
-        "Sprievodcovský výstup nevedie stenou, ale klasickou cestou — najčastejšie po hrebeni Mittellegi (prvovýstup 1921), najdlhšom hrebeni Eigeru s exponovaným skalno-ľadovým terénom. Ide o technicky náročný výstup pre skúsených horolezcov s výbornou kondíciou.",
-      ],
-    },
-    {
-      id: "obergabelhorn",
-      slug: "obergabelhorn-arbengrat",
-      name: "Obergabelhorn",
-      location: "4063 m.n.m.",
+      id: "monterosa",
+      slug: "monte-rosa",
+      name: "Monte Rosa",
+      location: "4634 m n.m.",
       duration: "3 dni",
-      difficulty: 5,
-      priceFrom: 1600,
+      difficulty: 4,
+      priceFrom: 950,
       currency: "€",
       season: "leto",
       region: "alpy",
-      guideRatio: "1:1",
+      guideRatio: "2:1",
       showOnLp: true,
-      image: "brand_assets/Obergabelhorn.jpg",
-      imageAlt: "Výstup na Obergabelhorn cez hrebeň Arbengrat",
-      description: "Štvortisícovka vo Valaiských Alpách, považovaná za najkrajší vrch regiónu. Trojdňový výstup vedie cez slávny hrebeň Arbengrat, jednu z veľkých klasík Západných Álp, s pevnou skalou a nádhernou hrebeňovou traťou. Náročný zážitok pre skúsených, často korunovaný východom slnka priamo na hrebeni.",
-      link: "https://www.mountainsafari.sk/kurzy/obergabelhorn-arbengrat/",
-      meetingPoint: "Zermatt, pri železničnej stanici",
+      image: "brand_assets/monte-rosa-leto.webp",
+      imageAlt: "Výstup na Dufourspitze v masíve Monte Rosa",
+      description: "Najvyšší horský masív Švajčiarska a jedno z najväčších vysokohorských dobrodružstiev Álp. Cieľom je Dufourspitze (4 634 m) — najvyšší vrchol masívu Monte Rosa a druhý najvyšší vrch Álp. Výstup vedie svetom ľadovcov, obrovských snehových plání a vysokých štvortisícoviek, s panorámou Matterhornu a veľkej časti Západných Álp.",
+      meetingPoint: "Zermatt, Švajčiarsko",
       pricingDetail: [
-        { label: "1 osoba", price: 1600, unit: "€" },
+        { label: "1 osoba", price: 1700, unit: "€" },
+        { label: "2 osoby", price: 950, unit: "€/os. (spolu 1900 €)" },
       ],
       longDescription: [
-        "Trojdňový program vychádza zo Zermattu. Prvý deň sa presuniete lanovkou na Schwarzsee a prejdete k biwaku Arbenbiwak (cca 4 hodiny, prípadne celým údolím 5–6 hodín). Druhý deň vedie výstup slávnym hrebeňom Arbengrat na vrchol Obergabelhornu, ďalej cez Wellenkuppe na chatu Rothornhütte. Tretí deň zostúpite späť do Zermattu.",
-        "Arbengrat je jednou z veľkých klasík Západných Álp — pevná skala, exponovaná hrebeňová trať a nezabudnuteľné výhľady, často korunované východom slnka priamo na hrebeni.",
-      ],
-      included: [
-        "Plánovanie a realizácia horským vodcom UIAGM vrátane jeho nákladov",
-        "Ubytovanie a polpenzia na chate Rothornhütte",
-        "Požičanie výstroje (cepín, mačky)",
+        "Na rozdiel od jednodňových tatranských výstupov je Monte Rosa skutočná vysokohorská expedícia. Výstupu predchádza aklimatizácia a noc na horskej chate. Samotný vrcholový deň začína ešte za tmy a vedie cez rozsiahly ľadovec až k záverečnému exponovanému hrebeňu Dufourspitze, kde sa kombinuje pohyb v mačkách, istenie lanom a ľahké skalné lezenie.",
+        "Výstup vedú licencovaní horskí vodcovia IVBV/UIAGM/IFMGA. Počas celej túry ste naviazaní na lane a vodca rozhoduje o trase podľa aktuálnych podmienok na ľadovci, počasia a vašej kondície. Tempo a program prispôsobíme tak, aby ste mali čo najlepšiu šancu bezpečne dosiahnuť vrchol.",
+        "Monte Rosa nie je len o nadmorskej výške 4 634 metrov. Je to prvý krok do sveta veľkých alpských výstupov — ľadovce, svitanie vo výške 4 000 metrov a pocit stáť na jednom z najvyšších miest Európy.",
       ],
       requirements: [
-        "Istá chôdza v náročnom exponovanom teréne (tráva, skala, sneh)",
-        "Isté používanie mačiek a cepínu",
-        "Lezenie v obtiažnosti III (UIAA)",
-        "Výborná fyzická kondícia na dlhé výstupy",
+        "Bezpečná chôdza v náročnom exponovanom teréne",
+        "Isté používanie mačiek a cepínu na ľade a firne",
+        "Lezenie v obtiažnosti II (UIAA)",
+        "Výborná fyzická kondícia",
       ],
     },
+
     {
       id: "ortler",
       slug: "ortler-hintergrat",
       name: "Ortler - Hintergrat",
-      location: "3905 m.n.m.",
+      location: "3905 m n.m.",
       duration: "2 dni",
       difficulty: 4,
       priceFrom: 500,
@@ -371,8 +367,7 @@ window.MS_CONTENT = {
         "Výstup vedie po legendárnom hrebeni Hintergrat (4–5 hodín), zostup po normálnej ceste (Normalweg) cez chatu Payerhütte a ďalej do Suldenu (cca 2,5 h). Celý deň predstavuje až 12 hodín aktivity vo vysokohorskom prostredí.",
       ],
       included: [
-        "Plánovanie a realizácia horským vodcom UIAGM vrátane jeho nákladov",
-        "Ubytovanie a polpenzia na chate Hintergrathütte",
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
         "Požičanie výstroje (cepín, mačky)",
       ],
       requirements: [
@@ -388,7 +383,7 @@ window.MS_CONTENT = {
       id: "zimny-lomnicky-stit",
       slug: "zimny-lomnicky-stit",
       name: "Zimný Lomnický štít",
-      location: "2634 m.n.m.",
+      location: "2634 m n.m.",
       duration: "1 deň",
       difficulty: 3,
       priceFrom: 370,
@@ -413,7 +408,7 @@ window.MS_CONTENT = {
         { name: "Téryho kuloár a Jordánová cesta" },
       ],
       included: [
-        "Plánovanie a realizácia horským vodcom UIAGM vrátane jeho nákladov",
+        "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
         "Požičanie horolezeckej výstroje (prilba, mačky, cepín, sedačka)",
         "Požičanie lavínovej výstroje (vyhľadávač, lopatka, sonda)",
       ],
@@ -486,7 +481,7 @@ window.MS_CONTENT = {
     moreLinkLabel: "Pozrite si všetky časté otázky",
     moreLinkHref: "https://www.mountainsafari.sk/faq/",
     items: [
-      { question: "Čo všetko je v cene?", answer: "V cene je horský vodca s licenciou UIAGM/IFMGA, jeho vedenie a istenie počas celého výstupu, posúdenie podmienok a naplánovanie túry. Špecializovaný výstroj vám v prípade potreby zapožičiame, stačí dať vedieť vopred. Ostatné náklady ako ubytovanie na chate či parkovanie vám vždy povieme dopredu, aby ste mali jasný prehľad ešte pred rezerváciou." },
+      { question: "Čo všetko je v cene?", answer: "V cene je horský vodca s licenciou IVBV/UIAGM/IFMGA, jeho vedenie a istenie počas celého výstupu, posúdenie podmienok a naplánovanie túry. Špecializovaný výstroj vám v prípade potreby zapožičiame, stačí dať vedieť vopred. Ostatné náklady ako ubytovanie na chate či parkovanie vám vždy povieme dopredu, aby ste mali jasný prehľad ešte pred rezerváciou." },
       { question: "Akú kondíciu potrebujem?", answer: "Túru vyberáme podľa vašej kondície a skúseností, nie naopak. Pred výstupom sa vás opýtame na pár vecí a odporučíme vrchol, ktorý zvládnete. Od ľahších túr pre úplných začiatočníkov až po náročné výstupy. Tempo nastavíme na vás, nikoho neženieme a nikto nezostane pozadu. Veľa ľudí u nás vyšlo na svoj prvý vrchol aj bez akýchkoľvek skúseností s lanom." },
       { question: "Čo ak sa pokazí počasie v deň výstupu?", answer: "Ak podmienky nie sú vhodné, nikam vás netlačíme. Vrátime vám peniaze v plnej výške, alebo — ak chcete — dohodneme náhradný termín. Rozhodnutie je na vás." },
       { question: "Idem sám. Nie je to problém?", answer: "Vôbec nie, veľa klientov ide bez partie. Chodíme v malých skupinách a dávame pozor na každého. Ak chcete súkromný výstup len pre seba alebo svojich blízkych, aj to vieme zariadiť." },
@@ -503,8 +498,9 @@ window.MS_CONTENT = {
     cutoutImage: "brand_assets/Gallery6.jpg",
     cutoutAlt: "Anton Sedlák a Štefan Krasňan pri výstupe v horách",
     trustHeading: "S kým spolupracujeme",
+    // IVBV/UIAGM/IFMGA sem nepatrí — je to kvalifikácia vodcov, nie partner.
+    // Žije ako trust badge v hero sekcii.
     partnerLogos: [
-      { src: "brand_assets/uiagm-1.webp", alt: "IFMGA / UIAGM / IVBV" },
       { src: "brand_assets/Partner 2.jpg", alt: "Fjällräven" },
       { src: "brand_assets/SKIBA Partner.jpg", alt: "SKIBA" },
     ],
@@ -513,7 +509,7 @@ window.MS_CONTENT = {
   footer: {
     logoText: "Mountain Safari",
     linksHeading: "[Navigácia]",
-    guidesHeading: "[Sprievodcovia]",
+    guidesHeading: "[Vodcovia]",
     guides: [
       { name: "Anton Sedlák", phone: "+421903624085", phoneDisplay: "+421 903 624 085" },
       { name: "Štefan Krasňan", phone: "+421904295135", phoneDisplay: "+421 904 295 135" },
@@ -523,7 +519,7 @@ window.MS_CONTENT = {
       { label: "Instagram", href: "https://www.instagram.com/mtn_safari/?hl=en" },
       { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61568565786611" },
     ],
-    credentialsNote: "IFMGA · UIAGM · IVBV licencovaní sprievodcovia · členovia NAHVSR",
+    credentialsNote: "IVBV/UIAGM/IFMGA licencovaní vodcovia · členovia NAHVSR",
     copyrightName: "Mountain Safari",
   },
 
@@ -562,7 +558,7 @@ window.MS_CONTENT = {
     summaryWithDate: "Vaša rezervácia na výstup {tour} v termíne {date} bola úspešne prijatá.",
     summaryNoDate: "Vaša rezervácia na výstup {tour} bola úspešne prijatá.",
     reassurance: "Ozveme sa vám čo najskôr — zvyčajne do 24 hodín.",
-    guidesNote: "Naši horskí sprievodcovia sú licencovaní IFMGA / UIAGM / IVBV — vaše hory budú v tých najistejších rukách.",
+    guidesNote: "Naši horskí vodcovia sú licencovaní IVBV/UIAGM/IFMGA — vaše hory budú v tých najistejších rukách.",
     whatsappIntro: "Potrebujete niečo doriešiť skôr?",
     whatsappLabel: "Napísať na WhatsApp",
     backHomeLabel: "Späť na hlavnú stránku",
@@ -638,7 +634,7 @@ window.MS_CONTENT = {
      PLACEHOLDER: policy/disclaimer wording must be reviewed with the client/legal before launch. ===== */
   tourDefaults: {
     longDescription: [
-      "Tento výstup vedú výhradne licencovaní horskí vodcovia (IFMGA/UIAGM), ktorí poznajú terén, počasie aj podmienky ako málokto. Celý deň sa venujeme jednej skupine — tempo aj trasu prispôsobíme vašim skúsenostiam a aktuálnym podmienkam v horách.",
+      "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí poznajú terén, počasie aj podmienky ako málokto. Celý deň sa venujeme jednej skupine — tempo aj trasu prispôsobíme vašim skúsenostiam a aktuálnym podmienkam v horách.",
       "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj výstroj, a počas celej túry ste pod dohľadom vodcu. Cieľom nie je len vrchol — ale zážitok, na ktorý budete spomínať celý život.",
     ],
     requirements: [
@@ -657,7 +653,9 @@ window.MS_CONTENT = {
     ],
     policies: [
       { title: "Počasie a bezpečnosť", body: "O konečnom termíne a realizácii rozhoduje horský vodca podľa aktuálnych podmienok. Pri nevhodnom počasí hľadáme náhradný termín — vaša bezpečnosť je prednejšia než vrchol." },
-      { title: "Storno podmienky", body: "Termín je možné bezplatne presunúť po dohode vopred. Konkrétne storno podmienky vám potvrdíme pri rezervácii. [PLACEHOLDER — doplniť reálne podmienky.]" },
+      // Zámerne bez konkrétnych termínov/percent — klient ich nemá určené, platba
+      // často nejde vopred, takže storno sa rieši individuálne pri rezervácii.
+      { title: "Storno podmienky", body: "Termín je možné bezplatne presunúť po dohode vopred. Konkrétne storno podmienky vám potvrdíme pri rezervácii." },
       { title: "Poistenie", body: "Odporúčame individuálne cestovné a úrazové poistenie do hôr vrátane záchrany v horskom teréne. Poistenie nie je súčasťou ceny." },
     ],
   },

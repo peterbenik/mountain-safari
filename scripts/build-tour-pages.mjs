@@ -98,7 +98,7 @@ function seoBlock(t, C, locale) {
     name: `${t.name} — ${guideSuffix}`,
     description: desc,
     image: ogImage,
-    touristType: locale.code === 'pl' ? 'Wejście wysokogórskie z przewodnikiem' : 'Sprievodcovaný vysokohorský výstup',
+    touristType: locale.code === 'pl' ? 'Wejście wysokogórskie z przewodnikiem' : 'Vodcovaný vysokohorský výstup',
     offers: {
       '@type': 'Offer',
       price: String(t.priceFrom),
