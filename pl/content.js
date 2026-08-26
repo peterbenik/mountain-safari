@@ -505,8 +505,8 @@ window.MS_CONTENT = {
 
   footer: {
     logoText: "Mountain Safari",
-    linksHeading: "[Nawigacja]",
-    guidesHeading: "[Przewodnicy]",
+    linksHeading: "Nawigacja",
+    guidesHeading: "Przewodnicy",
     guides: [
       { name: "Anton Sedlák", phone: "+421903624085", phoneDisplay: "+421 903 624 085" },
       { name: "Štefan Krasňan", phone: "+421904295135", phoneDisplay: "+421 904 295 135" },
@@ -517,7 +517,149 @@ window.MS_CONTENT = {
       { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61568565786611" },
     ],
     credentialsNote: "IVBV/UIAGM/IFMGA licencjonowani przewodnicy · członkowie NAHVSR",
+    legalLinks: [
+      { label: "Ochrona danych osobowych", href: "ochrana-osobnych-udajov.html" },
+      { label: "Informacje o administratorze", href: "impressum.html" },
+    ],
     copyrightName: "Mountain Safari",
+  },
+
+  /* ===== LEGAL — mirrors content.js. DRAFT TRANSLATION, needs native review
+     together with the rest of the PL copy. Same empty company fields apply. ===== */
+  legal: {
+    company: {
+      name: "Mountain Safari",
+      address: "",
+      ico: "57 001 898",
+      dic: "2122531961",
+      vat: "",
+      register: "",
+      email: "info@mountainsafari.sk",
+      phone: "+421 903 624 085",
+    },
+    backLabel: "Powrót na stronę główną",
+    updatedLabel: "Ostatnia aktualizacja",
+    updated: "26 sierpnia 2026",
+
+    privacy: {
+      slug: "ochrana-osobnych-udajov.html",
+      title: "Ochrona danych osobowych",
+      intro: "Twoja prywatność jest dla nas ważna. Ten dokument wyjaśnia, jakie dane osobowe przetwarzamy, w jakim celu i jakie prawa Ci przysługują.",
+      sections: [
+        {
+          heading: "1. Kto przetwarza Twoje dane",
+          body: ["Administratorem, który określa cele i sposoby przetwarzania Twoich danych osobowych, jest:"],
+          list: [
+            "{company}",
+            "Siedziba: {address}",
+            "IČO: {ico} · DIČ: {dic}",
+            "E-mail: {email} · Telefon: {phone}",
+          ],
+        },
+        {
+          heading: "2. Jakie dane przetwarzamy",
+          body: ["Przetwarzamy wyłącznie dane, które sam nam przekażesz przez formularz rezerwacyjny, oraz podstawowe dane techniczne o wizycie na stronie."],
+          list: [
+            "Dane z formularza: imię, numer telefonu, adres e-mail, wybrana wyprawa, preferowany termin i treść wiadomości.",
+            "Dane techniczne: adres IP, typ przeglądarki i urządzenia, czas wizyty oraz strona, z której przyszedłeś.",
+          ],
+        },
+        {
+          heading: "3. Dlaczego przetwarzamy dane i na jakiej podstawie prawnej",
+          list: [
+            "Obsługa rezerwacji lub zapytania i kontakt z Tobą — podstawą prawną są działania przed zawarciem umowy na Twoje żądanie zgodnie z art. 6 ust. 1 lit. b) RODO.",
+            "Bezpieczeństwo i działanie strony — podstawą prawną jest nasz prawnie uzasadniony interes zgodnie z art. 6 ust. 1 lit. f) RODO.",
+            "Pomiar ruchu i reklama — wyłącznie na podstawie Twojej zgody zgodnie z art. 6 ust. 1 lit. a) RODO, którą możesz w każdej chwili wycofać.",
+          ],
+        },
+        {
+          heading: "4. Jak długo przechowujemy dane",
+          body: ["Dane z formularza przechowujemy przez czas obsługi Twojego zgłoszenia, a następnie przez 3 lata, aby móc odpowiedzieć na ewentualne pytania lub reklamacje. Jeśli chcesz wcześniejszego usunięcia, napisz na {email} — usuniemy dane niezwłocznie, o ile ich przechowywanie nie wynika z przepisów prawa."],
+        },
+        {
+          heading: "5. Komu udostępniamy Twoje dane",
+          body: ["Nie sprzedajemy Twoich danych ani nie przekazujemy ich stronom trzecim w celach marketingowych. Korzystamy jednak ze sprawdzonych dostawców, którzy przetwarzają dane w naszym imieniu:"],
+          list: [
+            "Google Ireland Ltd. / Google LLC — przechowywanie rezerwacji (Google Sheets) i wysyłka e-maili potwierdzających (Gmail).",
+            "Netlify, Inc. — hosting tej strony wraz z technicznymi logami serwera.",
+            "Wistia, Inc. — odtwarzanie wideo z opiniami osadzonych na stronie.",
+            "Przewodnicy wysokogórscy współpracujący z administratorem — w zakresie niezbędnym do realizacji wyprawy.",
+          ],
+        },
+        {
+          heading: "6. Przekazywanie danych poza UE",
+          body: ["Część wymienionych dostawców ma siedzibę w Stanach Zjednoczonych. Przekazanie danych jest w takim przypadku zabezpieczone standardowymi klauzulami umownymi zatwierdzonymi przez Komisję Europejską lub uczestnictwem dostawcy w programie EU–US Data Privacy Framework."],
+        },
+        {
+          heading: "7. Pliki cookie i pomiar ruchu",
+          body: ["Strona używa technicznie niezbędnych plików cookie zapewniających jej prawidłowe działanie. Cookies analityczne i reklamowe (Google Analytics, Google Ads) stosujemy wyłącznie za Twoją zgodą. Osadzone wideo dostawcy Wistia może zapisać własne pliki cookie — ich ustawienia znajdziesz w polityce tego dostawcy. Zgodę możesz w każdej chwili wycofać, usuwając pliki cookie w przeglądarce."],
+        },
+        {
+          heading: "8. Jakie masz prawa",
+          body: ["W związku z przetwarzaniem Twoich danych osobowych przysługują Ci zgodnie z RODO następujące prawa:"],
+          list: [
+            "prawo dostępu do danych i uzyskania ich kopii,",
+            "prawo do sprostowania nieprawidłowych lub niekompletnych danych,",
+            "prawo do usunięcia danych („prawo do bycia zapomnianym“),",
+            "prawo do ograniczenia przetwarzania,",
+            "prawo do przenoszenia danych,",
+            "prawo do sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie,",
+            "prawo do wycofania zgody w dowolnym momencie.",
+          ],
+        },
+        {
+          heading: "9. Gdzie możesz się zwrócić",
+          body: [
+            "Każde z wymienionych praw możesz zrealizować, pisząc na {email}. Odpowiemy najpóźniej w ciągu miesiąca.",
+            "Jeśli uważasz, że przetwarzając Twoje dane naruszamy przepisy, masz prawo wnieść skargę do organu nadzorczego: Úrad na ochranu osobných údajov Slovenskej republiky, Hraničná 12, 820 07 Bratysława, dataprotection.gov.sk.",
+          ],
+        },
+      ],
+    },
+
+    imprint: {
+      slug: "impressum.html",
+      title: "Informacje o administratorze",
+      intro: "Dane publikowane zgodnie ze słowacką ustawą nr 22/2004 Z. z. o handlu elektronicznym oraz ustawą nr 250/2007 Z. z. o ochronie konsumenta.",
+      sections: [
+        {
+          heading: "Administrator",
+          list: [
+            "{company}",
+            "Siedziba: {address}",
+            "IČO: {ico}",
+            "DIČ: {dic}",
+            "Numer VAT: {vat}",
+            "Wpis: {register}",
+          ],
+        },
+        {
+          heading: "Kontakt",
+          list: [
+            "E-mail: {email}",
+            "Telefon: {phone}",
+            "Anton Sedlák — przewodnik wysokogórski IVBV/UIAGM/IFMGA, +421 903 624 085",
+            "Štefan Krasňan — przewodnik wysokogórski IVBV/UIAGM/IFMGA, +421 904 295 135",
+          ],
+        },
+        {
+          heading: "Kwalifikacje",
+          body: ["Wyprawy prowadzą przewodnicy wysokogórscy z ważną międzynarodową licencją IVBV/UIAGM/IFMGA, członkowie Narodowego Stowarzyszenia Przewodników Wysokogórskich Republiki Słowackiej (NAHVSR)."],
+        },
+        {
+          heading: "Organ nadzoru",
+          body: ["Slovenská obchodná inšpekcia (SOI), Inšpektorát SOI pre Prešovský kraj, Obrancov mieru 6, 080 01 Prešov — wydział nadzoru. Kontrolę przestrzegania przepisów o ochronie konsumenta prowadzi SOI właściwa dla siedziby administratora."],
+        },
+        {
+          heading: "Rozwiązywanie sporów",
+          body: ["Konsument ma prawo zwrócić się do sprzedawcy z wnioskiem o naprawę na {email}. Jeśli sprzedawca odpowie odmownie lub nie odpowie w ciągu 30 dni, konsument ma prawo złożyć wniosek o wszczęcie alternatywnego rozwiązywania sporów zgodnie z ustawą nr 391/2015 Z. z. Wniosek można złożyć również przez platformę ec.europa.eu/consumers/odr."],
+        },
+        {
+          heading: "Odpowiedzialność za treść",
+          body: ["Treść tej strony, w tym ceny i opisy wypraw, ma charakter informacyjny. O realizacji wyprawy i ostatecznej trasie decyduje przewodnik wysokogórski na podstawie aktualnych warunków w górach. Wiążące warunki potwierdzimy przy rezerwacji."],
+        },
+      ],
+    },
   },
 
   modal: {
@@ -575,9 +717,9 @@ window.MS_CONTENT = {
   devMode: false,
 
   /* ===== SITE — absolute URLs for SEO. Same baseUrl as SK; the /pl/ prefix is
-     added by the build script. PLACEHOLDER baseUrl — swap before launch. ===== */
+     added by the build script. Must stay identical to content.js. ===== */
   site: {
-    baseUrl: "https://www.mountainsafari.sk",
+    baseUrl: "https://lp.mountainsafari.sk",
     name: "Mountain Safari",
     defaultOgImage: "brand_assets/Gerlachovský.jpeg",
     ogLocale: "pl_PL",

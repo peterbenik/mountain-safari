@@ -8,3 +8,6 @@ temporary screenshots/
 PROPOSAL.md
 
 .DS_Store
+
+# Netlify build output — assembled by scripts/build-site.mjs
+dist/

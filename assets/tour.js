@@ -319,6 +319,13 @@
       </div>`).join('');
     const s = document.getElementById('footer-socials');
     if (s) s.innerHTML = content.footer.socials.map((x) => `<a href="${x.href}" class="text-cream/70 hover:text-periwinkle text-sm transition-colors">${escapeHtml(x.label)}</a>`).join('');
+    const l = document.getElementById('footer-legal');
+    const legal = content.footer.legalLinks || [];
+    if (l && legal.length) {
+      l.innerHTML = legal.map((x) =>
+        `<a href="${localePrefix}/${x.href}" class="hover:text-periwinkle underline underline-offset-2 transition-colors">${escapeHtml(x.label)}</a>`
+      ).join('');
+    }
     const c = document.getElementById('footer-copyright');
     if (c) c.textContent = `© ${new Date().getFullYear()} ${content.footer.copyrightName}`;
   }

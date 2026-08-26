@@ -1,14 +1,30 @@
 // ── CONFIG — fill these in ──────────────────────────────
 const SHEET_ID = '1blmq_ERUEj5C_2nvrnC05jgJNLLYg4xY2V8butniL-A'; // from the sheet URL: .../d/<THIS_PART>/edit
 const SHEET_NAME = 'Leads - M.Safari';                              // tab name
-const OWNER_EMAILS = ['peterbenik@benzomarketing.com'];  // one or more owner/marketer emails
+const OWNER_EMAILS = ['info@mountainsafari.sk', 'peterbenik@benzomarketing.com']; // lead notifications
 const BUSINESS_NAME = 'Mountain Safari';
 const WHATSAPP_PHONE = '421903624085';                   // digits only, country code, no + — keep in sync with content.js whatsapp.phone
-// For now, mail sends as whichever Google account runs this script (peterbenik@benzomarketing.com).
-// When going live, verify 'info@mountainsafari.sk' as a "Send As" alias
-// (Gmail → Settings → Accounts and Import → Send mail as), set FROM_EMAIL below,
-// and pass { from: FROM_EMAIL, name: BUSINESS_NAME } in both GmailApp.sendEmail() calls.
-// const FROM_EMAIL = 'info@mountainsafari.sk';
+
+// Address customers should see as the sender.
+//
+// SETUP (once, in the Google account that owns this script):
+//   Gmail → Settings → Accounts and Import → "Send mail as" → Add another email
+//   address → info@mountainsafari.sk → UNCHECK "Treat as an alias" → SMTP server
+//   smtp.websupport.sk, port 465, SSL, username = the full address, password =
+//   the mailbox password → confirm the code sent to that mailbox.
+//
+// Routing through WebSupport's SMTP keeps SPF and DKIM aligned to
+// mountainsafari.sk, so no DNS changes are needed. VERIFY after the first test
+// booking: open the received mail → "Show original" → SPF/DKIM/DMARC must all
+// PASS with domain mountainsafari.sk. If they show gmail.com or
+// benzomarketing.com instead, Gmail is relaying through Google and alignment
+// failed — switch to a transactional API (Resend/Brevo) with SPF+DKIM at
+// WebSupport instead.
+//
+// senderOptions() below degrades safely: until the alias is verified, mail still
+// goes out from the script account, just with the right display name. So this
+// code is safe to deploy before or after the Gmail setup.
+const FROM_EMAIL = 'info@mountainsafari.sk';
 // ────────────────────────────────────────────────────────
 
 // Brand tokens — kept in sync with index.html's :root CSS variables
@@ -45,6 +61,20 @@ function emailShell(bodyHtml) {
       '</div>' +
     '</div>'
   );
+}
+
+// GmailApp.sendEmail() throws if `from` is not a verified alias on the account,
+// which would take the whole submission down. So probe the account's aliases and
+// only claim the address when it is actually available.
+function senderOptions() {
+  try {
+    if (GmailApp.getAliases().indexOf(FROM_EMAIL) !== -1) {
+      return { from: FROM_EMAIL, name: BUSINESS_NAME };
+    }
+  } catch (err) {
+    // getAliases() can fail on a missing scope — fall through to the default.
+  }
+  return { name: BUSINESS_NAME };
 }
 
 function doPost(e) {
@@ -101,9 +131,9 @@ function doPost(e) {
       'Termín: ' + termin + '\n' +
       'Správa: ' + sprava + '\n';
 
-    const ownerMailOptions = {
-      htmlBody: emailShell(ownerBody),
-    };
+    const ownerMailOptions = senderOptions();
+    ownerMailOptions.htmlBody = emailShell(ownerBody);
+    // Replying in the inbox should reach the customer, not ourselves.
     if (data.email) ownerMailOptions.replyTo = data.email;
     const stripNewlines = (s) => String(s || '—').replace(/[\r\n]+/g, ' ').trim() || '—';
     const ownerSubject = '🟢 Nová rezervácia · ' + stripNewlines(data.vystup) + ' · ' + stripNewlines(data.meno);
@@ -133,9 +163,11 @@ function doPost(e) {
         'Potrebujete niečo doriešiť skôr? Napíšte nám na WhatsApp: ' + waLink + '\n\n' +
         'Tešíme sa na spoločný výstup!\nS pozdravom,\n' + BUSINESS_NAME;
 
-      GmailApp.sendEmail(data.email, 'Vaša rezervácia je potvrdená — ' + BUSINESS_NAME, clientPlainText, {
-        htmlBody: emailShell(clientBody),
-      });
+      const clientMailOptions = senderOptions();
+      clientMailOptions.htmlBody = emailShell(clientBody);
+      // Customer replies must land in the client's mailbox, not the agency's.
+      clientMailOptions.replyTo = FROM_EMAIL;
+      GmailApp.sendEmail(data.email, 'Vaša rezervácia je potvrdená — ' + BUSINESS_NAME, clientPlainText, clientMailOptions);
     }
 
     return ContentService

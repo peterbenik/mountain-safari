@@ -1,0 +1,12 @@
+{
+  "name": "Mountain Safari",
+  "short_name": "Mountain Safari",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "theme_color": "#141B2E",
+  "background_color": "#F5F0E6",
+  "display": "browser",
+  "start_url": "/"
+}

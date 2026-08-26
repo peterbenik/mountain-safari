@@ -507,6 +507,18 @@
       .map((s) => `<a href="${s.href}" target="_blank" rel="noopener noreferrer" class="text-cream/70 hover:text-periwinkle text-sm transition-colors">${escapeHtml(s.label)}</a>`)
       .join('');
   }
+  // Legal links resolve against the locale root, so the same data works from
+  // /, /pl/, /tury/ and /pl/tury/.
+  function renderFooterLegal() {
+    const el = document.getElementById('footer-legal');
+    const links = (content.footer && content.footer.legalLinks) || [];
+    if (!el || !links.length) return;
+    const base = (content.meta && content.meta.lang) === 'pl' ? '/pl' : '';
+    el.innerHTML = links.map((l) =>
+      `<a href="${base}/${l.href}" class="hover:text-periwinkle underline underline-offset-2 transition-colors">${escapeHtml(l.label)}</a>`
+    ).join('');
+  }
+
   function renderFooterCopyright() {
     document.getElementById('footer-copyright').textContent = `© ${new Date().getFullYear()} ${content.footer.copyrightName}`;
   }
@@ -741,6 +753,7 @@
     renderFaq();
     renderFooterGuides();
     renderFooterSocials();
+    renderFooterLegal();
     renderFooterCopyright();
     renderPartnerLogos();
     populateTourSelect();

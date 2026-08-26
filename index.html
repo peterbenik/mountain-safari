@@ -5,16 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mountain Safari — Horskí vodcovia Vysoké Tatry</title>
 <meta name="description" content="IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru." />
-<link rel="canonical" href="https://www.mountainsafari.sk/index.html" />
-<!-- PREVIEW ONLY — remove this meta (and set PREVIEW = false in
-     scripts/build-tour-pages.mjs) when deploying to www.mountainsafari.sk -->
-<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://lp.mountainsafari.sk/" />
 <!-- hreflang: ENABLE AT POLISH LAUNCH — uncomment when /pl/ goes indexable
      (set PL_INDEXABLE = true in scripts/build-tour-pages.mjs at the same time):
-<link rel="alternate" hreflang="sk" href="https://www.mountainsafari.sk/index.html" />
-<link rel="alternate" hreflang="pl" href="https://www.mountainsafari.sk/pl/index.html" />
-<link rel="alternate" hreflang="x-default" href="https://www.mountainsafari.sk/index.html" />
+<link rel="alternate" hreflang="sk" href="https://lp.mountainsafari.sk/" />
+<link rel="alternate" hreflang="pl" href="https://lp.mountainsafari.sk/pl/index.html" />
+<link rel="alternate" hreflang="x-default" href="https://lp.mountainsafari.sk/" />
 -->
+
+<!-- Favicons — root-absolute so /pl/ and /tury/ resolve them too. -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#141B2E" />
+
+<!-- Open Graph / Twitter — the tour pages get these from the build script;
+     this LP is hand-maintained, so they live here. -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="sk_SK" />
+<meta property="og:site_name" content="Mountain Safari" />
+<meta property="og:title" content="Mountain Safari — Horskí vodcovia Vysoké Tatry" />
+<meta property="og:description" content="IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru." />
+<meta property="og:url" content="https://lp.mountainsafari.sk/" />
+<meta property="og:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpeg" />
+<meta property="og:image:alt" content="Výstup na Gerlachovský štít, najvyšší vrch Slovenska" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Mountain Safari — Horskí vodcovia Vysoké Tatry" />
+<meta name="twitter:description" content="IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru." />
+<meta name="twitter:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpeg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -536,7 +555,7 @@
 <!-- ============ HEADER / NAV ============ -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2 sm:gap-2.5 shrink-0" aria-label="Mountain Safari — domov">
+    <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 shrink-0" aria-label="Mountain Safari — domov">
       <img src="brand_assets/logo.webp" alt="" width="40" height="40" class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg shrink-0" />
       <span class="logo-text font-display font-extrabold text-base sm:text-lg tracking-tight whitespace-nowrap" data-content="nav.logoText">Mountain Safari</span>
     </a>
@@ -755,8 +774,9 @@
       <div id="footer-socials" class="flex gap-4"></div>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-8 flex flex-col sm:flex-row justify-between gap-3 text-cream/50 text-xs">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-cream/50 text-xs">
     <span data-content="footer.credentialsNote">IVBV/UIAGM/IFMGA</span>
+    <nav id="footer-legal" class="flex flex-wrap gap-x-5 gap-y-1.5" aria-label="Právne informácie"></nav>
     <span id="footer-copyright"></span>
   </div>
 </footer>

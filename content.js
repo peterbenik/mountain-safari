@@ -508,8 +508,8 @@ window.MS_CONTENT = {
 
   footer: {
     logoText: "Mountain Safari",
-    linksHeading: "[Navigácia]",
-    guidesHeading: "[Vodcovia]",
+    linksHeading: "Navigácia",
+    guidesHeading: "Vodcovia",
     guides: [
       { name: "Anton Sedlák", phone: "+421903624085", phoneDisplay: "+421 903 624 085" },
       { name: "Štefan Krasňan", phone: "+421904295135", phoneDisplay: "+421 904 295 135" },
@@ -520,7 +520,158 @@ window.MS_CONTENT = {
       { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61568565786611" },
     ],
     credentialsNote: "IVBV/UIAGM/IFMGA licencovaní vodcovia · členovia NAHVSR",
+    // hrefs are bare filenames; each renderer prefixes the locale root so they
+    // resolve correctly from /, /pl/, /tury/ and /pl/tury/ alike.
+    legalLinks: [
+      { label: "Ochrana osobných údajov", href: "ochrana-osobnych-udajov.html" },
+      { label: "Informácie o prevádzkovateľovi", href: "impressum.html" },
+    ],
     copyrightName: "Mountain Safari",
+  },
+
+  /* ===== LEGAL — GDPR privacy notice + Slovak imprint (zákon č. 22/2004 Z. z.
+     o elektronickom obchode). Rendered to static pages by
+     scripts/build-legal-pages.mjs; the /pl/ copies come from content.pl.js.
+
+     Empty company fields are OMITTED from the rendered page rather than shown
+     as blank labels. Currently empty and still owed by the client: `address`,
+     `vat`, `register`; `name` is the trading name, not the registered obchodné
+     meno. The imprint is legally incomplete without sídlo + registration — fill
+     them from orsr.sk (and verify IČO/DIČ there) before ads run. ===== */
+  legal: {
+    company: {
+      name: "Mountain Safari",
+      address: "",
+      ico: "57 001 898",
+      dic: "2122531961",
+      vat: "",
+      register: "",
+      email: "info@mountainsafari.sk",
+      phone: "+421 903 624 085",
+    },
+    backLabel: "Späť na hlavnú stránku",
+    updatedLabel: "Naposledy aktualizované",
+    updated: "26. augusta 2026",
+
+    privacy: {
+      slug: "ochrana-osobnych-udajov.html",
+      title: "Ochrana osobných údajov",
+      intro: "Vaše súkromie berieme vážne. Tento dokument vysvetľuje, aké osobné údaje o vás spracúvame, prečo ich spracúvame a aké práva v súvislosti s nimi máte.",
+      sections: [
+        {
+          heading: "1. Kto spracúva vaše údaje",
+          body: ["Prevádzkovateľom, ktorý určuje účely a prostriedky spracúvania vašich osobných údajov, je:"],
+          list: [
+            "{company}",
+            "Sídlo: {address}",
+            "IČO: {ico} · DIČ: {dic}",
+            "E-mail: {email} · Telefón: {phone}",
+          ],
+        },
+        {
+          heading: "2. Aké údaje spracúvame",
+          body: ["Spracúvame výhradne údaje, ktoré nám sami poskytnete cez rezervačný formulár, a základné technické údaje o návšteve stránky."],
+          list: [
+            "Údaje z formulára: meno, telefónne číslo, e-mailová adresa, vybraný výstup, preferovaný termín a text vašej správy.",
+            "Technické údaje: IP adresa, typ prehliadača a zariadenia, čas návštevy a stránka, z ktorej ste prišli.",
+          ],
+        },
+        {
+          heading: "3. Prečo údaje spracúvame a na akom právnom základe",
+          list: [
+            "Vybavenie vašej rezervácie alebo dopytu a komunikácia s vami — právnym základom je vykonanie opatrení pred uzatvorením zmluvy na vašu žiadosť podľa čl. 6 ods. 1 písm. b) GDPR.",
+            "Bezpečnosť a prevádzka stránky — právnym základom je náš oprávnený záujem podľa čl. 6 ods. 1 písm. f) GDPR.",
+            "Meranie návštevnosti a reklamy — len na základe vášho súhlasu podľa čl. 6 ods. 1 písm. a) GDPR, ktorý môžete kedykoľvek odvolať.",
+          ],
+        },
+        {
+          heading: "4. Ako dlho údaje uchovávame",
+          body: ["Údaje z formulára uchovávame po dobu vybavenia vašej požiadavky a následne 3 roky, aby sme vedeli reagovať na prípadné otázky alebo reklamácie. Ak si želáte skoršie vymazanie, napíšte nám na {email} a údaje bezodkladne odstránime, pokiaľ nám ich uchovanie neukladá zákon."],
+        },
+        {
+          heading: "5. Komu vaše údaje sprístupňujeme",
+          body: ["Vaše údaje nepredávame a neposkytujeme tretím stranám na marketingové účely. Využívame však overených dodávateľov, ktorí pre nás údaje spracúvajú:"],
+          list: [
+            "Google Ireland Ltd. / Google LLC — uloženie rezervácií (Google Sheets) a odosielanie potvrdzovacích e-mailov (Gmail).",
+            "Netlify, Inc. — hosting tejto stránky vrátane technických logov servera.",
+            "Wistia, Inc. — prehrávanie videorecenzií vložených na stránke.",
+            "Horskí vodcovia spolupracujúci s prevádzkovateľom — v rozsahu potrebnom na realizáciu výstupu.",
+          ],
+        },
+        {
+          heading: "6. Prenos údajov mimo EÚ",
+          body: ["Niektorí z uvedených dodávateľov sídlia v Spojených štátoch amerických. Prenos údajov je v takom prípade zabezpečený štandardnými zmluvnými doložkami schválenými Európskou komisiou, prípadne účasťou dodávateľa na rámci EU–US Data Privacy Framework."],
+        },
+        {
+          heading: "7. Cookies a meranie návštevnosti",
+          body: ["Stránka používa technicky nevyhnutné súbory cookie, ktoré zabezpečujú jej správne fungovanie. Analytické a reklamné cookies (Google Analytics, Google Ads) nasadzujeme len s vaším súhlasom. Vložené videá od poskytovateľa Wistia môžu do vášho zariadenia uložiť vlastné cookies — ich nastavenia nájdete v zásadách daného poskytovateľa. Súhlas môžete kedykoľvek odvolať vymazaním cookies vo vašom prehliadači."],
+        },
+        {
+          heading: "8. Aké máte práva",
+          body: ["V súvislosti so spracúvaním vašich osobných údajov máte podľa GDPR nasledujúce práva:"],
+          list: [
+            "právo na prístup k údajom a na ich kópiu,",
+            "právo na opravu nesprávnych alebo neúplných údajov,",
+            "právo na vymazanie („právo na zabudnutie“),",
+            "právo na obmedzenie spracúvania,",
+            "právo na prenosnosť údajov,",
+            "právo namietať proti spracúvaniu založenému na oprávnenom záujme,",
+            "právo kedykoľvek odvolať udelený súhlas.",
+          ],
+        },
+        {
+          heading: "9. Kam sa môžete obrátiť",
+          body: [
+            "Ktorékoľvek z uvedených práv si môžete uplatniť e-mailom na {email}. Odpovieme vám najneskôr do jedného mesiaca.",
+            "Ak máte za to, že spracúvaním vašich údajov porušujeme právne predpisy, máte právo podať sťažnosť dozornému orgánu: Úrad na ochranu osobných údajov Slovenskej republiky, Hraničná 12, 820 07 Bratislava, dataprotection.gov.sk.",
+          ],
+        },
+      ],
+    },
+
+    imprint: {
+      slug: "impressum.html",
+      title: "Informácie o prevádzkovateľovi",
+      intro: "Údaje zverejnené v súlade so zákonom č. 22/2004 Z. z. o elektronickom obchode a zákonom č. 250/2007 Z. z. o ochrane spotrebiteľa.",
+      sections: [
+        {
+          heading: "Prevádzkovateľ",
+          list: [
+            "{company}",
+            "Sídlo: {address}",
+            "IČO: {ico}",
+            "DIČ: {dic}",
+            "IČ DPH: {vat}",
+            "Zápis: {register}",
+          ],
+        },
+        {
+          heading: "Kontakt",
+          list: [
+            "E-mail: {email}",
+            "Telefón: {phone}",
+            "Anton Sedlák — horský vodca IVBV/UIAGM/IFMGA, +421 903 624 085",
+            "Štefan Krasňan — horský vodca IVBV/UIAGM/IFMGA, +421 904 295 135",
+          ],
+        },
+        {
+          heading: "Kvalifikácia",
+          body: ["Výstupy vedú horskí vodcovia s platnou medzinárodnou licenciou IVBV/UIAGM/IFMGA, členovia Národnej asociácie horských vodcov Slovenskej republiky (NAHVSR)."],
+        },
+        {
+          heading: "Orgán dozoru",
+          body: ["Slovenská obchodná inšpekcia (SOI), Inšpektorát SOI pre Prešovský kraj, Obrancov mieru 6, 080 01 Prešov — odbor výkonu dozoru. Kontrolu dodržiavania predpisov o ochrane spotrebiteľa vykonáva SOI podľa miesta sídla prevádzkovateľa."],
+        },
+        {
+          heading: "Riešenie sporov",
+          body: ["Spotrebiteľ má právo obrátiť sa na predávajúceho so žiadosťou o nápravu na {email}. Ak predávajúci na žiadosť odpovie zamietavo alebo neodpovie do 30 dní, spotrebiteľ má právo podať návrh na začatie alternatívneho riešenia sporu podľa zákona č. 391/2015 Z. z. Zoznam subjektov ARS vedie Ministerstvo hospodárstva SR; návrh možno podať aj cez platformu ec.europa.eu/consumers/odr."],
+        },
+        {
+          heading: "Zodpovednosť za obsah",
+          body: ["Obsah tejto stránky vrátane cien a popisov výstupov má informatívny charakter. O realizácii výstupu a konečnej trase rozhoduje horský vodca podľa aktuálnych podmienok v horách. Záväzné podmienky vám potvrdíme pri rezervácii."],
+        },
+      ],
+    },
   },
 
   modal: {
@@ -578,9 +729,10 @@ window.MS_CONTENT = {
   devMode: false,
 
   /* ===== SITE — absolute URLs for SEO (canonical / Open Graph / JSON-LD / sitemap).
-     PLACEHOLDER baseUrl — swap for the real production domain before launch. ===== */
+     baseUrl is the Netlify landing-page subdomain, NOT www.mountainsafari.sk — the
+     WordPress site still owns www. Canonicals/OG/sitemap must all agree with it. ===== */
   site: {
-    baseUrl: "https://www.mountainsafari.sk",
+    baseUrl: "https://lp.mountainsafari.sk",
     name: "Mountain Safari",
     defaultOgImage: "brand_assets/Gerlachovský.jpeg",
     ogLocale: "sk_SK",

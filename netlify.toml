@@ -1,0 +1,72 @@
+# ==========================================================================
+# Netlify config — Mountain Safari landing page (lp.mountainsafari.sk)
+#
+# The site is plain static HTML with no bundler. build-tour-pages.mjs
+# regenerates the tour pages + sitemap from content.js, then build-site.mjs
+# copies only the servable files into dist/. Publishing the repo root instead
+# would expose apps-script/Code.gs (Google Sheet ID) and the dev tooling.
+# ==========================================================================
+
+[build]
+  command = "node scripts/build-tour-pages.mjs && node scripts/build-legal-pages.mjs && node scripts/build-site.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # puppeteer lives in devDependencies and is only used by screenshot.mjs /
+  # _verify.mjs. Omitting dev deps skips a ~150 MB Chromium download per build.
+  NPM_FLAGS = "--omit=dev"
+
+# --------------------------------------------------------------------------
+# Keep the *.netlify.app origin from competing with the real domain in search.
+# TODO: replace the host below with the actual site name once it is created
+# (Netlify → Site configuration → Site details → Site name).
+# --------------------------------------------------------------------------
+[[redirects]]
+  from = "https://mountain-safari-lp.netlify.app/*"
+  to = "https://lp.mountainsafari.sk/:splat"
+  status = 301
+  force = true
+
+# --------------------------------------------------------------------------
+# Security headers. HTTP→HTTPS is handled by Netlify's "Force HTTPS" toggle,
+# not by a redirect rule here.
+#
+# No Content-Security-Policy on purpose: the page loads the Tailwind play CDN
+# (which evaluates styles in-browser), Google Fonts, Wistia and placehold.co.
+# A strict policy would break rendering. Introduce it later as
+# Content-Security-Policy-Report-Only first.
+# --------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=()"
+
+# HTML must revalidate so copy edits go live on the next request.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# content.js / main.js change with every copy edit — same treatment.
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Asset filenames are NOT content-hashed, so `immutable` would strand a
+# replaced photo in browser caches for a year. 30 days + stale-while-revalidate
+# is the safe ceiling until a hashing step exists.
+[[headers]]
+  for = "/brand_assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
