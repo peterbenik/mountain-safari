@@ -7,33 +7,29 @@ const WHATSAPP_PHONE = '421903624085';                   // digits only, country
 
 // Sending identity.
 //
-// Mail goes out from a DEDICATED mailbox, not from info@. info@mountainsafari.sk
+// Mail goes out via the Resend API, NOT from a mailbox. info@mountainsafari.sk
 // holds the client's accounting and company correspondence, and a mailbox
-// password grants full IMAP read access — not just send — so it is deliberately
-// never shared with this script. Customer replies are routed back to info@ via
-// REPLY_TO_EMAIL, so from the customer's side nothing changes.
+// password grants full IMAP read access rather than send-only, so it is
+// deliberately never shared with this script. Customer replies are routed back
+// to info@ via REPLY_TO_EMAIL, so nothing changes on the customer's side.
 //
-// SETUP (once, in the Google account that owns this script):
-//   1. Google Workspace admin (admin.google.com) → Apps → Google Workspace →
-//      Gmail → End User Access → tick "Allow per-user outbound gateways".
-//      Without this, Gmail refuses external SMTP with "Functionality not enabled".
-//   2. Gmail → Settings → Accounts and Import → "Send mail as" → Add another
-//      email address → hello@mountainsafari.sk → UNCHECK "Treat as an alias" →
-//      SMTP smtp.websupport.sk, port 465, SSL, username = the full address,
-//      password = that mailbox's password → confirm the emailed code.
+// Why not Gmail "send as" over WebSupport SMTP: that route needed a Workspace
+// policy change AND a mailbox password, and smtp.websupport.sk rejected AUTH
+// with an opaque 535 even from a trusted machine. Resend removes the mailbox,
+// the SMTP auth and the Workspace dependency from the path entirely.
 //
-// Routing through WebSupport's SMTP keeps SPF and DKIM aligned to
-// mountainsafari.sk, so no DNS changes are needed. VERIFY after the first test
-// booking: open the received mail → "Show original" → SPF/DKIM should PASS with
-// domain mountainsafari.sk. If they show gmail.com or benzomarketing.com
-// instead, Gmail relayed through Google rather than WebSupport; delivery still
-// works (the domain publishes DMARC p=none) but switch to a transactional API
-// (Resend/Brevo) with DKIM at WebSupport for proper alignment.
+// SETUP (once):
+//   1. resend.com → add domain mountainsafari.sk → add the DKIM/SPF records it
+//      generates to WebSupport DNS → wait for "Verified".
+//   2. Resend → API Keys → create one with Sending access.
+//   3. Apps Script → ⚙ Project Settings → Script Properties → add
+//      RESEND_API_KEY = re_xxxxxxxx. Never paste the key into this file; this
+//      repo is public.
 //
-// senderOptions() below degrades safely: until the alias is verified, mail still
-// goes out from the script account, just with the right display name. So this
-// code is safe to deploy before or after the Gmail setup.
-const FROM_EMAIL = 'hello@mountainsafari.sk';    // dedicated sending mailbox
+// FROM_EMAIL only needs to be on the verified domain — the mailbox itself does
+// not need to exist for sending, though keeping hello@ real means bounces and
+// out-of-office replies have somewhere to land.
+const FROM_EMAIL = 'hello@mountainsafari.sk';    // sender shown to customers
 const REPLY_TO_EMAIL = 'info@mountainsafari.sk'; // where customer replies land
 // ────────────────────────────────────────────────────────
 
@@ -73,18 +69,41 @@ function emailShell(bodyHtml) {
   );
 }
 
-// GmailApp.sendEmail() throws if `from` is not a verified alias on the account,
-// which would take the whole submission down. So probe the account's aliases and
-// only claim the address when it is actually available.
-function senderOptions() {
-  try {
-    if (GmailApp.getAliases().indexOf(FROM_EMAIL) !== -1) {
-      return { from: FROM_EMAIL, name: BUSINESS_NAME };
-    }
-  } catch (err) {
-    // getAliases() can fail on a missing scope — fall through to the default.
+// Sends one email through Resend's HTTP API.
+//
+// The API key lives in Script Properties, NOT in this file — this code sits in a
+// public GitHub repo. Set it once:
+//   Apps Script → ⚙ Project Settings → Script Properties → Add script property
+//   Name: RESEND_API_KEY   Value: re_xxxxxxxx
+//
+// Throws on a non-2xx so the caller can log it; doPost() isolates each send so
+// one failure cannot suppress the other email.
+function sendEmail(to, subject, textBody, htmlBody, replyTo) {
+  const key = PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY');
+  if (!key) throw new Error('RESEND_API_KEY is not set in Script Properties');
+
+  const payload = {
+    from: BUSINESS_NAME + ' <' + FROM_EMAIL + '>',
+    to: Array.isArray(to) ? to : [to],
+    subject: subject,
+    text: textBody,
+    html: htmlBody
+  };
+  if (replyTo) payload.reply_to = replyTo;
+
+  const res = UrlFetchApp.fetch('https://api.resend.com/emails', {
+    method: 'post',
+    contentType: 'application/json',
+    headers: { Authorization: 'Bearer ' + key },
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  });
+
+  const code = res.getResponseCode();
+  if (code < 200 || code >= 300) {
+    throw new Error('Resend HTTP ' + code + ': ' + res.getContentText().slice(0, 300));
   }
-  return { name: BUSINESS_NAME };
+  return res.getContentText();
 }
 
 function doPost(e) {
@@ -141,13 +160,18 @@ function doPost(e) {
       'Termín: ' + termin + '\n' +
       'Správa: ' + sprava + '\n';
 
-    const ownerMailOptions = senderOptions();
-    ownerMailOptions.htmlBody = emailShell(ownerBody);
-    // Replying in the inbox should reach the customer, not ourselves.
-    if (data.email) ownerMailOptions.replyTo = data.email;
     const stripNewlines = (s) => String(s || '—').replace(/[\r\n]+/g, ' ').trim() || '—';
     const ownerSubject = '🟢 Nová rezervácia · ' + stripNewlines(data.vystup) + ' · ' + stripNewlines(data.meno);
-    GmailApp.sendEmail(OWNER_EMAILS.join(','), ownerSubject, ownerPlainText, ownerMailOptions);
+    // Each send is isolated: the lead is already safe in the Sheet, and a failure
+    // on one email must not stop the other from going out.
+    const sendErrors = [];
+    try {
+      // Replying in the inbox should reach the customer, not ourselves.
+      sendEmail(OWNER_EMAILS, ownerSubject, ownerPlainText, emailShell(ownerBody), data.email || null);
+    } catch (mailErr) {
+      sendErrors.push('owner: ' + mailErr);
+      console.error('owner email failed', mailErr);
+    }
 
     // Confirmation + encouragement to the customer
     if (data.email) {
@@ -173,11 +197,22 @@ function doPost(e) {
         'Potrebujete niečo doriešiť skôr? Napíšte nám na WhatsApp: ' + waLink + '\n\n' +
         'Tešíme sa na spoločný výstup!\nS pozdravom,\n' + BUSINESS_NAME;
 
-      const clientMailOptions = senderOptions();
-      clientMailOptions.htmlBody = emailShell(clientBody);
-      // Replies go to the client's real inbox, not the send-only mailbox.
-      clientMailOptions.replyTo = REPLY_TO_EMAIL;
-      GmailApp.sendEmail(data.email, 'Vaša rezervácia je potvrdená — ' + BUSINESS_NAME, clientPlainText, clientMailOptions);
+      try {
+        // Replies go to the client's real inbox, not the send-only address.
+        sendEmail(data.email, 'Vaša rezervácia je potvrdená — ' + BUSINESS_NAME,
+                  clientPlainText, emailShell(clientBody), REPLY_TO_EMAIL);
+      } catch (mailErr) {
+        sendErrors.push('customer: ' + mailErr);
+        console.error('customer email failed', mailErr);
+      }
+    }
+
+    // The lead is recorded either way; surface mail trouble without failing the
+    // submission, so the visitor still reaches the thank-you page.
+    if (sendErrors.length) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ result: 'success', warning: sendErrors.join('; ') }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService
