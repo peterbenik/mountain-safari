@@ -19,11 +19,11 @@
 
 # --------------------------------------------------------------------------
 # Keep the *.netlify.app origin from competing with the real domain in search.
-# TODO: replace the host below with the actual site name once it is created
-# (Netlify → Site configuration → Site details → Site name).
+# Only takes effect once lp.mountainsafari.sk resolves; until then the
+# netlify.app URL serves normally so the deploy stays testable.
 # --------------------------------------------------------------------------
 [[redirects]]
-  from = "https://mountain-safari-lp.netlify.app/*"
+  from = "https://mountainsafaritours.netlify.app/*"
   to = "https://lp.mountainsafari.sk/:splat"
   status = 301
   force = true
