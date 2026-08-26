@@ -5,26 +5,36 @@ const OWNER_EMAILS = ['info@mountainsafari.sk', 'peterbenik@benzomarketing.com']
 const BUSINESS_NAME = 'Mountain Safari';
 const WHATSAPP_PHONE = '421903624085';                   // digits only, country code, no + — keep in sync with content.js whatsapp.phone
 
-// Address customers should see as the sender.
+// Sending identity.
+//
+// Mail goes out from a DEDICATED mailbox, not from info@. info@mountainsafari.sk
+// holds the client's accounting and company correspondence, and a mailbox
+// password grants full IMAP read access — not just send — so it is deliberately
+// never shared with this script. Customer replies are routed back to info@ via
+// REPLY_TO_EMAIL, so from the customer's side nothing changes.
 //
 // SETUP (once, in the Google account that owns this script):
-//   Gmail → Settings → Accounts and Import → "Send mail as" → Add another email
-//   address → info@mountainsafari.sk → UNCHECK "Treat as an alias" → SMTP server
-//   smtp.websupport.sk, port 465, SSL, username = the full address, password =
-//   the mailbox password → confirm the code sent to that mailbox.
+//   1. Google Workspace admin (admin.google.com) → Apps → Google Workspace →
+//      Gmail → End User Access → tick "Allow per-user outbound gateways".
+//      Without this, Gmail refuses external SMTP with "Functionality not enabled".
+//   2. Gmail → Settings → Accounts and Import → "Send mail as" → Add another
+//      email address → hello@mountainsafari.sk → UNCHECK "Treat as an alias" →
+//      SMTP smtp.websupport.sk, port 465, SSL, username = the full address,
+//      password = that mailbox's password → confirm the emailed code.
 //
 // Routing through WebSupport's SMTP keeps SPF and DKIM aligned to
 // mountainsafari.sk, so no DNS changes are needed. VERIFY after the first test
-// booking: open the received mail → "Show original" → SPF/DKIM/DMARC must all
-// PASS with domain mountainsafari.sk. If they show gmail.com or
-// benzomarketing.com instead, Gmail is relaying through Google and alignment
-// failed — switch to a transactional API (Resend/Brevo) with SPF+DKIM at
-// WebSupport instead.
+// booking: open the received mail → "Show original" → SPF/DKIM should PASS with
+// domain mountainsafari.sk. If they show gmail.com or benzomarketing.com
+// instead, Gmail relayed through Google rather than WebSupport; delivery still
+// works (the domain publishes DMARC p=none) but switch to a transactional API
+// (Resend/Brevo) with DKIM at WebSupport for proper alignment.
 //
 // senderOptions() below degrades safely: until the alias is verified, mail still
 // goes out from the script account, just with the right display name. So this
 // code is safe to deploy before or after the Gmail setup.
-const FROM_EMAIL = 'info@mountainsafari.sk';
+const FROM_EMAIL = 'hello@mountainsafari.sk';    // dedicated sending mailbox
+const REPLY_TO_EMAIL = 'info@mountainsafari.sk'; // where customer replies land
 // ────────────────────────────────────────────────────────
 
 // Brand tokens — kept in sync with index.html's :root CSS variables
@@ -165,8 +175,8 @@ function doPost(e) {
 
       const clientMailOptions = senderOptions();
       clientMailOptions.htmlBody = emailShell(clientBody);
-      // Customer replies must land in the client's mailbox, not the agency's.
-      clientMailOptions.replyTo = FROM_EMAIL;
+      // Replies go to the client's real inbox, not the send-only mailbox.
+      clientMailOptions.replyTo = REPLY_TO_EMAIL;
       GmailApp.sendEmail(data.email, 'Vaša rezervácia je potvrdená — ' + BUSINESS_NAME, clientPlainText, clientMailOptions);
     }
 
