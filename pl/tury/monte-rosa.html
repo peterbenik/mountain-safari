@@ -119,14 +119,14 @@
     </a>
     <!-- Mobile-only language switcher: sits next to the wordmark; mr-auto keeps
          it left-clustered with the logo while phone + hamburger stay right. -->
-    <div class="lang-switcher flex lg:hidden items-center shrink-0 ml-3 mr-auto" aria-label="Jazyk / Język"></div>
+    <div class="lang-switcher flex lg:hidden items-center shrink-0 ml-3 mr-auto" role="group" aria-label="Jazyk / Język"></div>
     <nav class="hidden lg:flex items-center gap-8" id="nav-links" aria-label="Hlavná navigácia"></nav>
     <div class="flex items-center gap-1.5 sm:gap-4 min-w-0">
       <a href="#" id="nav-phone-link" class="nav-phone-link inline-flex items-center gap-1.5 sm:gap-2 p-2 sm:p-0 font-medium text-xs sm:text-sm min-w-0" data-content-href="nav.phone" data-content-href-prefix="tel:" data-content-aria-label="nav.phoneAriaLabel">
         <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" style="fill:currentColor" aria-hidden="true"><use href="#icon-phone"/></svg>
         <span class="hidden sm:inline truncate" data-content="nav.phoneDisplay">…</span>
       </a>
-      <div class="lang-switcher hidden lg:flex items-center shrink-0" aria-label="Jazyk / Język"></div>
+      <div class="lang-switcher hidden lg:flex items-center shrink-0" role="group" aria-label="Jazyk / Język"></div>
       <button type="button" class="btn-pill btn-pill--primary btn-pill--glow hidden sm:inline-flex shrink-0" data-open-modal data-content="nav.ctaLabel">Rezervovať</button>
       <button type="button" id="hamburger-btn" class="lg:hidden p-2 -mr-2 shrink-0" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6 hamburger-line" style="fill:currentColor" aria-hidden="true"><use href="#icon-menu"/></svg>
@@ -145,7 +145,7 @@
     </button>
   </div>
   <nav class="flex flex-col gap-6" id="mobile-nav-links" aria-label="Mobilná navigácia"></nav>
-  <div class="lang-switcher flex items-center mt-8" aria-label="Jazyk / Język"></div>
+  <div class="lang-switcher flex items-center mt-8" role="group" aria-label="Jazyk / Język"></div>
   <a href="#" class="inline-flex items-center gap-2.5 mt-10 font-display font-semibold text-navy900" data-content-href="nav.phone" data-content-href-prefix="tel:" data-content-aria-label="nav.phoneAriaLabel">
     <svg class="w-5 h-5 text-royal shrink-0" style="fill:currentColor" aria-hidden="true"><use href="#icon-phone"/></svg>
     <span data-content="nav.phoneDisplay">…</span>

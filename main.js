@@ -216,8 +216,8 @@
   // which is already true today. Flagged to the client as a photo to replace.
   function cardSrcset(src) {
     if (!src || /^https?:/i.test(src) || !/\.webp$/i.test(src)) return '';
-    const small = imgUrl(src.replace(/\.webp$/i, '-720.webp'));
-    return ` srcset="${small} 720w, ${imgUrl(src)} 1440w"` +
+    const at = (w) => imgUrl(src.replace(/\.webp$/i, `-${w}.webp`));
+    return ` srcset="${at(720)} 720w, ${at(960)} 960w, ${imgUrl(src)} 1440w"` +
            ` sizes="(min-width:1024px) 380px, (min-width:640px) 45vw, calc(100vw - 3rem)"`;
   }
 
