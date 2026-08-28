@@ -106,6 +106,50 @@ function sendEmail(to, subject, textBody, htmlBody, replyTo) {
   return res.getContentText();
 }
 
+/* ── DIAGNOSTIC — run this from the editor to test email sending ──────────
+   Select "testResend" in the function dropdown, press Run, and read the
+   Execution log at the bottom. Reports the key state and the exact Resend
+   response. Safe to leave in the file; it is never called by doPost.
+   Change TEST_RECIPIENT to your own address before running.            */
+function testResend() {
+  const TEST_RECIPIENT = 'peterbenik@benzomarketing.com';
+
+  const key = PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY');
+  Logger.log('--- Script Properties ---');
+  Logger.log('all property names: ' + JSON.stringify(
+    Object.keys(PropertiesService.getScriptProperties().getProperties())));
+  if (!key) {
+    Logger.log('RESEND_API_KEY: MISSING — add it in Project Settings → Script Properties');
+    return;
+  }
+  Logger.log('RESEND_API_KEY: present, length ' + key.length + ', starts "' + key.slice(0, 4) + '"');
+  if (key.trim() !== key) Logger.log('WARNING: key has leading/trailing whitespace — re-save it');
+
+  Logger.log('--- Sending test via Resend ---');
+  Logger.log('from: ' + BUSINESS_NAME + ' <' + FROM_EMAIL + '>');
+  Logger.log('to:   ' + TEST_RECIPIENT);
+
+  const res = UrlFetchApp.fetch('https://api.resend.com/emails', {
+    method: 'post',
+    contentType: 'application/json',
+    headers: { Authorization: 'Bearer ' + key },
+    payload: JSON.stringify({
+      from: BUSINESS_NAME + ' <' + FROM_EMAIL + '>',
+      to: [TEST_RECIPIENT],
+      subject: 'Mountain Safari — test',
+      text: 'Test odoslania cez Resend.',
+      reply_to: REPLY_TO_EMAIL
+    }),
+    muteHttpExceptions: true
+  });
+
+  Logger.log('HTTP status: ' + res.getResponseCode());
+  Logger.log('response: ' + res.getContentText());
+  Logger.log(res.getResponseCode() === 200
+    ? 'RESULT: SUCCESS — check the inbox and the Resend dashboard.'
+    : 'RESULT: FAILED — the response above says why.');
+}
+
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
