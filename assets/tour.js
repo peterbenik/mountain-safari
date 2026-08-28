@@ -557,7 +557,7 @@
   function renderHero() {
     return `
       <header class="tour-hero grain">
-        <img class="tour-hero__img" src="${imgUrl(tour.image)}" alt="${escapeHtml(tour.imageAlt)}" />
+        <img class="tour-hero__img" src="${imgUrl(tour.image)}" alt="${escapeHtml(tour.imageAlt)}" width="1440" height="960" fetchpriority="high" />
         <div class="tour-hero__scrim"></div>
         <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-14 pt-40 w-full">
           <nav class="flex items-center gap-2 text-cream/70 text-sm mb-5 reveal" aria-label="Drobčeková navigácia">

@@ -405,7 +405,7 @@
           <wistia-player media-id="${t.wistiaId}" aspect="0.5625" style="--wistia-swatch:url('https://fast.wistia.com/embed/medias/${t.wistiaId}/swatch')"></wistia-player>
         ` : `
           <div class="flex items-center gap-3 px-6 pt-6">
-            <img src="${imgUrl(t.avatarImage)}" alt="" loading="lazy" class="w-11 h-11 rounded-full object-cover shrink-0" />
+            <img src="${imgUrl(t.avatarImage)}" alt="" loading="lazy" width="44" height="44" class="w-11 h-11 rounded-full object-cover shrink-0" />
             <span class="text-cream/90 text-sm font-medium">${escapeHtml(t.name)}</span>
           </div>
           <div class="p-6 flex flex-col gap-3">
@@ -421,7 +421,7 @@
   function renderGallery() {
     document.getElementById('gallery-grid').innerHTML = content.gallerySection.images.map((img, i) => `
       <button type="button" class="gallery-item aspect-square" data-gallery-index="${i}">
-        <img src="${imgUrl(img.src)}" alt="${escapeHtml(img.alt)}" loading="lazy" class="w-full h-full object-cover" />
+        <img src="${imgUrl(img.src)}" alt="${escapeHtml(img.alt)}" loading="lazy" width="900" height="900" class="w-full h-full object-cover" />
       </button>
     `).join('');
   }
@@ -526,7 +526,7 @@
     document.getElementById('partner-logos').innerHTML = content.finalCta.partnerLogos
       .map((p) => `
         <div class="surface-elevated w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-surface p-3 flex items-center justify-center">
-          <img src="${imgUrl(p.src)}" alt="${escapeHtml(p.alt)}" loading="lazy" class="max-w-full max-h-full object-contain grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-opacity duration-300" />
+          <img src="${imgUrl(p.src)}" alt="${escapeHtml(p.alt)}" loading="lazy" width="200" height="100" class="max-w-full max-h-full object-contain grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-opacity duration-300" />
         </div>
       `)
       .join('');

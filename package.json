@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build-tour-pages.mjs && node scripts/build-legal-pages.mjs && node scripts/build-site.mjs",
+    "build:css": "tailwindcss -c tailwind.config.js -i scripts/tailwind-input.css -o assets/tailwind.css --minify",
     "serve": "node serve.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +14,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "puppeteer": "^25.2.1"
+    "puppeteer": "^25.2.1",
+    "tailwindcss": "^3.4.19"
   },
   "allowScripts": {
     "puppeteer@25.2.1": true

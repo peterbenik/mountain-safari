@@ -28,49 +28,19 @@
 <meta property="og:title" content="Mountain Safari — Horskí vodcovia Vysoké Tatry" />
 <meta property="og:description" content="IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru." />
 <meta property="og:url" content="https://lp.mountainsafari.sk/" />
-<meta property="og:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpeg" />
+<meta property="og:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpg" />
 <meta property="og:image:alt" content="Výstup na Gerlachovský štít, najvyšší vrch Slovenska" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Mountain Safari — Horskí vodcovia Vysoké Tatry" />
 <meta name="twitter:description" content="IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru." />
-<meta name="twitter:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpeg" />
+<meta name="twitter:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpg" />
 
+<link rel="preload" as="image" href="brand_assets/Background.webp" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  /* Keep these hex values in sync with the CSS custom properties in the <style> block below. */
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          navy900: '#141B2E',
-          navy800: '#1A2234',
-          royal: '#1E40C4',
-          royalDark: '#16309A',
-          periwinkle: '#7B96C9',
-          galleryBg: '#5B6472',
-          cream: '#F5F0E6',
-          ink: '#1A1A1A',
-          muted: '#6B7280',
-          surface: '#FFFFFF',
-          hairline: '#E5E7EB',
-        },
-        borderRadius: {
-          pill: '999px',
-          card: '20px',
-        },
-        fontFamily: {
-          display: ['Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          serif: ['"Playfair Display"', 'Georgia', 'serif'],
-          body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        },
-      },
-    },
-  };
-</script>
+<link rel="stylesheet" href="/assets/tailwind.css" />
 
 <style>
   /* ===== DESIGN TOKENS — provisional; confirm exact brand hex once guidelines are finalized ===== */
@@ -598,7 +568,10 @@
 <!-- ============ 1. HERO ============ -->
 <section id="hero" class="relative flex items-end lg:items-center grain overflow-hidden">
   <div class="absolute inset-0 overflow-hidden">
-    <img data-content-src="hero.bgImage" data-content-alt="hero.bgImageAlt" src="" alt="" loading="eager" width="1920" height="1200" class="w-full h-full object-cover" />
+    <!-- src is hardcoded as well as data-driven: this is the LCP element, and an
+     empty src would stall the fetch until main.js runs. hero.bgImage is the
+     same file in both locales, and the PL build rewrites the relative path. -->
+    <img data-content-src="hero.bgImage" data-content-alt="hero.bgImageAlt" src="brand_assets/Background.webp" alt="" loading="eager" fetchpriority="high" width="1920" height="1200" class="w-full h-full object-cover" />
   </div>
   <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(20,27,46,0.38) 0%, rgba(20,27,46,0.28) 28%, rgba(20,27,46,0.68) 60%, rgba(20,27,46,0.9) 100%), radial-gradient(ellipse 60% 45% at 50% 62%, rgba(10,14,24,0.35), transparent 70%), radial-gradient(circle at 15% 20%, rgba(30,64,196,0.12), transparent 45%);"></div>
 
@@ -698,7 +671,7 @@
 <!-- ============ 6. GALLERY ============ -->
 <section id="gallery" class="relative py-[var(--space-section)] bg-galleryBg overflow-hidden">
   <div class="absolute inset-0">
-    <img data-content-src="gallerySection.bgImage" data-content-alt="gallerySection.bgImageAlt" src="" alt="" loading="lazy" class="gallery-bg-photo w-full h-full object-cover" />
+    <img data-content-src="gallerySection.bgImage" data-content-alt="gallerySection.bgImageAlt" src="" alt="" loading="lazy" width="1600" height="1600" class="gallery-bg-photo w-full h-full object-cover" />
     <div class="gallery-bg-scrim absolute inset-0"></div>
   </div>
   <div class="relative max-w-6xl mx-auto px-6 lg:px-10">

@@ -76,9 +76,11 @@ function seoBlock(t, C, locale) {
   const sharedPath = `tury/${t.slug}.html`;
   const url = `${site.baseUrl}/${locale.prefix}${sharedPath}`;
   const absUrl = (p) => site.baseUrl + '/' + String(p).replace(/^\//, '');
-  const ogImage = (t.image && /^https?:/i.test(t.image))
-    ? encodeURI(absUrl(site.defaultOgImage))
-    : encodeURI(absUrl(t.image || site.defaultOgImage));
+  // og:image stays JPEG on purpose: WhatsApp and some older scrapers still fail
+  // to render WebP link previews. Every on-page image is WebP; each one that is
+  // used for sharing has a .jpg twin at 1200px beside it (see brand_assets/).
+  const ogSource = (t.image && /^https?:/i.test(t.image)) ? site.defaultOgImage : (t.image || site.defaultOgImage);
+  const ogImage = encodeURI(absUrl(String(ogSource).replace(/\.webp$/i, '.jpg')));
   const alt = altitude(t.location);
   const guideSuffix = locale.code === 'pl' ? 'wejście z przewodnikiem wysokogórskim' : 'výstup s horským vodcom';
   const title = `${t.name}${alt ? ` (${alt} m)` : ''} — ${guideSuffix} | ${site.name}`;
