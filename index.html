@@ -35,10 +35,18 @@
 <meta name="twitter:description" content="IVBV/UIAGM/IFMGA licencovaní horskí vodcovia vo Vysokých Tatrách. Súkromné výstupy šité na mieru." />
 <meta name="twitter:image" content="https://lp.mountainsafari.sk/brand_assets/Gerlachovsk%C3%BD.jpg" />
 
-<link rel="preload" as="image" href="brand_assets/Background.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="/brand_assets/Background.webp"
+      imagesrcset="/brand_assets/Background-640.webp 640w, /brand_assets/Background-1024.webp 1024w, /brand_assets/Background.webp 1440w"
+      imagesizes="100vw" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Non-blocking: the sheet is fetched at low priority and applied on load,
+     so a cross-origin round trip no longer blocks first paint. display=swap
+     was already set, so text behaviour is unchanged; <noscript> covers the
+     no-JS case. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all';this.onload=null" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" /></noscript>
 
 <link rel="stylesheet" href="/assets/tailwind.css" />
 
@@ -571,7 +579,11 @@
     <!-- src is hardcoded as well as data-driven: this is the LCP element, and an
      empty src would stall the fetch until main.js runs. hero.bgImage is the
      same file in both locales, and the PL build rewrites the relative path. -->
-    <img data-content-src="hero.bgImage" data-content-alt="hero.bgImageAlt" src="brand_assets/Background.webp" alt="" loading="eager" fetchpriority="high" width="1920" height="1200" class="w-full h-full object-cover" />
+    <img data-content-src="hero.bgImage" data-content-alt="hero.bgImageAlt"
+         src="/brand_assets/Background.webp"
+         srcset="/brand_assets/Background-640.webp 640w, /brand_assets/Background-1024.webp 1024w, /brand_assets/Background.webp 1440w"
+         sizes="100vw"
+         alt="" loading="eager" fetchpriority="high" width="1920" height="1200" class="w-full h-full object-cover" />
   </div>
   <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(20,27,46,0.38) 0%, rgba(20,27,46,0.28) 28%, rgba(20,27,46,0.68) 60%, rgba(20,27,46,0.9) 100%), radial-gradient(ellipse 60% 45% at 50% 62%, rgba(10,14,24,0.35), transparent 70%), radial-gradient(circle at 15% 20%, rgba(30,64,196,0.12), transparent 45%);"></div>
 
@@ -831,10 +843,10 @@
   <svg class="w-7 h-7" style="fill:currentColor" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
 </a>
 
-<script src="https://fast.wistia.com/player.js" async></script>
-<script src="https://fast.wistia.com/embed/76mzm8drx9.js" async type="module"></script>
-<script src="https://fast.wistia.com/embed/9i0tnerz8t.js" async type="module"></script>
-<script src="https://fast.wistia.com/embed/lzcq83z32w.js" async type="module"></script>
+<!-- Wistia is loaded lazily by main.js when the testimonials section nears the
+     viewport. Eagerly it cost ~340 KB over 26 requests (and pulled in Sentry)
+     for videos most visitors never scroll to, dominating main-thread time.
+     The wistia-player:not(:defined) rule above renders the poster meanwhile. -->
 
 <script src="content.js"></script>
 <script src="main.js"></script>

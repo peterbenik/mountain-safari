@@ -417,6 +417,39 @@
     `).join('');
   }
 
+  /* ===== 6b. WISTIA — loaded on approach, not on page load =====
+     The player bundle is heavy (~340 KB across ~26 requests, plus Sentry) and
+     the testimonials sit well below the fold, so loading it eagerly dominated
+     main-thread time for no benefit. rootMargin gives it a head start so the
+     video is usually ready by the time the section is actually on screen. */
+  function initWistiaLazyLoad() {
+    const section = document.getElementById('testimonials');
+    if (!section) return;
+    const ids = (content.testimonialsSection.items || []).map((t) => t.wistiaId).filter(Boolean);
+    if (!ids.length) return;
+
+    let loaded = false;
+    const load = () => {
+      if (loaded) return;
+      loaded = true;
+      const add = (src, module) => {
+        const el = document.createElement('script');
+        el.src = src;
+        el.async = true;
+        if (module) el.type = 'module';
+        document.body.appendChild(el);
+      };
+      add('https://fast.wistia.com/player.js', false);
+      ids.forEach((id) => add(`https://fast.wistia.com/embed/${id}.js`, true));
+    };
+
+    if (!('IntersectionObserver' in window)) { load(); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { load(); io.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(section);
+  }
+
   /* ===== 7. RENDER: GALLERY + LIGHTBOX ===== */
   function renderGallery() {
     document.getElementById('gallery-grid').innerHTML = content.gallerySection.images.map((img, i) => `
@@ -749,6 +782,7 @@
     initToursExpand();
     renderProcess();
     renderTestimonials();
+    initWistiaLazyLoad();
     renderGallery();
     renderFaq();
     renderFooterGuides();
