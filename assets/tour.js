@@ -509,6 +509,19 @@
       </div>`;
   }
 
+  // Tour photos render at most ~380px wide in the card grid, but the same file
+  // doubles as the detail-page hero at 1440w. Offer a 720w variant so phones
+  // stop downloading the hero-sized version for a thumbnail.
+  // Note: monte-rosa's source is only 800px, so its "1440w" candidate is really
+  // 800px — the browser just gets a slightly softer image on very large screens,
+  // which is already true today. Flagged to the client as a photo to replace.
+  function cardSrcset(src) {
+    if (!src || /^https?:/i.test(src) || !/\.webp$/i.test(src)) return '';
+    const small = imgUrl(src.replace(/\.webp$/i, '-720.webp'));
+    return ` srcset="${small} 720w, ${imgUrl(src)} 1440w"` +
+           ` sizes="(min-width:1024px) 380px, (min-width:640px) 45vw, calc(100vw - 3rem)"`;
+  }
+
   function relatedCard(t) {
     const priceHtml = t.priceFrom != null
       ? `<span class="text-muted text-xs uppercase tracking-wide">${escapeHtml(td.priceFromLabel)}</span> <span class="font-display font-bold text-lg text-royal">${t.priceFrom} ${escapeHtml(t.currency)}</span>`
@@ -517,10 +530,10 @@
     return `
       <article class="tour-card surface-elevated flex flex-col">
         <div class="relative">
-          <div class="tour-media media"><img src="${imgUrl(t.image)}" alt="${escapeHtml(t.imageAlt)}" loading="lazy" width="720" height="520" />${t.slug ? `<a href="${href}" class="tour-media-link" tabindex="-1" aria-hidden="true"></a>` : ''}</div>
+          <div class="tour-media media"><img src="${imgUrl(t.image)}"${cardSrcset(t.image)} alt="${escapeHtml(t.imageAlt)}" loading="lazy" width="720" height="520" />${t.slug ? `<a href="${href}" class="tour-media-link" tabindex="-1" aria-hidden="true"></a>` : ''}</div>
           <div class="info-strip absolute left-4 right-4 bottom-0 bg-surface rounded-lg px-4 py-2.5 flex items-center justify-between text-sm">
             <span class="flex items-center gap-1.5 font-medium"><svg class="w-4 h-4 text-royal" style="fill:currentColor" aria-hidden="true"><use href="#icon-clock"/></svg>${escapeHtml(t.duration)}</span>
-            <span class="flex items-center gap-1.5"><span class="text-muted text-xs font-medium">${escapeHtml(content.toursSection.difficultyLabel)}</span>${buildStars(t.difficulty)}</span>
+            <span class="flex items-center gap-1.5" role="img" aria-label="${escapeHtml(content.toursSection.difficultyLabel)} ${t.difficulty} z 5"><span class="text-muted text-xs font-medium" aria-hidden="true">${escapeHtml(content.toursSection.difficultyLabel)}</span>${buildStars(t.difficulty)}</span>
           </div>
         </div>
         <div class="pt-9 px-6 pb-6 flex flex-col flex-1">
