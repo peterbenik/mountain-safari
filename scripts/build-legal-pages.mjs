@@ -94,6 +94,13 @@ padding:.08rem .4rem;font-size:.93em;color:#7A5A12;font-weight:600;white-space:n
 hr{border:0;border-top:1px solid var(--hairline);margin:3rem 0 1.6rem;}
 .back{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;text-decoration:none;}
 .back:hover{text-decoration:underline;}
+.foot-row{display:flex;flex-wrap:wrap;gap:1.25rem;align-items:center;}
+.cookie-btn{font:inherit;font-size:.95rem;background:none;border:0;padding:0;color:var(--royal);
+cursor:pointer;text-decoration:underline;text-underline-offset:2px;
+transition:color 160ms cubic-bezier(.2,.7,.3,1);}
+.cookie-btn:hover{color:var(--royal-dark);}
+.cookie-btn:focus-visible{outline:2px solid var(--royal);outline-offset:3px;border-radius:3px;}
+@media (prefers-reduced-motion:reduce){.cookie-btn{transition:none}}
 @media (prefers-reduced-motion:reduce){a{transition:none}}
 `.trim();
 
@@ -119,10 +126,38 @@ function renderPage(doc, C, locale) {
   const noindex = (PREVIEW || (locale.code === 'pl' && !PL_INDEXABLE))
     ? '\n<meta name="robots" content="noindex, nofollow" />' : '';
   const canonical = `${C.site.baseUrl}/${locale.prefix}${doc.slug}`;
+  // Same entry the site footers render; omitted rather than hard-coded if absent.
+  const consentEntry = ((C.footer && C.footer.legalLinks) || []).find((l) => l.consent);
+  const consentLink = consentEntry
+    ? `\n    <button type="button" data-consent-open class="cookie-btn">${esc(consentEntry.label)}</button>`
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="${esc(C.meta.lang)}">
 <head>
+<!-- Consent Mode v2 defaults — MUST stay above the GTM and gtag snippets below.
+     Everything is denied until the visitor chooses (assets/consent.js); a
+     returning visitor's stored choice is read back here so tags start settled. -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  var c = null;
+  try { c = JSON.parse(localStorage.getItem('ms_consent_v1') || 'null'); } catch (e) {}
+  var a = (c && c.analytics) ? 'granted' : 'denied';
+  var m = (c && c.marketing) ? 'granted' : 'denied';
+  gtag('consent', 'default', {
+    ad_storage: m,
+    ad_user_data: m,
+    ad_personalization: m,
+    analytics_storage: a,
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+})();
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -139,6 +174,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-2L4FCK798G');
 </script>
+<script src="/assets/consent.js" defer></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${esc(doc.title)} — ${esc(C.site.name)}</title>
@@ -176,7 +212,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ${markGaps(renderSections(doc.sections, L.company))}
 
   <hr />
-  <a class="back" href="index.html">← ${esc(L.backLabel)}</a>
+  <div class="foot-row">
+    <a class="back" href="index.html">← ${esc(L.backLabel)}</a>${consentLink}
+  </div>
 </main>
 </body>
 </html>

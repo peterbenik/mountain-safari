@@ -520,6 +520,8 @@ window.MS_CONTENT = {
     legalLinks: [
       { label: "Ochrona danych osobowych", href: "ochrana-osobnych-udajov.html" },
       { label: "Informacje o administratorze", href: "impressum.html" },
+      // Patrz content.js — otwiera ponownie baner zgody.
+      { label: "Ustawienia plików cookie", consent: true },
     ],
     copyrightName: "Mountain Safari",
   },

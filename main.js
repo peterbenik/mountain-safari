@@ -561,7 +561,9 @@
     if (!el || !links.length) return;
     const base = (content.meta && content.meta.lang) === 'pl' ? '/pl' : '';
     el.innerHTML = links.map((l) =>
-      `<a href="${base}/${l.href}" class="hover:text-periwinkle underline underline-offset-2 transition-colors">${escapeHtml(l.label)}</a>`
+      l.consent
+        ? `<button type="button" data-consent-open class="hover:text-periwinkle underline underline-offset-2 transition-colors" style="background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer">${escapeHtml(l.label)}</button>`
+        : `<a href="${base}/${l.href}" class="hover:text-periwinkle underline underline-offset-2 transition-colors">${escapeHtml(l.label)}</a>`
     ).join('');
   }
 

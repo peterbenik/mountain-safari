@@ -525,6 +525,9 @@ window.MS_CONTENT = {
     legalLinks: [
       { label: "Ochrana osobných údajov", href: "ochrana-osobnych-udajov.html" },
       { label: "Informácie o prevádzkovateľovi", href: "impressum.html" },
+      // No href: reopens the consent banner (assets/consent.js) so a visitor can
+      // withdraw or change consent, which the privacy notice promises they can.
+      { label: "Nastavenia cookies", consent: true },
     ],
     copyrightName: "Mountain Safari",
   },

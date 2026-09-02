@@ -323,7 +323,9 @@
     const legal = content.footer.legalLinks || [];
     if (l && legal.length) {
       l.innerHTML = legal.map((x) =>
-        `<a href="${localePrefix}/${x.href}" class="hover:text-periwinkle underline underline-offset-2 transition-colors">${escapeHtml(x.label)}</a>`
+        x.consent
+          ? `<button type="button" data-consent-open class="hover:text-periwinkle underline underline-offset-2 transition-colors" style="background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer">${escapeHtml(x.label)}</button>`
+          : `<a href="${localePrefix}/${x.href}" class="hover:text-periwinkle underline underline-offset-2 transition-colors">${escapeHtml(x.label)}</a>`
       ).join('');
     }
     const c = document.getElementById('footer-copyright');
