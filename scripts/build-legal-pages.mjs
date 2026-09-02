@@ -123,6 +123,15 @@ function renderPage(doc, C, locale) {
   return `<!DOCTYPE html>
 <html lang="${esc(C.meta.lang)}">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4FCK798G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2L4FCK798G');
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${esc(doc.title)} — ${esc(C.site.name)}</title>

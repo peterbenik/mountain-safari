@@ -716,7 +716,7 @@ window.MS_CONTENT = {
   },
 
   tracking: {
-    ga4MeasurementId: "G-XXXXXXXXXX",
+    ga4MeasurementId: "G-2L4FCK798G",
     googleAdsId: "AW-XXXXXXXXX",
     convLabelLead: "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX",
     convLabelWhatsapp: "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX",

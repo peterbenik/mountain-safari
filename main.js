@@ -743,9 +743,13 @@
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); console.log('[MS tracking]', arguments); };
 
+  // The Google tag is installed manually in every page's <head> (Google's
+  // recommended install), so this is now only a fallback for a page that ships
+  // without it. Google is explicit: never more than one Google tag per page.
   function loadGtag() {
     const { ga4MeasurementId } = content.tracking;
     if (!ga4MeasurementId || ga4MeasurementId.includes('XXXX')) return;
+    if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`;
