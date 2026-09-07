@@ -177,6 +177,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .btn-pill:active { transform: translateY(0) scale(0.98); }
   .btn-pill:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
+  /* Header CTA — desktop only; below lg it lives in the mobile menu.
+     This needs a real rule rather than Tailwind's `hidden`: .btn-pill above sets
+     display:inline-flex in this same stylesheet, which loads AFTER tailwind.css,
+     so at equal specificity it beats the utility and the button stayed visible —
+     overflowing the bar and squeezing the phone number off small phones.
+     KEEP IN SYNC between index.html and assets/theme.css. */
+  .nav-cta { display: none; }
+  @media (min-width: 1024px) { .nav-cta { display: inline-flex; } }
+
   .btn-pill--primary {
     background: var(--royal);
     color: var(--cream);
@@ -590,7 +599,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="hidden sm:inline truncate" data-content="nav.phoneDisplay">…</span>
       </a>
       <div class="lang-switcher hidden lg:flex items-center shrink-0" role="group" aria-label="Jazyk / Język"></div>
-      <button type="button" class="btn-pill btn-pill--primary btn-pill--glow hidden sm:inline-flex shrink-0" data-open-modal data-content="nav.ctaLabel">Rezervovať</button>
+      <!-- Desktop only. Below lg the CTA lives in the mobile menu; keeping it here
+           too crowded the bar on small phones and squeezed the phone number to
+           zero width via truncate. Phone + language must survive that squeeze. -->
+      <button type="button" class="btn-pill btn-pill--primary btn-pill--glow nav-cta shrink-0" data-open-modal data-content="nav.ctaLabel">Rezervovať</button>
       <button type="button" id="hamburger-btn" class="lg:hidden p-2 -mr-2 shrink-0" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6 hamburger-line" style="fill:currentColor" aria-hidden="true"><use href="#icon-menu"/></svg>
       </button>
@@ -823,17 +835,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="flex flex-col gap-5">
         <div>
           <label for="field-name" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.name.label">Meno a priezvisko</span><span class="required-mark" aria-hidden="true"> *</span></label>
-          <input id="field-name" name="name" type="text" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.name.placeholder" required />
+          <input id="field-name" name="name" type="text" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.name.placeholder" data-clarity-mask="true" required />
           <p class="field-error" data-error-for="name" hidden></p>
         </div>
         <div>
           <label for="field-phone" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.phone.label">Telefón</span><span class="required-mark" aria-hidden="true"> *</span></label>
-          <input id="field-phone" name="phone" type="tel" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.phone.placeholder" required />
+          <input id="field-phone" name="phone" type="tel" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.phone.placeholder" data-clarity-mask="true" required />
           <p class="field-error" data-error-for="phone" hidden></p>
         </div>
         <div>
           <label for="field-email" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.email.label">E-mail</span><span class="required-mark" aria-hidden="true"> *</span></label>
-          <input id="field-email" name="email" type="email" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.email.placeholder" required />
+          <input id="field-email" name="email" type="email" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.email.placeholder" data-clarity-mask="true" required />
           <p class="field-error" data-error-for="email" hidden></p>
         </div>
         <div>
@@ -847,7 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div>
           <label for="field-message" class="block text-sm font-medium mb-1.5" data-content="modal.fields.message.label">Správa</label>
-          <textarea id="field-message" name="message" rows="3" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5 resize-none" data-content-placeholder="modal.fields.message.placeholder"></textarea>
+          <textarea id="field-message" name="message" rows="3" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5 resize-none" data-content-placeholder="modal.fields.message.placeholder" data-clarity-mask="true"></textarea>
         </div>
       </div>
 
@@ -881,7 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ WHATSAPP FAB ============ -->
 <a id="whatsapp-fab" href="#" target="_blank" rel="noopener" data-whatsapp-link
-   class="fixed bottom-6 right-6 z-[65] w-14 h-14 rounded-full flex items-center justify-center text-white"
+   class="fixed bottom-6 left-6 lg:left-auto lg:right-6 z-[65] w-14 h-14 rounded-full flex items-center justify-center text-white"
    style="background:#25D366; box-shadow: 0 12px 32px -8px rgba(37,211,102,0.55), 0 4px 12px -2px rgba(20,27,46,0.25);">
   <svg class="w-7 h-7" style="fill:currentColor" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
 </a>

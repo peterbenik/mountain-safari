@@ -86,6 +86,15 @@
   .btn-pill:active { transform: translateY(0) scale(0.98); }
   .btn-pill:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
+  /* Header CTA — desktop only; below lg it lives in the mobile menu.
+     This needs a real rule rather than Tailwind's `hidden`: .btn-pill above sets
+     display:inline-flex in this same stylesheet, which loads AFTER tailwind.css,
+     so at equal specificity it beats the utility and the button stayed visible —
+     overflowing the bar and squeezing the phone number off small phones.
+     KEEP IN SYNC between index.html and assets/theme.css. */
+  .nav-cta { display: none; }
+  @media (min-width: 1024px) { .nav-cta { display: inline-flex; } }
+
   .btn-pill--primary {
     background: var(--royal);
     color: var(--cream);
