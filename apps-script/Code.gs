@@ -220,26 +220,104 @@ function doPost(e) {
     // Confirmation + encouragement to the customer
     if (data.email) {
       const waLink = 'https://wa.me/' + WHATSAPP_PHONE;
+      // Pre-tour briefing: the confirmation doubles as the "what to bring /
+      // how to prepare" note, so the guide does not have to send it separately.
+      const H = 'margin:26px 0 8px;font-family:Georgia,\'Times New Roman\',serif;font-size:16px;color:' + BRAND.navy + ';';
+      const P = 'margin:0 0 14px;';
+      const GEAR = [
+        'pevná turistická obuv s dobrou podrážkou',
+        'pohodlné funkčné oblečenie podľa počasia',
+        'teplá vrstva (mikina / bunda)',
+        'nepremokavá bunda',
+        'čiapka alebo šiltovka, prípadne rukavice',
+        'slnečné okuliare a opaľovací krém',
+        'menší batoh',
+        'približne 1 – 1,5 l tekutín',
+        'malé občerstvenie / energetická tyčinka',
+        'osobné lieky, ktoré používate',
+      ];
+
+      // The briefing copy never names the tour, so restate the booking itself:
+      // this email is the customer's only written record of what they reserved.
+      const summaryRows = [
+        ['Výstup', vystup],
+        ['Termín', termin !== '—' ? termin : 'dohodneme spoločne'],
+      ];
+      const summaryHtml = vystup === '—' ? '' :
+        '<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:separate;margin:0 0 20px;background:' + BRAND.cream + ';border-left:3px solid ' + BRAND.royal + ';border-radius:4px;">' +
+          '<tr><td style="padding:16px 18px;">' +
+            '<div style="margin:0 0 8px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:' + BRAND.muted + ';">Vaša rezervácia</div>' +
+            summaryRows.map(function (row, i) {
+              // No trailing margin on the last row, so the cell's padding stays even.
+              return '<div style="margin:0 0 ' + (i === summaryRows.length - 1 ? '0' : '4px') + ';font-size:15px;">' +
+                '<span style="color:' + BRAND.muted + ';">' + row[0] + ': </span><b>' + row[1] + '</b></div>';
+            }).join('') +
+          '</td></tr>' +
+        '</table>';
+
       const clientBody =
-        '<p style="margin:0 0 16px;">Dobrý deň ' + (meno || '') + ',</p>' +
-        '<p style="margin:0 0 16px;">ďakujeme za váš záujem o výstup <b>' + vystup + '</b>' +
-          (termin !== '—' ? ' v termíne <b>' + termin + '</b>' : '') + '. Vašu rezerváciu sme prijali a náš tím ju už spracováva.</p>' +
-        '<p style="margin:0 0 16px;">Ozveme sa vám <b>do 24 hodín</b> s podrobnosťami k výstupu, dostupnými termínmi a ďalšími krokmi.</p>' +
-        '<p style="margin:0 0 16px;">Naši horskí vodcovia sú licencovaní IVBV/UIAGM/IFMGA — takže sa môžete spoľahnúť, že vaše hory budú v tých najistejších rukách.</p>' +
-        '<p style="margin:0 0 24px;">Potrebujete niečo doriešiť skôr? Ozvite sa nám priamo cez WhatsApp:</p>' +
+        '<p style="' + P + '">Zdravím' + (meno ? ' ' + meno : '') + ',</p>' +
+        '<p style="' + P + '">sme hrdí na to, že chcete posúvať vaše limity na ďalšiu úroveň.</p>' +
+        '<p style="' + P + '">Úspešne ste si rezervovali váš budúci zážitok s horskými vodcami — ' + BUSINESS_NAME + '.</p>' +
+        summaryHtml +
+        '<p style="' + P + '">Či je to váš prvý alebo X-tý výstup, ručíme, že vám tempo nastavíme na mieru a nebudeme vás hnať hore a dole…</p>' +
+        '<p style="' + P + '">Aby sme si túru užili bezpečne a bez zbytočného stresu, prosím venujte pozornosť nasledujúcim informáciám nižšie.</p>' +
+
+        '<h2 style="' + H + '">Čo si zobrať</h2>' +
+        '<ul style="margin:0 0 14px;padding-left:20px;">' +
+          GEAR.map(function (item) {
+            return '<li style="margin:0 0 6px;">' + item + '</li>';
+          }).join('') +
+        '</ul>' +
+        '<p style="' + P + '">Technické vybavenie potrebné na konkrétnu túru zabezpečí alebo vopred upresní horský vodca.</p>' +
+
+        '<h2 style="' + H + '">Príchod</h2>' +
+        '<p style="' + P + '">Na miesto stretnutia príďte ideálne 10 – 15 minút pred dohodnutým časom. Budeme mať priestor skontrolovať výstroj a pripraviť sa bez zbytočného zhonu.</p>' +
+
+        '<h2 style="' + H + '">Deň pred túrou</h2>' +
+        '<p style="' + P + '">Odporúčame ľahší režim, dostatok tekutín a kvalitný spánok. Vyhnite sa väčšiemu množstvu alkoholu a náročnej fyzickej aktivite.</p>' +
+
+        '<h2 style="' + H + '">Počasie</h2>' +
+        '<p style="' + P + '">Počasie v horách sa môže rýchlo meniť. Deň pred túrou si potvrdíme aktuálnu predpoveď, čas a miesto stretnutia.</p>' +
+        '<p style="' + P + '">V prípade nevhodných podmienok môže horský vodca trasu upraviť, zvoliť náhradný cieľ alebo túru presunúť.</p>' +
+
+        '<h2 style="' + H + '">Ešte jeden tip!</h2>' +
+        '<p style="' + P + '">Nové topánky alebo úplne novú výstroj si radšej prvýkrát neskúšajte priamo na túre.</p>' +
+        '<p style="' + P + '">Ak máte akékoľvek zdravotné obmedzenie alebo inú okolnosť, ktorá môže ovplyvniť priebeh túry, prosím informujte o tom horského vodcu vopred.</p>' +
+
+        '<p style="margin:26px 0 14px;">Tešíme sa na spoločný deň v horách!</p>' +
+        '<p style="margin:0 0 20px;">Ak máte akékoľvek otázky, neváhajte a napíšte/zavolajte nám!</p>' +
         '<p style="margin:0 0 8px;text-align:center;">' +
           '<a href="' + waLink + '" style="display:inline-block;background:' + BRAND.royal + ';color:#FFFFFF;text-decoration:none;padding:12px 28px;border-radius:999px;font-weight:bold;">Napísať na WhatsApp</a>' +
         '</p>' +
-        '<p style="margin:24px 0 0;">Tešíme sa na spoločný výstup!<br>S pozdravom,<br><b>' + BUSINESS_NAME + '</b></p>';
+        '<p style="margin:24px 0 0;">S pozdravom,<br><b>' + BUSINESS_NAME + '</b></p>';
 
       const clientPlainText =
-        'Dobrý deň ' + (meno || '') + ',\n\n' +
-        'ďakujeme za váš záujem o výstup ' + vystup +
-          (termin !== '—' ? ' v termíne ' + termin : '') + '. Vašu rezerváciu sme prijali a náš tím ju už spracováva.\n\n' +
-        'Ozveme sa vám do 24 hodín s podrobnosťami k výstupu, dostupnými termínmi a ďalšími krokmi.\n\n' +
-        'Naši horskí vodcovia sú licencovaní IVBV/UIAGM/IFMGA.\n\n' +
-        'Potrebujete niečo doriešiť skôr? Napíšte nám na WhatsApp: ' + waLink + '\n\n' +
-        'Tešíme sa na spoločný výstup!\nS pozdravom,\n' + BUSINESS_NAME;
+        'Zdravím' + (meno ? ' ' + meno : '') + ',\n\n' +
+        'sme hrdí na to, že chcete posúvať vaše limity na ďalšiu úroveň.\n' +
+        'Úspešne ste si rezervovali váš budúci zážitok s horskými vodcami — ' + BUSINESS_NAME + '.\n' +
+        (vystup === '—' ? '' :
+          '\nVAŠA REZERVÁCIA\n' +
+          summaryRows.map(function (row) { return row[0] + ': ' + row[1] + '\n'; }).join('') + '\n') +
+        'Či je to váš prvý alebo X-tý výstup, ručíme, že vám tempo nastavíme na mieru a nebudeme vás hnať hore a dole…\n\n' +
+        'Aby sme si túru užili bezpečne a bez zbytočného stresu, prosím venujte pozornosť nasledujúcim informáciám nižšie.\n\n' +
+        'ČO SI ZOBRAŤ\n' +
+        GEAR.map(function (item) { return '- ' + item + '\n'; }).join('') +
+        '\nTechnické vybavenie potrebné na konkrétnu túru zabezpečí alebo vopred upresní horský vodca.\n\n' +
+        'PRÍCHOD\n' +
+        'Na miesto stretnutia príďte ideálne 10 – 15 minút pred dohodnutým časom. Budeme mať priestor skontrolovať výstroj a pripraviť sa bez zbytočného zhonu.\n\n' +
+        'DEŇ PRED TÚROU\n' +
+        'Odporúčame ľahší režim, dostatok tekutín a kvalitný spánok. Vyhnite sa väčšiemu množstvu alkoholu a náročnej fyzickej aktivite.\n\n' +
+        'POČASIE\n' +
+        'Počasie v horách sa môže rýchlo meniť. Deň pred túrou si potvrdíme aktuálnu predpoveď, čas a miesto stretnutia.\n' +
+        'V prípade nevhodných podmienok môže horský vodca trasu upraviť, zvoliť náhradný cieľ alebo túru presunúť.\n\n' +
+        'EŠTE JEDEN TIP!\n' +
+        'Nové topánky alebo úplne novú výstroj si radšej prvýkrát neskúšajte priamo na túre.\n' +
+        'Ak máte akékoľvek zdravotné obmedzenie alebo inú okolnosť, ktorá môže ovplyvniť priebeh túry, prosím informujte o tom horského vodcu vopred.\n\n' +
+        'Tešíme sa na spoločný deň v horách!\n\n' +
+        'Ak máte akékoľvek otázky, neváhajte a napíšte/zavolajte nám!\n' +
+        'WhatsApp: ' + waLink + '\n\n' +
+        'S pozdravom,\n' + BUSINESS_NAME;
 
       try {
         // Replies go to the client's real inbox, not the send-only address.
