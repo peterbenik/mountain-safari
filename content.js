@@ -720,11 +720,12 @@ window.MS_CONTENT = {
 
   tracking: {
     ga4MeasurementId: "G-2L4FCK798G",
-    googleAdsId: "AW-XXXXXXXXX",
-    convLabelLead: "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX",
-    convLabelWhatsapp: "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX",
-    // PLACEHOLDER — create a "Phone call" conversion action in Google Ads and paste its AW-.../label value here.
-    convLabelPhone: "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX",
+    // Google Ads conversions are NOT fired from this codebase. Container
+    // GTM-W7JLM2W4 owns all three, on conversion id 17529225722:
+    //   LEAD formulár túry  PpEeCIq11OwcEPqDy6ZB  (URL contains thank-you.html)
+    //   Volanie click       yZuNCIi21OwcEPqDy6ZB  (linkClick, href starts tel:)
+    //   Whatsapp click      HxbICI211OwcEPqDy6ZB  (linkClick, href contains wa.me)
+    // Recorded here for reference only — change them in GTM, not here.
   },
 
   appsScriptUrl: "https://script.google.com/macros/s/AKfycby7nJ-gsmA9LbRnbzQWlRQk8Hj9jegqebFdp9T1L6TqKmxht92PCVRwdAVvyRVitvcmAw/exec",

@@ -759,13 +759,15 @@
     window.gtag('js', new Date());
     window.gtag('config', ga4MeasurementId);
   }
+  // GA4 events only. The Google Ads conversions for these two clicks belong to
+  // container GTM-W7JLM2W4, whose tags trigger on gtm.linkClick for `tel:` and
+  // `wa.me` hrefs — independently of anything here. Do not also send an Ads
+  // `conversion` event from this file: it double-counts every click.
   function fireWhatsappConversion() {
     window.gtag('event', 'contact');
-    window.gtag('event', 'conversion', { send_to: `${content.tracking.googleAdsId}/${content.tracking.convLabelWhatsapp}` });
   }
   function firePhoneConversion() {
     window.gtag('event', 'phone_click');
-    window.gtag('event', 'conversion', { send_to: `${content.tracking.googleAdsId}/${content.tracking.convLabelPhone}` });
   }
   document.addEventListener('click', (e) => {
     if (e.target.closest('a[href^="tel:"]')) firePhoneConversion();
