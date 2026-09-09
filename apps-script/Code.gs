@@ -31,6 +31,44 @@ const WHATSAPP_PHONE = '421903624085';                   // digits only, country
 // out-of-office replies have somewhere to land.
 const FROM_EMAIL = 'hello@mountainsafari.sk';    // sender shown to customers
 const REPLY_TO_EMAIL = 'info@mountainsafari.sk'; // where customer replies land
+
+// ── PROFIT SHARE ────────────────────────────────────────────────────────
+// Promoter commission: 10 % of the NET profit on each paid trip.
+//
+// Net profit is not stored anywhere, so it is derived from the gross price
+// with a single margin figure. The agreed worked example was a ~500 EUR
+// Gerlach trip leaving ~300 EUR net (10 % of that = ~30 EUR), which is a 60 %
+// net margin. Anton separately estimated ~350 EUR net on the same trip, which
+// would be 70 %. That spread is ~17 % of the promoter's income, so the figure
+// lives in ONE editable cell (Provízia!M1) rather than in this file — change
+// it there once it is pinned down in writing. These constants only seed the
+// sheet the first time it is built.
+const COMMISSION_SHEET = 'Provízia';
+const PRICE_SHEET = 'Cenník';
+const DEFAULT_NET_MARGIN = 0.60; // net profit as a share of the gross price
+const COMMISSION_RATE = 0.10;    // promoter's share of that net profit
+
+// Group TOTALS in EUR — deliberately normalised.
+// content.js is inconsistent: the Tatras tours quote a group total ("2 osoby
+// 450 €"), while Monte Rosa and Ortler quote PER PERSON ("2 osoby 950 €/os.").
+// Everything below is the total the customer pays, so the sheet never has to
+// know which convention a tour uses. Blank = no standard price, fill by hand.
+// Gerlach also has a winter price (450 / 500) — override the Cena cell for a
+// winter booking; the table carries the summer rate.
+const PRICE_TABLE = [
+  ['Gerlachovský štít',   430,  450,  500],
+  ['Lomnický štít',       390,  430,  450],
+  ['Ľadový štít',         430,  470,  500],
+  ['Vysoká',              430,  470,  500],
+  ['Mont Blanc',           '', 1700,   ''],
+  ['Monte Rosa',         1700, 1900,   ''],
+  ['Ortler - Hintergrat', 1000, 1000,  ''],
+  ['Zimný Lomnický štít',  370,  420,  ''],
+];
+
+const LEAD_HEADERS = ['Čas', 'Meno', 'Telefón', 'E-mail', 'Výstup', 'Termín', 'Správa', 'Počet osôb'];
+const STATUSES = ['Dopyt', 'Potvrdené', 'Zrealizované', 'Zaplatené', 'Zrušené'];
+const SOURCES = ['Formulár', 'Telefón', 'WhatsApp', 'Iné'];
 // ────────────────────────────────────────────────────────
 
 // Brand tokens — kept in sync with index.html's :root CSS variables
@@ -158,7 +196,11 @@ function doPost(e) {
     let sheet = ss.getSheetByName(SHEET_NAME);
     if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Čas', 'Meno', 'Telefón', 'E-mail', 'Výstup', 'Termín', 'Správa']);
+      sheet.appendRow(LEAD_HEADERS);
+    } else if (!sheet.getRange(1, LEAD_HEADERS.length).getValue()) {
+      // Migration: the sheet predates the "Počet osôb" column. Appending the
+      // header at the END keeps every existing row's data where it is.
+      sheet.getRange(1, LEAD_HEADERS.length).setValue(LEAD_HEADERS[LEAD_HEADERS.length - 1]);
     }
 
     // Telefón (column C) must be plain text, otherwise Sheets tries to parse a
@@ -171,14 +213,29 @@ function doPost(e) {
       data.telefon || '',
       data.email || '',
       data.vystup || '',
+      // Termín is LEGACY. The booking form no longer has a date field — any
+      // preferred date now arrives inside Správa. The column stays so the
+      // rows recorded before that change keep their data in the right place;
+      // new rows leave it blank. Safe to hide in the Sheet, not to delete.
       data.termin || '',
       data.sprava || '',
+      data.pocetOsob || '',
     ]);
+
+    // Commission ledger. Isolated on purpose: the lead is what matters, and a
+    // problem here must never cost a booking. Silently does nothing until
+    // setupCommissionSheets() has been run once.
+    try {
+      appendCommissionRow(ss, data);
+    } catch (commErr) {
+      console.error('commission row failed', commErr);
+    }
 
     const meno = escapeHtml(data.meno);
     const telefon = escapeHtml(data.telefon);
     const email = escapeHtml(data.email);
     const vystup = escapeHtml(data.vystup) || '—';
+    const pocetOsob = escapeHtml(data.pocetOsob) || '—';
     const termin = escapeHtml(data.termin) || '—';
     const sprava = escapeHtml(data.sprava) || '—';
 
@@ -191,7 +248,7 @@ function doPost(e) {
         '<tr><td style="padding:6px 0;color:' + BRAND.muted + ';">Telefón</td><td style="padding:6px 0;">' + telefon + '</td></tr>' +
         '<tr><td style="padding:6px 0;color:' + BRAND.muted + ';">E-mail</td><td style="padding:6px 0;">' + email + '</td></tr>' +
         '<tr><td style="padding:6px 0;color:' + BRAND.muted + ';">Výstup</td><td style="padding:6px 0;">' + vystup + '</td></tr>' +
-        '<tr><td style="padding:6px 0;color:' + BRAND.muted + ';">Termín</td><td style="padding:6px 0;">' + termin + '</td></tr>' +
+        '<tr><td style="padding:6px 0;color:' + BRAND.muted + ';">Počet osôb</td><td style="padding:6px 0;">' + pocetOsob + '</td></tr>' +
         '<tr><td style="padding:6px 0;color:' + BRAND.muted + ';vertical-align:top;">Správa</td><td style="padding:6px 0;">' + sprava + '</td></tr>' +
       '</table>';
 
@@ -201,7 +258,7 @@ function doPost(e) {
       'Telefón: ' + telefon + '\n' +
       'E-mail: ' + email + '\n' +
       'Výstup: ' + vystup + '\n' +
-      'Termín: ' + termin + '\n' +
+      'Počet osôb: ' + pocetOsob + '\n' +
       'Správa: ' + sprava + '\n';
 
     const stripNewlines = (s) => String(s || '—').replace(/[\r\n]+/g, ' ').trim() || '—';
@@ -241,6 +298,7 @@ function doPost(e) {
       // this email is the customer's only written record of what they reserved.
       const summaryRows = [
         ['Výstup', vystup],
+        ['Počet osôb', pocetOsob],
         ['Termín', termin !== '—' ? termin : 'dohodneme spoločne'],
       ];
       const summaryHtml = vystup === '—' ? '' :
@@ -345,5 +403,173 @@ function doPost(e) {
     return ContentService
       .createTextOutput(JSON.stringify({ result: 'error', error: String(err) }))
       .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PROFIT SHARE — price table + commission ledger
+
+   Two sheets, both created by setupCommissionSheets() (run it ONCE from the
+   editor; it is safe to re-run — it never clears booking rows and never
+   overwrites a margin you have edited):
+
+     Cenník    — group total prices per tour, editable by the client.
+     Provízia  — one row per booking. Columns A–F and I–J are ordinary cells;
+                 G and H are single ARRAYFORMULA cells that cover the whole
+                 column, so a hand-typed row (a phone or WhatsApp booking)
+                 computes itself with nothing to copy down.
+
+   NEVER write into G or H from code or by hand — a value in the middle of an
+   ARRAYFORMULA column breaks the whole array.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+const COMM_HEADERS = ['Dátum', 'Meno', 'Výstup', 'Počet osôb', 'Zdroj', 'Cena (EUR)',
+                      'Čistý zisk (EUR)', 'Provízia (EUR)', 'Stav', 'Poznámka'];
+const COMM_ROWS = 2000; // bounded so the ARRAYFORMULA cannot spill endlessly
+
+function setupCommissionSheets() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  buildPriceSheet_(ss);
+  buildCommissionSheet_(ss);
+  SpreadsheetApp.flush();
+  Logger.log('Hotovo. Skontrolujte hárky "' + PRICE_SHEET + '" a "' + COMMISSION_SHEET + '".');
+  Logger.log('Čistá marža je v bunke ' + COMMISSION_SHEET + '!M1 — zmeňte ju tam, nie v kóde.');
+}
+
+function buildPriceSheet_(ss) {
+  let sh = ss.getSheetByName(PRICE_SHEET);
+  const isNew = !sh;
+  if (!sh) sh = ss.insertSheet(PRICE_SHEET);
+
+  const header = ['Výstup', '1 osoba', '2 osoby', '3 osoby'];
+  sh.getRange(1, 1, 1, header.length).setValues([header])
+    .setFontWeight('bold').setBackground(BRAND.navy).setFontColor('#FFFFFF');
+
+  // Only seed the prices on first build — the client may have edited them.
+  if (isNew) {
+    sh.getRange(2, 1, PRICE_TABLE.length, 4).setValues(PRICE_TABLE);
+    sh.getRange(2, 2, PRICE_TABLE.length, 3).setNumberFormat('#,##0 €');
+    const note = sh.getRange(PRICE_TABLE.length + 3, 1);
+    note.setValue('Ceny sú CELKOVÉ za skupinu, v EUR (nie za osobu). Úprava tu sa prejaví '
+      + 'na ďalších rezerváciách. Gerlach v zime stojí 450 / 500 € — pri zimnom termíne '
+      + 'prepíšte cenu priamo v hárku ' + COMMISSION_SHEET + '.');
+    note.setFontStyle('italic').setFontColor(BRAND.muted);
+  }
+
+  sh.setFrozenRows(1);
+  sh.autoResizeColumns(1, 4);
+}
+
+function buildCommissionSheet_(ss) {
+  let sh = ss.getSheetByName(COMMISSION_SHEET);
+  if (!sh) sh = ss.insertSheet(COMMISSION_SHEET);
+
+  // A fresh sheet ships with 1000 rows and 26 columns, but every ranged write
+  // below addresses COMM_ROWS (2000) and column M. Grow it FIRST — otherwise
+  // those calls run off the end of the grid and Apps Script reports the
+  // unhelpful "Service Spreadsheets failed while accessing document".
+  if (sh.getMaxRows() < COMM_ROWS) {
+    sh.insertRowsAfter(sh.getMaxRows(), COMM_ROWS - sh.getMaxRows());
+  }
+  if (sh.getMaxColumns() < 13) {
+    sh.insertColumnsAfter(sh.getMaxColumns(), 13 - sh.getMaxColumns());
+  }
+
+  // Headers. G1/H1 are overwritten by their ARRAYFORMULA below, which emits
+  // its own header text — that is why they are written twice.
+  sh.getRange(1, 1, 1, COMM_HEADERS.length).setValues([COMM_HEADERS])
+    .setFontWeight('bold').setBackground(BRAND.navy).setFontColor('#FFFFFF');
+
+  const last = COMM_ROWS;
+  sh.getRange('G1').setFormula(
+    '=ARRAYFORMULA(IF(ROW(A1:A' + last + ')=1,"' + COMM_HEADERS[6] + '",'
+    + 'IF(A1:A' + last + '="","",F1:F' + last + '*$M$1)))');
+  sh.getRange('H1').setFormula(
+    '=ARRAYFORMULA(IF(ROW(A1:A' + last + ')=1,"' + COMM_HEADERS[7] + '",'
+    + 'IF(A1:A' + last + '="","",G1:G' + last + '*$M$2)))');
+
+  // ── assumptions + totals, off to the side ──
+  sh.getRange('L1').setValue('Čistá marža (podiel z ceny)');
+  sh.getRange('L2').setValue('Provízia z čistého zisku');
+  sh.getRange('L4').setValue('Provízia — ZAPLATENÉ');
+  sh.getRange('L5').setValue('Provízia — v príprave');
+  sh.getRange('L6').setValue('Počet zaplatených výstupov');
+  sh.getRange('L1:L6').setFontColor(BRAND.muted);
+  sh.getRange('L4').setFontWeight('bold').setFontColor(BRAND.ink);
+
+  // Seed the two rates ONLY if empty, so re-running never resets an edit.
+  if (sh.getRange('M1').getValue() === '') sh.getRange('M1').setValue(DEFAULT_NET_MARGIN);
+  if (sh.getRange('M2').getValue() === '') sh.getRange('M2').setValue(COMMISSION_RATE);
+  sh.getRange('M1:M2').setNumberFormat('0%');
+
+  sh.getRange('M4').setFormula('=SUMIF(I:I,"Zaplatené",H:H)');
+  sh.getRange('M5').setFormula('=SUMIFS(H:H,I:I,"<>Zaplatené",I:I,"<>Zrušené",I:I,"<>")');
+  sh.getRange('M6').setFormula('=COUNTIF(I:I,"Zaplatené")');
+  sh.getRange('M4:M5').setNumberFormat('#,##0.00 €').setFontWeight('bold');
+  sh.getRange('M4').setFontSize(12);
+
+  // ── formats ──
+  sh.getRange(2, 1, last - 1, 1).setNumberFormat('d.M.yyyy');
+  sh.getRange(2, 6, last - 1, 3).setNumberFormat('#,##0.00 €');
+
+  // ── dropdowns ──
+  sh.getRange(2, 9, last - 1, 1).setDataValidation(
+    SpreadsheetApp.newDataValidation().requireValueInList(STATUSES, true).build());
+  sh.getRange(2, 5, last - 1, 1).setDataValidation(
+    SpreadsheetApp.newDataValidation().requireValueInList(SOURCES, true).build());
+
+  sh.setFrozenRows(1);
+  sh.autoResizeColumns(1, 12);
+}
+
+/* Group total for a tour at a given headcount, read from the Cenník sheet so
+   the client can change a price without touching this file. Returns '' when
+   there is no standard price (4+ people, Mont Blanc solo, an unknown tour) —
+   the cell is then filled in by hand. */
+function lookupPrice(ss, tourName, people) {
+  const sh = ss.getSheetByName(PRICE_SHEET);
+  if (!sh) return '';
+  const n = parseInt(people, 10);
+  if (!n || n < 1 || n > 3) return '';
+  const rows = sh.getDataRange().getValues();
+  const wanted = String(tourName || '').trim();
+  for (let i = 1; i < rows.length; i++) {
+    if (String(rows[i][0]).trim() === wanted) {
+      const v = rows[i][n]; // column 1 = "1 osoba", 2 = "2 osoby", 3 = "3 osoby"
+      return (typeof v === 'number' && v > 0) ? v : '';
+    }
+  }
+  return '';
+}
+
+function appendCommissionRow(ss, data) {
+  const sh = ss.getSheetByName(COMMISSION_SHEET);
+  if (!sh) return; // setupCommissionSheets() has not been run yet
+
+  // getLastRow() is unreliable here: the ARRAYFORMULA columns return "" for
+  // every unused row, which still counts as content. Scan column A instead.
+  const colA = sh.getRange(1, 1, Math.min(COMM_ROWS, sh.getMaxRows()), 1).getValues();
+  let lastUsed = 1;
+  for (let i = colA.length - 1; i >= 0; i--) {
+    if (colA[i][0] !== '' && colA[i][0] !== null) { lastUsed = i + 1; break; }
+  }
+  const row = lastUsed + 1;
+  if (row > COMM_ROWS) throw new Error('Provízia sheet is full (' + COMM_ROWS + ' rows)');
+
+  const price = lookupPrice(ss, data.vystup, data.pocetOsob);
+
+  // Columns A–F only: G and H belong to the ARRAYFORMULA and must stay untouched.
+  sh.getRange(row, 1, 1, 6).setValues([[
+    new Date(),
+    data.meno || '',
+    data.vystup || '',
+    data.pocetOsob || '',
+    SOURCES[0],
+    price,
+  ]]);
+  sh.getRange(row, 9).setValue(STATUSES[0]);
+  if (price === '') {
+    sh.getRange(row, 10).setValue('Cenu doplňte ručne — pre tento výstup a počet osôb nie je v cenníku sadzba.');
   }
 }

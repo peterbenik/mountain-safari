@@ -684,8 +684,22 @@ window.MS_CONTENT = {
       phone: { label: "Telefón", placeholder: "+421 888 888 888", required: true },
       email: { label: "E-mail", placeholder: "jan@gmail.com", required: true },
       tour: { label: "Ktorý výstup", placeholderOption: "Vyberte výstup", otherOptionLabel: "Iné / neviem", required: true },
-      date: { label: "Preferovaný termín", placeholder: "1.1.2026", required: false },
-      message: { label: "Správa", placeholder: "", required: false },
+      // Cena sa odvíja od počtu osôb (napr. Gerlach 430 / 450 / 500 €), preto je
+      // toto pole povinné. Možnosti sa neskladajú napevno — vychádzajú z
+      // guideRatio vybraného výstupu (3:1 → 1–3 osoby, 2:1 → 1–2 osoby), takže
+      // formulár neponúkne skupinu, ktorú vodca na danú túru nezoberie.
+      people: {
+        label: "Počet osôb",
+        placeholderOption: "Vyberte počet",
+        required: true,
+        optionLabels: { one: "1 osoba", few: "{n} osoby" },
+        hint: "Tento výstup vedieme v skupine do {max} osôb.",
+        hintNoTour: "Najprv vyberte výstup — od neho závisí veľkosť skupiny.",
+      },
+      // Termín sa presunul sem: pevné pole na dátum nútilo ľudí vymyslieť si
+      // presný deň, hoci ho väčšina ešte nemá. Vo voľnom texte ho napíšu spolu
+      // so všetkým ostatným, čo potrebujeme vedieť.
+      message: { label: "Správa", placeholder: "Preferovaný termín, špeciálne požiadavky, otázky…", required: false },
     },
     submitLabel: "Odoslať dopyt",
     submitLoadingLabel: "Odosielam…",

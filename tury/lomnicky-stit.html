@@ -267,8 +267,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="field-error" data-error-for="tour" hidden></p>
         </div>
         <div>
-          <label for="field-date" class="block text-sm font-medium mb-1.5" data-content="modal.fields.date.label">Preferovaný termín</label>
-          <input id="field-date" name="date" type="text" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5" data-content-placeholder="modal.fields.date.placeholder" />
+          <label for="field-people" class="block text-sm font-medium mb-1.5"><span data-content="modal.fields.people.label">Počet osôb</span><span class="required-mark" aria-hidden="true"> *</span></label>
+          <select id="field-people" name="people" class="field-input w-full rounded-lg border border-hairline px-4 py-2.5 bg-surface" required></select>
+          <p class="field-error" data-error-for="people" hidden></p>
+          <p id="field-people-hint" class="text-muted text-xs mt-1.5"></p>
         </div>
         <div>
           <label for="field-message" class="block text-sm font-medium mb-1.5" data-content="modal.fields.message.label">Správa</label>

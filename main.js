@@ -602,6 +602,8 @@
   const modalSpinner = document.getElementById('modal-spinner');
   const formErrorBanner = document.getElementById('form-error-banner');
   const tourSelect = document.getElementById('field-tour');
+  const peopleSelect = document.getElementById('field-people');
+  const peopleHint = document.getElementById('field-people-hint');
 
   function populateTourSelect() {
     const { tours, modal } = content;
@@ -609,6 +611,32 @@
       .concat(tours.filter((t) => t.showOnLp).map((t) => `<option value="${t.id}">${escapeHtml(t.name)}</option>`))
       .concat([`<option value="other">${escapeHtml(modal.fields.tour.otherOptionLabel)}</option>`]);
     tourSelect.innerHTML = options.join('');
+  }
+
+  // The guide ratio caps the group: a 3:1 tour takes up to three clients, a 2:1
+  // tour two. Offering more would quote a price that does not exist — every
+  // pricingDetail table stops at exactly this number.
+  function maxGroupFor(tourId) {
+    const tour = content.tours.find((t) => t.id === tourId);
+    if (!tour) return 3;
+    const n = parseInt(String(tour.guideRatio || '').split(':')[0], 10);
+    return (n >= 1 && n <= 6) ? n : 3;
+  }
+
+  function populatePeopleSelect(tourId) {
+    const f = content.modal.fields.people;
+    const known = !!content.tours.find((t) => t.id === tourId);
+    const max = maxGroupFor(tourId);
+    const previous = peopleSelect.value;
+    const opts = [`<option value="" disabled selected>${escapeHtml(f.placeholderOption)}</option>`];
+    for (let n = 1; n <= max; n++) {
+      const label = n === 1 ? f.optionLabels.one : f.optionLabels.few.replace('{n}', String(n));
+      opts.push(`<option value="${n}">${escapeHtml(label)}</option>`);
+    }
+    peopleSelect.innerHTML = opts.join('');
+    // Keep an already-made choice when it still fits the newly picked tour.
+    if (previous && Number(previous) <= max) peopleSelect.value = previous;
+    peopleHint.textContent = !tourId ? f.hintNoTour : (known ? f.hint.replace('{max}', String(max)) : '');
   }
 
   function setFieldError(name, message) {
@@ -632,6 +660,7 @@
       phone: !data.phone.trim() ? errors.required : (!/^[+\d][\d\s()-]{6,}$/.test(data.phone) ? errors.invalidPhone : ''),
       email: !data.email.trim() ? errors.required : (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ? errors.invalidEmail : ''),
       tour: data.tour ? '' : errors.required,
+      people: data.people ? '' : errors.required,
     };
     let firstInvalid = null;
     Object.entries(checks).forEach(([name, msg]) => {
@@ -655,12 +684,14 @@
     bookingForm.querySelectorAll('.field-error').forEach((el) => { el.hidden = true; el.textContent = ''; });
     bookingForm.querySelectorAll('.field-input').forEach((el) => el.classList.remove('is-invalid'));
     tourSelect.selectedIndex = 0;
+    peopleSelect.selectedIndex = 0;
     setSubmitLoading(false);
   }
 
   function openBookingModal(tourId) {
     resetBookingForm();
     if (tourId) tourSelect.value = tourId;
+    populatePeopleSelect(tourSelect.value);
     openOverlay({ backdrop: modalBackdrop, panel: modalPanel, initialFocus: document.getElementById('field-name') });
   }
   function closeBookingModal() { closeTopOverlay(); }
@@ -677,7 +708,7 @@
     const tourName = data.tour === 'other'
       ? content.modal.fields.tour.otherOptionLabel
       : ((content.tours.find((t) => t.id === data.tour) || {}).name || data.tour);
-    return { meno: data.name, telefon: data.phone, email: data.email, vystup: tourName, termin: data.date, sprava: data.message };
+    return { meno: data.name, telefon: data.phone, email: data.email, vystup: tourName, pocetOsob: data.people, sprava: data.message };
   }
 
   async function submitBooking(payload) {
@@ -706,7 +737,7 @@
       phone: formData.get('phone') || '',
       email: formData.get('email') || '',
       tour: formData.get('tour') || '',
-      date: formData.get('date') || '',
+      people: formData.get('people') || '',
       message: formData.get('message') || '',
     };
     if (!validateForm(data)) return;
@@ -715,7 +746,7 @@
     try {
       const payload = buildPayload(data);
       await submitBooking(payload);
-      const params = new URLSearchParams({ name: payload.meno, tour: payload.vystup, date: payload.termin || '' });
+      const params = new URLSearchParams({ name: payload.meno, tour: payload.vystup });
       window.location.href = `thank-you.html?${params.toString()}`;
       return;
     } catch (err) {
@@ -812,6 +843,8 @@
     renderFooterCopyright();
     renderPartnerLogos();
     populateTourSelect();
+    populatePeopleSelect();
+    tourSelect.addEventListener('change', () => populatePeopleSelect(tourSelect.value));
     initDuoPortrait();
     initWhatsapp();
     loadGtag();
