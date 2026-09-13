@@ -444,7 +444,7 @@
       parts.push(section('trasy', `${num()} / ${td.routesHeading}`, td.routesHeading, `
         <div class="max-w-2xl overflow-x-auto"><table class="routes-table">
           <thead><tr><th>${escapeHtml(td.routeColName)}</th><th>${escapeHtml(td.routeColDuration)}</th><th>${escapeHtml(td.routeColGroup)}</th></tr></thead>
-          <tbody>${tour.routes.map((r) => `<tr><td>${escapeHtml(r.name)}</td><td>${r.duration ? escapeHtml(r.duration) : '—'}</td><td>${r.maxGroup != null ? escapeHtml(String(r.maxGroup)) + ' ' + escapeHtml(td.routeGroupUnit) : '—'}</td></tr>`).join('')}</tbody>
+          <tbody>${tour.routes.map((r) => `<tr><td>${escapeHtml(r.name)}</td><td>${r.duration ? escapeHtml(r.duration) : '-'}</td><td>${r.maxGroup != null ? escapeHtml(String(r.maxGroup)) + ' ' + escapeHtml(td.routeGroupUnit) : '-'}</td></tr>`).join('')}</tbody>
         </table></div>`));
     }
 

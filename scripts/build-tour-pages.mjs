@@ -83,14 +83,14 @@ function seoBlock(t, C, locale) {
   const ogImage = encodeURI(absUrl(String(ogSource).replace(/\.webp$/i, '.jpg')));
   const alt = altitude(t.location);
   const guideSuffix = locale.code === 'pl' ? 'wejście z przewodnikiem wysokogórskim' : 'výstup s horským vodcom';
-  const title = `${t.name}${alt ? ` (${alt} m)` : ''} — ${guideSuffix} | ${site.name}`;
+  const title = `${t.name}${alt ? ` (${alt} m)` : ''}, ${guideSuffix} | ${site.name}`;
   const desc = trimDesc(t.description);
-  const ogTitle = `${t.name}${alt ? ` (${alt} m)` : ''} — ${guideSuffix}`;
+  const ogTitle = `${t.name}${alt ? ` (${alt} m)` : ''}, ${guideSuffix}`;
 
   const touristTrip = {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
-    name: `${t.name} — ${guideSuffix}`,
+    name: `${t.name}, ${guideSuffix}`,
     description: desc,
     image: ogImage,
     touristType: locale.code === 'pl' ? 'Wejście wysokogórskie z przewodnikiem' : 'Vodcovaný vysokohorský výstup',

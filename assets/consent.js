@@ -34,7 +34,7 @@
       privacyHref: '/ochrana-osobnych-udajov.html',
       cats: {
         necessary: { name: 'Nevyhnutné', desc: 'Potrebné na fungovanie stránky a odoslanie rezervácie.', always: 'Vždy aktívne' },
-        analytics: { name: 'Analytické', desc: 'Anonymné meranie návštevnosti — ktoré stránky si ľudia prezerajú a odkiaľ prichádzajú.' },
+        analytics: { name: 'Analytické', desc: 'Anonymné meranie návštevnosti: ktoré stránky si ľudia prezerajú a odkiaľ prichádzajú.' },
         marketing: { name: 'Marketingové', desc: 'Meranie účinnosti reklamy v Google Ads, aby sme neplatili za reklamu, ktorá nefunguje.' }
       }
     },
@@ -50,7 +50,7 @@
       privacyHref: '/pl/ochrana-osobnych-udajov.html',
       cats: {
         necessary: { name: 'Niezbędne', desc: 'Potrzebne do działania strony i wysłania rezerwacji.', always: 'Zawsze aktywne' },
-        analytics: { name: 'Analityczne', desc: 'Anonimowy pomiar ruchu — które strony są oglądane i skąd przychodzą odwiedzający.' },
+        analytics: { name: 'Analityczne', desc: 'Anonimowy pomiar ruchu: które strony są oglądane i skąd przychodzą odwiedzający.' },
         marketing: { name: 'Marketingowe', desc: 'Pomiar skuteczności reklam Google Ads, żebyśmy nie płacili za reklamę, która nie działa.' }
       }
     }
@@ -198,7 +198,7 @@
         '<div class="ms-consent__cats">' +
           '<div class="ms-consent__cat">' +
             '<label class="ms-consent__toggle ms-consent__toggle--locked">' +
-              '<input type="checkbox" checked disabled aria-label="' + esc(t.cats.necessary.name) + ' — ' + esc(t.cats.necessary.always) + '" />' +
+              '<input type="checkbox" checked disabled aria-label="' + esc(t.cats.necessary.name) + ', ' + esc(t.cats.necessary.always) + '" />' +
               '<span class="ms-consent__track"></span>' +
             '</label>' +
             '<span class="ms-consent__cat-text">' +

@@ -123,7 +123,7 @@ window.MS_CONTENT = {
       description: "Wejście prowadzi od schroniska Sliezsky dom przez Dolinę Wielicką i eksponowaną, ubezpieczoną liną Wielicką Próbę. Ze szczytu otwiera się widok na całe Tatry, jakiego z dołu nigdy nie zobaczysz.",
       link: "https://www.mountainsafari.sk/kurzy/gerlachovsky-stit/",
       meetingPoint: "Tatranská Polianka, Tatry Wysokie (Słowacja)",
-      meetingTime: "ok. 4:00 – 7:30 (w zależności od sezonu i pogody)",
+      meetingTime: "od ok. 4:00 do 7:30 (w zależności od sezonu i pogody)",
       pricingDetail: [
         { label: "1 osoba", price: 430, unit: "€" },
         { label: "2 osoby", price: 450, unit: "€ (225 €/os.)" },
@@ -136,14 +136,14 @@ window.MS_CONTENT = {
       routes: [
         { name: "Droga klasyczna", duration: "8 h", maxGroup: 3 },
         { name: "Tatarkova ferrata", duration: "9 h", maxGroup: 2 },
-        { name: "Martinova cesta", duration: "10–12 h", maxGroup: 2 },
+        { name: "Martinova cesta", duration: "10 do 12 h", maxGroup: 2 },
       ],
       included: [
         "Planowanie i realizacja wejścia z przewodnikiem IVBV/UIAGM/IFMGA wraz z jego kosztami",
         "Wypożyczenie sprzętu (uprząż, kask, czekan, raki)",
       ],
       excluded: [
-        "Transport Tatranská Polianka – Sliezsky dom i z powrotem: 20 €/os.",
+        "Transport z Tatranskiej Polianki do Sliezskiego Domu i z powrotem: 20 €/os.",
       ],
     },
     {
@@ -170,8 +170,8 @@ window.MS_CONTENT = {
         { label: "3 osoby", price: 450, unit: "€ (150 €/os.)" },
       ],
       longDescription: [
-        "Te wejścia prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy doskonale znają teren, pogodę i aktualne warunki. Cały dzień poświęcamy jednej grupie — tempo i konkretną drogę dopasujemy do Twojego doświadczenia, kondycji i warunków w górach.",
-        "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omawiamy plan, technikę i potrzebny sprzęt, a w trudnych pasażach jesteś asekurowany liną i pod stałym nadzorem przewodnika. Celem nie jest samo stanięcie na szczycie Łomnicy — ale przeżycie Tatr z perspektywy, której ze szlaku turystycznego nigdy nie zobaczysz.",
+        "Te wejścia prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy doskonale znają teren, pogodę i aktualne warunki. Cały dzień poświęcamy jednej grupie. Tempo i konkretną drogę dopasujemy do Twojego doświadczenia, kondycji i warunków w górach.",
+        "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omawiamy plan, technikę i potrzebny sprzęt, a w trudnych pasażach jesteś asekurowany liną i pod stałym nadzorem przewodnika. Celem nie jest samo stanięcie na szczycie Łomnicy, ale przeżycie Tatr z perspektywy, której ze szlaku turystycznego nigdy nie zobaczysz.",
       ],
       routes: [
         { name: "Droga klasyczna", duration: "6 h", maxGroup: 3 },
@@ -184,7 +184,7 @@ window.MS_CONTENT = {
         "Wypożyczenie sprzętu (uprząż, kask, czekan, raki)",
       ],
       excluded: [
-        "Transport Tatranská Lomnica – Lomnické sedlo i z powrotem: ok. 40 €/os. (www.vt.sk)",
+        "Transport z Tatranskiej Łomnicy na Lomnické sedlo i z powrotem: ok. 40 €/os. (www.vt.sk)",
       ],
     },
     {
@@ -204,15 +204,15 @@ window.MS_CONTENT = {
       imageAlt: "Wejście na Lodowy Szczyt, trzeci najwyższy szczyt Słowacji",
       description: "Trzeci najwyższy szczyt Słowacji i jeden z najpotężniejszych szczytów tatrzańskich. Wejście na Lodowy Szczyt (2 627 m) prowadzi przepięknym, wysokogórskim otoczeniem Doliny Małej Zimnej Wody, obok Téryho chaty, a dalej poza znakowanymi szlakami przez strome skalne i eksponowane granie. Ze szczytu otwiera się fantastyczny widok na najwyższe szczyty Tatr Wysokich i okoliczne doliny.",
       meetingPoint: "Hrebienok albo Téryho chata (Słowacja)",
-      meetingTime: "Hrebienok 4:00 – 6:00, Téryho chata 7:00 – 8:00",
+      meetingTime: "Hrebienok 4:00 do 6:00, Téryho chata 7:00 do 8:00",
       pricingDetail: [
         { label: "1 osoba", price: 430, unit: "€" },
         { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
         { label: "3 osoby", price: 500, unit: "€ (167 €/os.)" },
       ],
       longDescription: [
-        "Te wejścia prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy doskonale znają teren, pogodę i aktualne warunki. Cały dzień poświęcamy jednej grupie — tempo i przebieg wejścia dopasujemy do Twojego doświadczenia, kondycji i warunków w górach.",
-        "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omawiamy plan, technikę i potrzebny sprzęt, a w eksponowanych pasażach jesteś asekurowany liną i pod stałym nadzorem przewodnika. Lodowy Szczyt to nie kolejny wierzchołek — to solidny dzień w wysokich górach, w samym sercu Tatr, i przeżycie, którego się nie zapomina.",
+        "Te wejścia prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy doskonale znają teren, pogodę i aktualne warunki. Cały dzień poświęcamy jednej grupie. Tempo i przebieg wejścia dopasujemy do Twojego doświadczenia, kondycji i warunków w górach.",
+        "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omawiamy plan, technikę i potrzebny sprzęt, a w eksponowanych pasażach jesteś asekurowany liną i pod stałym nadzorem przewodnika. Lodowy Szczyt to nie kolejny wierzchołek, to solidny dzień w wysokich górach, w samym sercu Tatr, i przeżycie, którego się nie zapomina.",
       ],
       routes: [
         { name: "Droga przez Lodowego Konia", duration: "6 h", maxGroup: 3 },
@@ -240,7 +240,7 @@ window.MS_CONTENT = {
       imageAlt: "Wejście na Wysoką w Tatrach Wysokich",
       description: "Jeden z najpiękniejszych i najbardziej charakterystycznych szczytów Tatr Wysokich. Wysoka (2 547 m) ze swoim typowym dwuwierzchołkiem należy do tatrzańskiej klasyki. Wejście prowadzi przez Dolinę Mięguszowiecką, obok Popradzkiego Stawu, a dalej dzikim, wysokogórskim terenem poza znakowanymi szlakami. Końcowe skalne i eksponowane pasaże pokonasz z asekuracją liną.",
       meetingPoint: "Popradské pleso (Popradzki Staw), Słowacja",
-      meetingTime: "4:00 – 6:00",
+      meetingTime: "4:00 do 6:00",
       pricingDetail: [
         { label: "1 osoba", price: 430, unit: "€" },
         { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
@@ -248,8 +248,8 @@ window.MS_CONTENT = {
       ],
       longDescription: [
         "Ze szczytu otwiera się przepiękny widok na Gierlach, Rysy, Końcystą oraz okoliczne doliny tatrzańskie.",
-        "Te wejścia prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy doskonale znają teren, pogodę i aktualne warunki. Cały dzień poświęcamy jednej grupie — tempo i drogę dopasujemy do Twojego doświadczenia, kondycji i warunków w górach.",
-        "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omawiamy plan, technikę i potrzebny sprzęt, a w trudniejszych pasażach jesteś asekurowany liną i pod nadzorem przewodnika. Wysoka oferuje dokładnie to, co człowiek wyobraża sobie pod hasłem prawdziwej tatrzańskiej przygody — długi górski dzień, wspinaczkę, ekspozycję i szczyt, na który droga prowadzi z dala od szlaków turystycznych.",
+        "Te wejścia prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy doskonale znają teren, pogodę i aktualne warunki. Cały dzień poświęcamy jednej grupie. Tempo i drogę dopasujemy do Twojego doświadczenia, kondycji i warunków w górach.",
+        "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omawiamy plan, technikę i potrzebny sprzęt, a w trudniejszych pasażach jesteś asekurowany liną i pod nadzorem przewodnika. Wysoka oferuje dokładnie to, co człowiek wyobraża sobie pod hasłem prawdziwej tatrzańskiej przygody: długi górski dzień, wspinaczkę, ekspozycję i szczyt, na który droga prowadzi z dala od szlaków turystycznych.",
       ],
       routes: [
         { name: "Droga klasyczna", duration: "8 h", maxGroup: 3 },
@@ -260,7 +260,7 @@ window.MS_CONTENT = {
         "Wypożyczenie sprzętu (uprząż, kask, czekan, raki)",
       ],
       excluded: [
-        "Transport przystanek TEŽ Popradské pleso – Hotel Popradské pleso: 10 €/os.",
+        "Transport z przystanku TEŽ Popradské pleso do Hotelu Popradské pleso: 10 €/os.",
       ],
     },
 
@@ -280,7 +280,7 @@ window.MS_CONTENT = {
       showOnLp: true,
       image: "brand_assets/Mont blanc.webp",
       imageAlt: "Wejście na Mont Blanc, najwyższy szczyt Alp",
-      description: "Dołącz do nas na niezapomnianą przygodę na szczyt Mont Blanc – legendarny „dach Europy”. W towarzystwie doświadczonego, certyfikowanego przewodnika wysokogórskiego bezpiecznie i pewnie przejdziesz przez lodowce, skaliste granie i zapierającą dech w piersiach alpejską scenerię.",
+      description: "Dołącz do nas na niezapomnianą przygodę na szczyt Mont Blanc, legendarny „dach Europy”. W towarzystwie doświadczonego, certyfikowanego przewodnika wysokogórskiego bezpiecznie i pewnie przejdziesz przez lodowce, skaliste granie i zapierającą dech w piersiach alpejską scenerię.",
       link: "https://www.mountainsafari.sk/kurzy/vystup-na-mont-blanc-4808m/",
       meetingPoint: "Chamonix / Nid d'Aigle, Francja",
       pricingDetail: [
@@ -318,7 +318,7 @@ window.MS_CONTENT = {
       showOnLp: true,
       image: "brand_assets/monte-rosa-leto.webp",
       imageAlt: "Wejście na Dufourspitze w masywie Monte Rosa",
-      description: "Najwyższy masyw górski Szwajcarii i jedna z największych wysokogórskich przygód w Alpach. Celem jest Dufourspitze (4 634 m) — najwyższy wierzchołek masywu Monte Rosa i drugi najwyższy szczyt Alp. Wejście prowadzi światem lodowców, ogromnych śnieżnych połaci i wysokich czterotysięczników, z panoramą Matterhornu i znacznej części Alp Zachodnich.",
+      description: "Najwyższy masyw górski Szwajcarii i jedna z największych wysokogórskich przygód w Alpach. Celem jest Dufourspitze (4 634 m), najwyższy wierzchołek masywu Monte Rosa i drugi najwyższy szczyt Alp. Wejście prowadzi światem lodowców, ogromnych śnieżnych połaci i wysokich czterotysięczników, z panoramą Matterhornu i znacznej części Alp Zachodnich.",
       meetingPoint: "Zermatt, Szwajcaria",
       pricingDetail: [
         { label: "1 osoba", price: 1700, unit: "€" },
@@ -327,7 +327,7 @@ window.MS_CONTENT = {
       longDescription: [
         "W odróżnieniu od jednodniowych wejść tatrzańskich Monte Rosa to prawdziwa wyprawa wysokogórska. Wejście poprzedza aklimatyzacja i noc w schronisku. Sam dzień szczytowy zaczyna się jeszcze przed świtem i prowadzi przez rozległy lodowiec aż do końcowej, eksponowanej grani Dufourspitze, gdzie łączy się poruszanie w rakach, asekurację liną i łatwą wspinaczkę skalną.",
         "Wejście prowadzą licencjonowani przewodnicy wysokogórscy IVBV/UIAGM/IFMGA. Przez całą wyprawę jesteś związany liną, a przewodnik decyduje o drodze w zależności od aktualnych warunków na lodowcu, pogody i Twojej kondycji. Tempo i program dopasujemy tak, abyś miał jak najlepszą szansę bezpiecznie osiągnąć szczyt.",
-        "Monte Rosa to nie tylko wysokość 4 634 metrów. To pierwszy krok w świat wielkich wejść alpejskich — lodowce, świt na wysokości 4 000 metrów i uczucie stania w jednym z najwyższych miejsc Europy.",
+        "Monte Rosa to nie tylko wysokość 4 634 metrów. To pierwszy krok w świat wielkich wejść alpejskich: lodowce, świt na wysokości 4 000 metrów i uczucie stania w jednym z najwyższych miejsc Europy.",
       ],
       requirements: [
         "Pewne poruszanie się w trudnym, eksponowanym terenie",
@@ -362,7 +362,7 @@ window.MS_CONTENT = {
       ],
       longDescription: [
         "Pierwszego dnia po południu docierasz do schroniska Hintergrathütte, gdzie się zakwaterujesz, przygotujesz sprzęt i zjesz wspólną kolację. Drugiego dnia śniadanie o 3:30, a o 4:00 wyruszasz na szczyt.",
-        "Wejście prowadzi legendarną granią Hintergrat (4–5 godzin), zejście drogą normalną (Normalweg) przez schronisko Payerhütte i dalej do Sulden (ok. 2,5 h). Cały dzień to nawet 12 godzin aktywności w środowisku wysokogórskim.",
+        "Wejście prowadzi legendarną granią Hintergrat (4 do 5 godzin), zejście drogą normalną (Normalweg) przez schronisko Payerhütte i dalej do Sulden (ok. 2,5 h). Cały dzień to nawet 12 godzin aktywności w środowisku wysokogórskim.",
       ],
       included: [
         "Planowanie i realizacja wejścia z przewodnikiem IVBV/UIAGM/IFMGA wraz z jego kosztami",
@@ -392,13 +392,13 @@ window.MS_CONTENT = {
       showOnLp: true,
       image: "brand_assets/Lomnický.webp",
       imageAlt: "Zimowe wejście na Łomnicę w Tatrach Wysokich",
-      description: "Zimowe wejście na drugi najwyższy szczyt Tatr Wysokich. Droga klasyczna, droga Birkenmajera albo żleb Téryego — również tymi drogami możesz zimą wejść na Łomnicę.",
+      description: "Zimowe wejście na drugi najwyższy szczyt Tatr Wysokich. Droga klasyczna, droga Birkenmajera albo żleb Téryego. Również tymi drogami możesz zimą wejść na Łomnicę.",
       link: "https://www.mountainsafari.sk/kurzy/zimny-lomnicak-2-634m/",
       pricingDetail: [
         { label: "1 osoba", price: 370, unit: "€" },
         { label: "2 osoby", price: 420, unit: "€" },
       ],
-      meetingPoint: "Infocentrum ośrodka narciarskiego Tatranská Lomnica lub Starý Smokovec – Hrebienok (w zależności od trasy); indywidualnie możliwy także start od schronisk Skalnatá chata lub Zamkovského chata. Na przełęcz Lomnické sedlo kursuje też kolejka z Tatranskiej Lomnicy.",
+      meetingPoint: "Infocentrum ośrodka narciarskiego Tatranská Lomnica lub Starý Smokovec i Hrebienok (w zależności od trasy); indywidualnie możliwy także start od schronisk Skalnatá chata lub Zamkovského chata. Na przełęcz Lomnické sedlo kursuje też kolejka z Tatranskiej Lomnicy.",
       meetingTime: "8:00",
       routes: [
         { name: "Droga klasyczna z przełęczy Lomnické sedlo" },
@@ -478,13 +478,13 @@ window.MS_CONTENT = {
     // OPEN ITEM — points to the Slovak FAQ page; no Polish equivalent exists yet.
     moreLinkHref: "https://www.mountainsafari.sk/faq/",
     items: [
-      { question: "Co dokładnie jest w cenie?", answer: "W cenie jest przewodnik wysokogórski z licencją IVBV/UIAGM/IFMGA — jego prowadzenie i asekuracja podczas całego wejścia, ocena warunków i zaplanowanie wyprawy. Specjalistyczny sprzęt w razie potrzeby Ci wypożyczymy, wystarczy dać znać wcześniej. O pozostałych kosztach, takich jak nocleg w schronisku czy parking, zawsze mówimy z góry, żebyś miał pełny obraz jeszcze przed rezerwacją." },
+      { question: "Co dokładnie jest w cenie?", answer: "W cenie jest przewodnik wysokogórski z licencją IVBV/UIAGM/IFMGA, jego prowadzenie i asekuracja podczas całego wejścia, ocena warunków i zaplanowanie wyprawy. Specjalistyczny sprzęt w razie potrzeby Ci wypożyczymy, wystarczy dać znać wcześniej. O pozostałych kosztach, takich jak nocleg w schronisku czy parking, zawsze mówimy z góry, żebyś miał pełny obraz jeszcze przed rezerwacją." },
       { question: "Jakiej kondycji potrzebuję?", answer: "Wyprawę dobieramy do Twojej kondycji i doświadczenia, nie odwrotnie. Przed wejściem zapytamy Cię o kilka rzeczy i polecimy szczyt, który zdobędziesz. Od łatwiejszych wypraw dla zupełnie początkujących po wymagające wejścia. Tempo dopasowujemy do Ciebie, nikogo nie poganiamy i nikt nie zostaje z tyłu. Wielu naszych klientów zdobyło swój pierwszy szczyt bez żadnego doświadczenia z liną." },
-      { question: "Co jeśli w dniu wejścia zepsuje się pogoda?", answer: "Jeśli warunki nie są odpowiednie, nigdzie Cię nie ciągniemy. Zwrócimy Ci pieniądze w pełnej wysokości albo — jeśli chcesz — umówimy termin zastępczy. Decyzja należy do Ciebie." },
+      { question: "Co jeśli w dniu wejścia zepsuje się pogoda?", answer: "Jeśli warunki nie są odpowiednie, nigdzie Cię nie ciągniemy. Zwrócimy Ci pieniądze w pełnej wysokości albo, jeśli chcesz, umówimy termin zastępczy. Decyzja należy do Ciebie." },
       { question: "Jadę sam. Czy to problem?", answer: "Absolutnie nie, wielu klientów przyjeżdża bez ekipy. Chodzimy w małych grupach i uważamy na każdego. A jeśli chcesz prywatne wejście tylko dla siebie albo swoich bliskich, też to zorganizujemy." },
       // PLACEHOLDER — mirrors the Slovak draft; real insurance policy pending confirmation.
-      { question: "Czy ubezpieczenie jest w cenie?", answer: "Ubezpieczenie nie jest automatycznie częścią ceny — przed wejściem doradzimy Ci, jakie ubezpieczenie wykupić, a w razie potrzeby pomożemy je załatwić." },
-      { question: "Kiedy można iść?", answer: "Wyprawy letnie organizujemy mniej więcej od czerwca do października, zimowe od grudnia do kwietnia. Dokładny termin ustalimy telefonicznie albo przez formularz — zwykle w ciągu 24 godzin." },
+      { question: "Czy ubezpieczenie jest w cenie?", answer: "Ubezpieczenie nie jest automatycznie częścią ceny. Przed wejściem doradzimy Ci, jakie ubezpieczenie wykupić, a w razie potrzeby pomożemy je załatwić." },
+      { question: "Kiedy można iść?", answer: "Wyprawy letnie organizujemy mniej więcej od czerwca do października, zimowe od grudnia do kwietnia. Dokładny termin ustalimy telefonicznie albo przez formularz, zwykle w ciągu 24 godzin." },
     ],
   },
 
@@ -677,7 +677,7 @@ window.MS_CONTENT = {
         required: true,
         optionLabels: { one: "1 osoba", few: "{n} osoby" },
         hint: "To wejście prowadzimy w grupie do {max} osób.",
-        hintNoTour: "Najpierw wybierz wejście — od niego zależy wielkość grupy.",
+        hintNoTour: "Najpierw wybierz wejście. Od niego zależy wielkość grupy.",
       },
       message: { label: "Wiadomość", placeholder: "Preferowany termin, specjalne wymagania, pytania…", required: false },
     },
@@ -757,8 +757,8 @@ window.MS_CONTENT = {
     meetingPointLabel: "Miejsce spotkania",
     meetingTimeLabel: "Czas spotkania",
     meetingTbd: "Dokładne miejsce i czas spotkania potwierdzimy przy rezerwacji.",
-    meetingDisclaimerTitle: "Ważne — punktualność:",
-    meetingDisclaimer: "Na miejsce spotkania przyjdź proszę dokładnie o umówionej godzinie. Wejście jest wymagające czasowo i pogodowo — nawet małe spóźnienie może zagrozić bezpieczeństwu, właściwemu rozplanowaniu wyprawy albo całkowicie uniemożliwić jej realizację.",
+    meetingDisclaimerTitle: "Ważne: punktualność",
+    meetingDisclaimer: "Na miejsce spotkania przyjdź proszę dokładnie o umówionej godzinie. Wejście jest wymagające czasowo i pogodowo, nawet małe spóźnienie może zagrozić bezpieczeństwu, właściwemu rozplanowaniu wyprawy albo całkowicie uniemożliwić jej realizację.",
     galleryHeading: "Galeria",
     policiesHeading: "Warunki i anulowanie",
     faqHeading: "Częste pytania",
@@ -780,8 +780,8 @@ window.MS_CONTENT = {
   /* ===== TOUR DEFAULTS — placeholder scaffolding, mirrors content.js ===== */
   tourDefaults: {
     longDescription: [
-      "To wejście prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy znają teren, pogodę i warunki jak mało kto. Cały dzień poświęcamy jednej grupie — tempo i trasę dopasowujemy do Twojego doświadczenia i aktualnych warunków w górach.",
-      "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omówimy plan, technikę i sprzęt, a podczas całej wyprawy jesteś pod opieką przewodnika. Celem nie jest tylko szczyt — ale przeżycie, które będziesz wspominać całe życie.",
+      "To wejście prowadzą wyłącznie licencjonowani przewodnicy wysokogórscy (IVBV/UIAGM/IFMGA), którzy znają teren, pogodę i warunki jak mało kto. Cały dzień poświęcamy jednej grupie. Tempo i trasę dopasowujemy do Twojego doświadczenia i aktualnych warunków w górach.",
+      "Bezpieczeństwo jest u nas na pierwszym miejscu. Przed wejściem wspólnie omówimy plan, technikę i sprzęt, a podczas całej wyprawy jesteś pod opieką przewodnika. Celem nie jest tylko szczyt, ale przeżycie, które będziesz wspominać całe życie.",
     ],
     requirements: [
       "Dobra kondycja fizyczna odpowiednia do długości i przewyższenia trasy",
@@ -790,15 +790,15 @@ window.MS_CONTENT = {
       "Odpowiednia odzież i buty w góry (sprzęt możemy wypożyczyć)",
     ],
     gallery: [
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+1", alt: "Placeholder — fotografia z wyprawy" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+2", alt: "Placeholder — fotografia z wyprawy" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+3", alt: "Placeholder — fotografia z wyprawy" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+4", alt: "Placeholder — fotografia z wyprawy" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+5", alt: "Placeholder — fotografia z wyprawy" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+6", alt: "Placeholder — fotografia z wyprawy" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+1", alt: "Placeholder fotografia z wyprawy" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+2", alt: "Placeholder fotografia z wyprawy" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+3", alt: "Placeholder fotografia z wyprawy" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+4", alt: "Placeholder fotografia z wyprawy" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+5", alt: "Placeholder fotografia z wyprawy" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+6", alt: "Placeholder fotografia z wyprawy" },
     ],
     policies: [
-      { title: "Pogoda i bezpieczeństwo", body: "O ostatecznym terminie i realizacji decyduje przewodnik wysokogórski na podstawie aktualnych warunków. Przy niesprzyjającej pogodzie szukamy terminu zastępczego — Twoje bezpieczeństwo jest ważniejsze niż szczyt." },
+      { title: "Pogoda i bezpieczeństwo", body: "O ostatecznym terminie i realizacji decyduje przewodnik wysokogórski na podstawie aktualnych warunków. Przy niesprzyjającej pogodzie szukamy terminu zastępczego. Twoje bezpieczeństwo jest ważniejsze niż szczyt." },
       { title: "Warunki anulowania", body: "Termin można bezpłatnie przełożyć po wcześniejszym uzgodnieniu. Szczegółowe warunki anulowania potwierdzimy przy rezerwacji." },
       { title: "Ubezpieczenie", body: "Zalecamy indywidualne ubezpieczenie podróżne i wypadkowe w góry, obejmujące ratownictwo w terenie górskim. Ubezpieczenie nie jest wliczone w cenę." },
     ],

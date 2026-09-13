@@ -123,7 +123,7 @@ window.MS_CONTENT = {
       description: "Výstup vedie zo Sliezskeho domu cez Velickú dolinu a exponovanú Velickú próbu istenú lanom. Z vrcholu sa otvára výhľad na celé Tatry a kus Slovenska, aký zdola nikdy neuvidíte.",
       link: "https://www.mountainsafari.sk/kurzy/gerlachovsky-stit/",
       meetingPoint: "Tatranská Polianka, Vysoké Tatry",
-      meetingTime: "cca 4:00 – 7:30 (podľa sezóny a počasia)",
+      meetingTime: "cca 4:00 až 7:30 (podľa sezóny a počasia)",
       pricingDetail: [
         { label: "1 osoba", price: 430, unit: "€" },
         { label: "2 osoby", price: 450, unit: "€ (225 €/os.)" },
@@ -138,14 +138,14 @@ window.MS_CONTENT = {
       routes: [
         { name: "Klasická trasa", duration: "8 h", maxGroup: 3 },
         { name: "Tatarkova ferrata", duration: "9 h", maxGroup: 2 },
-        { name: "Martinova cesta", duration: "10–12 h", maxGroup: 2 },
+        { name: "Martinova cesta", duration: "10 až 12 h", maxGroup: 2 },
       ],
       included: [
         "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
         "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
       ],
       excluded: [
-        "Transport Tatranská Polianka – Sliezsky dom a späť: 20 €/osoba",
+        "Transport Tatranská Polianka do Sliezskeho domu a späť: 20 €/osoba",
       ],
     },
     {
@@ -172,8 +172,8 @@ window.MS_CONTENT = {
         { label: "3 osoby", price: 450, unit: "€ (150 €/os.)" },
       ],
       longDescription: [
-        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine — tempo aj konkrétnu trasu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
-        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a počas náročných pasáží ste istení lanom a neustále pod dohľadom vodcu. Cieľom nie je len stáť na vrchole Lomnického štítu — ale zažiť Tatry z perspektívy, ktorú z turistického chodníka nikdy neuvidíte.",
+        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine. Tempo aj konkrétnu trasu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
+        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a počas náročných pasáží ste istení lanom a neustále pod dohľadom vodcu. Cieľom nie je len stáť na vrchole Lomnického štítu, ale zažiť Tatry z perspektívy, ktorú z turistického chodníka nikdy neuvidíte.",
       ],
       routes: [
         { name: "Klasická cesta", duration: "6 h", maxGroup: 3 },
@@ -186,7 +186,7 @@ window.MS_CONTENT = {
         "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
       ],
       excluded: [
-        "Transport Tatranská Lomnica – Lomnické sedlo a späť: cca 40 €/osoba (www.vt.sk)",
+        "Transport Tatranská Lomnica na Lomnické sedlo a späť: cca 40 €/osoba (www.vt.sk)",
       ],
     },
     {
@@ -206,15 +206,15 @@ window.MS_CONTENT = {
       imageAlt: "Výstup na Ľadový štít, tretí najvyšší vrch Slovenska",
       description: "Tretí najvyšší vrch Slovenska a jeden z najmohutnejších tatranských štítov. Výstup na Ľadový štít (2 627 m) vedie nádherným vysokohorským prostredím Malej Studenej doliny, okolo Téryho chaty a ďalej mimo značených turistických chodníkov cez strmé skalné a exponované hrebene. Z vrcholu sa otvára fantastický výhľad na najvyššie štíty Vysokých Tatier a okolité doliny.",
       meetingPoint: "Hrebienok alebo Téryho chata",
-      meetingTime: "Hrebienok 4:00 – 6:00, Téryho chata 7:00 – 8:00",
+      meetingTime: "Hrebienok 4:00 až 6:00, Téryho chata 7:00 až 8:00",
       pricingDetail: [
         { label: "1 osoba", price: 430, unit: "€" },
         { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
         { label: "3 osoby", price: 500, unit: "€ (167 €/os.)" },
       ],
       longDescription: [
-        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine — tempo aj priebeh výstupu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
-        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a v exponovaných pasážach ste istení lanom a pod neustálym dohľadom vodcu. Ľadový štít nie je len ďalší vrchol — je to poctivý vysokohorský deň v srdci Tatier a zážitok, na ktorý sa nezabúda.",
+        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine. Tempo aj priebeh výstupu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
+        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a v exponovaných pasážach ste istení lanom a pod neustálym dohľadom vodcu. Ľadový štít nie je len ďalší vrchol, je to poctivý vysokohorský deň v srdci Tatier a zážitok, na ktorý sa nezabúda.",
       ],
       routes: [
         { name: "Cesta cez Ľadového koňa", duration: "6 h", maxGroup: 3 },
@@ -242,7 +242,7 @@ window.MS_CONTENT = {
       imageAlt: "Výstup na Vysokú vo Vysokých Tatrách",
       description: "Jeden z najkrajších a najcharakteristickejších vrcholov Vysokých Tatier. Vysoká (2 547 m) so svojím typickým dvojvrcholom patrí medzi tatranské klasiky. Výstup vedie cez Mengusovskú dolinu, okolo Popradského plesa a ďalej divokým vysokohorským terénom mimo značených turistických chodníkov. Záverečné skalné a exponované pasáže absolvujete istení lanom.",
       meetingPoint: "Popradské pleso",
-      meetingTime: "4:00 – 6:00",
+      meetingTime: "4:00 až 6:00",
       pricingDetail: [
         { label: "1 osoba", price: 430, unit: "€" },
         { label: "2 osoby", price: 470, unit: "€ (235 €/os.)" },
@@ -250,8 +250,8 @@ window.MS_CONTENT = {
       ],
       longDescription: [
         "Z vrcholu sa otvára nádherný výhľad na Gerlach, Rysy, Končistú aj okolité tatranské doliny.",
-        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine — tempo aj trasu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
-        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a počas náročnejších pasáží ste istení lanom a pod dohľadom vodcu. Vysoká ponúka presne to, čo si človek predstaví pod skutočným tatranským dobrodružstvom — dlhý horský deň, lezenie, expozíciu a vrchol, na ktorý vedie cesta ďaleko od turistických chodníkov.",
+        "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí dokonale poznajú terén, počasie aj aktuálne podmienky. Celý deň sa venujeme jednej skupine. Tempo aj trasu prispôsobíme vašim skúsenostiam, kondícii a podmienkam v horách.",
+        "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj potrebnú výstroj a počas náročnejších pasáží ste istení lanom a pod dohľadom vodcu. Vysoká ponúka presne to, čo si človek predstaví pod skutočným tatranským dobrodružstvom: dlhý horský deň, lezenie, expozíciu a vrchol, na ktorý vedie cesta ďaleko od turistických chodníkov.",
       ],
       routes: [
         { name: "Klasická cesta", duration: "8 h", maxGroup: 3 },
@@ -262,7 +262,7 @@ window.MS_CONTENT = {
         "Požičanie výstroje (sedačka, prilba, cepín, mačky)",
       ],
       excluded: [
-        "Transport Popradské Pleso zastávka TEŽ – Hotel Popradské pleso: 10 €/osoba",
+        "Transport zo zastávky TEŽ Popradské Pleso k Hotelu Popradské pleso: 10 €/osoba",
       ],
     },
 
@@ -282,7 +282,7 @@ window.MS_CONTENT = {
       showOnLp: true,
       image: "brand_assets/Mont blanc.webp",
       imageAlt: "Výstup na Mont Blanc, najvyšší vrch Álp",
-      description: "Pridajte sa k nám na nezabudnuteľné dobrodružstvo na vrchol Mont Blancu – legendárnu „strechu Európy“. V sprievode skúseného a certifikovaného horského vodcu sa bezpečne a sebavedome vydáte cez ľadovce, skalnaté hrebene a dychberúcu alpskú scenériu.",
+      description: "Pridajte sa k nám na nezabudnuteľné dobrodružstvo na vrchol Mont Blancu, legendárnu „strechu Európy“. V sprievode skúseného a certifikovaného horského vodcu sa bezpečne a sebavedome vydáte cez ľadovce, skalnaté hrebene a dychberúcu alpskú scenériu.",
       link: "https://www.mountainsafari.sk/kurzy/vystup-na-mont-blanc-4808m/",
       meetingPoint: "Chamonix / Nid d'Aigle, Francúzsko",
       pricingDetail: [
@@ -320,7 +320,7 @@ window.MS_CONTENT = {
       showOnLp: true,
       image: "brand_assets/monte-rosa-leto.webp",
       imageAlt: "Výstup na Dufourspitze v masíve Monte Rosa",
-      description: "Najvyšší horský masív Švajčiarska a jedno z najväčších vysokohorských dobrodružstiev Álp. Cieľom je Dufourspitze (4 634 m) — najvyšší vrchol masívu Monte Rosa a druhý najvyšší vrch Álp. Výstup vedie svetom ľadovcov, obrovských snehových plání a vysokých štvortisícoviek, s panorámou Matterhornu a veľkej časti Západných Álp.",
+      description: "Najvyšší horský masív Švajčiarska a jedno z najväčších vysokohorských dobrodružstiev Álp. Cieľom je Dufourspitze (4 634 m), najvyšší vrchol masívu Monte Rosa a druhý najvyšší vrch Álp. Výstup vedie svetom ľadovcov, obrovských snehových plání a vysokých štvortisícoviek, s panorámou Matterhornu a veľkej časti Západných Álp.",
       meetingPoint: "Zermatt, Švajčiarsko",
       pricingDetail: [
         { label: "1 osoba", price: 1700, unit: "€" },
@@ -329,7 +329,7 @@ window.MS_CONTENT = {
       longDescription: [
         "Na rozdiel od jednodňových tatranských výstupov je Monte Rosa skutočná vysokohorská expedícia. Výstupu predchádza aklimatizácia a noc na horskej chate. Samotný vrcholový deň začína ešte za tmy a vedie cez rozsiahly ľadovec až k záverečnému exponovanému hrebeňu Dufourspitze, kde sa kombinuje pohyb v mačkách, istenie lanom a ľahké skalné lezenie.",
         "Výstup vedú licencovaní horskí vodcovia IVBV/UIAGM/IFMGA. Počas celej túry ste naviazaní na lane a vodca rozhoduje o trase podľa aktuálnych podmienok na ľadovci, počasia a vašej kondície. Tempo a program prispôsobíme tak, aby ste mali čo najlepšiu šancu bezpečne dosiahnuť vrchol.",
-        "Monte Rosa nie je len o nadmorskej výške 4 634 metrov. Je to prvý krok do sveta veľkých alpských výstupov — ľadovce, svitanie vo výške 4 000 metrov a pocit stáť na jednom z najvyšších miest Európy.",
+        "Monte Rosa nie je len o nadmorskej výške 4 634 metrov. Je to prvý krok do sveta veľkých alpských výstupov: ľadovce, svitanie vo výške 4 000 metrov a pocit stáť na jednom z najvyšších miest Európy.",
       ],
       requirements: [
         "Bezpečná chôdza v náročnom exponovanom teréne",
@@ -364,7 +364,7 @@ window.MS_CONTENT = {
       ],
       longDescription: [
         "Prvý deň prídete poobede na chatu Hintergrathütte, kde sa ubytujete, pripravíte výstroj a spoločne navečeriate. Druhý deň sú raňajky o 3:30 a o 4:00 sa vydáte na vrchol.",
-        "Výstup vedie po legendárnom hrebeni Hintergrat (4–5 hodín), zostup po normálnej ceste (Normalweg) cez chatu Payerhütte a ďalej do Suldenu (cca 2,5 h). Celý deň predstavuje až 12 hodín aktivity vo vysokohorskom prostredí.",
+        "Výstup vedie po legendárnom hrebeni Hintergrat (4 až 5 hodín), zostup po normálnej ceste (Normalweg) cez chatu Payerhütte a ďalej do Suldenu (cca 2,5 h). Celý deň predstavuje až 12 hodín aktivity vo vysokohorskom prostredí.",
       ],
       included: [
         "Plánovanie a realizácia horským vodcom IVBV/UIAGM/IFMGA vrátane jeho nákladov",
@@ -394,13 +394,13 @@ window.MS_CONTENT = {
       showOnLp: true,
       image: "brand_assets/Lomnický.webp",
       imageAlt: "Zimný výstup na Lomnický štít vo Vysokých Tatrách",
-      description: "Zimný výstup na druhý najvyšší vrchol Vysokých Tatier. Klasická cesta, Birkenmajer alebo Téryho kuloár — aj týmito cestami môžete v zime vystúpiť na Lomnický štít.",
+      description: "Zimný výstup na druhý najvyšší vrchol Vysokých Tatier. Klasická cesta, Birkenmajer alebo Téryho kuloár. Aj týmito cestami môžete v zime vystúpiť na Lomnický štít.",
       link: "https://www.mountainsafari.sk/kurzy/zimny-lomnicak-2-634m/",
       pricingDetail: [
         { label: "1 osoba", price: 370, unit: "€" },
         { label: "2 osoby", price: 420, unit: "€" },
       ],
-      meetingPoint: "Infocentrum lyžiarske stredisko Tatranská Lomnica alebo Starý Smokovec – Hrebienok (podľa trasy); individuálne možný aj začiatok od Skalnatej alebo Zamkovského chaty. Na Lomnické sedlo vedie aj lanovka z Tatranskej Lomnice.",
+      meetingPoint: "Infocentrum lyžiarske stredisko Tatranská Lomnica alebo Starý Smokovec a Hrebienok (podľa trasy); individuálne možný aj začiatok od Skalnatej alebo Zamkovského chaty. Na Lomnické sedlo vedie aj lanovka z Tatranskej Lomnice.",
       meetingTime: "8:00",
       routes: [
         { name: "Klasická cesta z Lomnického sedla" },
@@ -483,11 +483,11 @@ window.MS_CONTENT = {
     items: [
       { question: "Čo všetko je v cene?", answer: "V cene je horský vodca s licenciou IVBV/UIAGM/IFMGA, jeho vedenie a istenie počas celého výstupu, posúdenie podmienok a naplánovanie túry. Špecializovaný výstroj vám v prípade potreby zapožičiame, stačí dať vedieť vopred. Ostatné náklady ako ubytovanie na chate či parkovanie vám vždy povieme dopredu, aby ste mali jasný prehľad ešte pred rezerváciou." },
       { question: "Akú kondíciu potrebujem?", answer: "Túru vyberáme podľa vašej kondície a skúseností, nie naopak. Pred výstupom sa vás opýtame na pár vecí a odporučíme vrchol, ktorý zvládnete. Od ľahších túr pre úplných začiatočníkov až po náročné výstupy. Tempo nastavíme na vás, nikoho neženieme a nikto nezostane pozadu. Veľa ľudí u nás vyšlo na svoj prvý vrchol aj bez akýchkoľvek skúseností s lanom." },
-      { question: "Čo ak sa pokazí počasie v deň výstupu?", answer: "Ak podmienky nie sú vhodné, nikam vás netlačíme. Vrátime vám peniaze v plnej výške, alebo — ak chcete — dohodneme náhradný termín. Rozhodnutie je na vás." },
+      { question: "Čo ak sa pokazí počasie v deň výstupu?", answer: "Ak podmienky nie sú vhodné, nikam vás netlačíme. Vrátime vám peniaze v plnej výške, alebo, ak chcete, dohodneme náhradný termín. Rozhodnutie je na vás." },
       { question: "Idem sám. Nie je to problém?", answer: "Vôbec nie, veľa klientov ide bez partie. Chodíme v malých skupinách a dávame pozor na každého. Ak chcete súkromný výstup len pre seba alebo svojich blízkych, aj to vieme zariadiť." },
       // PLACEHOLDER — real insurance policy pending confirmation, see README / Proposal Part 5, open question 2.
-      { question: "Je poistka v cene?", answer: "Poistka nie je automaticky súčasťou ceny — pred výstupom vám vieme poradiť, akú poistku si zabezpečiť, prípadne vám ju pomôžeme dojednať." },
-      { question: "Kedy sa dá ísť?", answer: "Letné túry organizujeme približne od júna do októbra, zimné od decembra do apríla. Presný termín si dohodneme telefonicky alebo cez formulár — zvyčajne do 24 hodín." },
+      { question: "Je poistka v cene?", answer: "Poistka nie je automaticky súčasťou ceny. Pred výstupom vám vieme poradiť, akú poistku si zabezpečiť, prípadne vám ju pomôžeme dojednať." },
+      { question: "Kedy sa dá ísť?", answer: "Letné túry organizujeme približne od júna do októbra, zimné od decembra do apríla. Presný termín si dohodneme telefonicky alebo cez formulár, zvyčajne do 24 hodín." },
     ],
   },
 
@@ -694,7 +694,7 @@ window.MS_CONTENT = {
         required: true,
         optionLabels: { one: "1 osoba", few: "{n} osoby" },
         hint: "Tento výstup vedieme v skupine do {max} osôb.",
-        hintNoTour: "Najprv vyberte výstup — od neho závisí veľkosť skupiny.",
+        hintNoTour: "Najprv vyberte výstup. Od neho závisí veľkosť skupiny.",
       },
       // Termín sa presunul sem: pevné pole na dátum nútilo ľudí vymyslieť si
       // presný deň, hoci ho väčšina ešte nemá. Vo voľnom texte ho napíšu spolu
@@ -779,7 +779,7 @@ window.MS_CONTENT = {
     meetingPointLabel: "Miesto stretnutia",
     meetingTimeLabel: "Čas stretnutia",
     meetingTbd: "Presné miesto a čas stretnutia vám potvrdíme pri rezervácii.",
-    meetingDisclaimerTitle: "Dôležité — dochvíľnosť:",
+    meetingDisclaimerTitle: "Dôležité: dochvíľnosť",
     meetingDisclaimer: "Na miesto stretnutia príďte, prosím, presne v dohodnutom čase. Výstup je časovo aj poveternostne náročný a už aj malé meškanie môže ohroziť bezpečnosť, správne načasovanie túry alebo úplne znemožniť jej uskutočnenie.",
     galleryHeading: "Galéria",
     policiesHeading: "Podmienky a storno",
@@ -804,8 +804,8 @@ window.MS_CONTENT = {
      PLACEHOLDER: policy/disclaimer wording must be reviewed with the client/legal before launch. ===== */
   tourDefaults: {
     longDescription: [
-      "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí poznajú terén, počasie aj podmienky ako málokto. Celý deň sa venujeme jednej skupine — tempo aj trasu prispôsobíme vašim skúsenostiam a aktuálnym podmienkam v horách.",
-      "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj výstroj, a počas celej túry ste pod dohľadom vodcu. Cieľom nie je len vrchol — ale zážitok, na ktorý budete spomínať celý život.",
+      "Tento výstup vedú výhradne licencovaní horskí vodcovia (IVBV/UIAGM/IFMGA), ktorí poznajú terén, počasie aj podmienky ako málokto. Celý deň sa venujeme jednej skupine. Tempo aj trasu prispôsobíme vašim skúsenostiam a aktuálnym podmienkam v horách.",
+      "Bezpečnosť je u nás na prvom mieste. Pred výstupom si spoločne prejdeme plán, techniku aj výstroj, a počas celej túry ste pod dohľadom vodcu. Cieľom nie je len vrchol, ale zážitok, na ktorý budete spomínať celý život.",
     ],
     requirements: [
       "Dobrá fyzická kondícia primeraná dĺžke a prevýšeniu túry",
@@ -814,15 +814,15 @@ window.MS_CONTENT = {
       "Vhodné oblečenie a obuv do hôr (výstroj vieme zapožičať)",
     ],
     gallery: [
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+1", alt: "Placeholder — fotografia z výstupu" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+2", alt: "Placeholder — fotografia z výstupu" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+3", alt: "Placeholder — fotografia z výstupu" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+4", alt: "Placeholder — fotografia z výstupu" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+5", alt: "Placeholder — fotografia z výstupu" },
-      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+6", alt: "Placeholder — fotografia z výstupu" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+1", alt: "Placeholder fotografia z výstupu" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+2", alt: "Placeholder fotografia z výstupu" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+3", alt: "Placeholder fotografia z výstupu" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+4", alt: "Placeholder fotografia z výstupu" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+5", alt: "Placeholder fotografia z výstupu" },
+      { src: "https://placehold.co/900x1200/1a2234/7b96c9?text=Foto+6", alt: "Placeholder fotografia z výstupu" },
     ],
     policies: [
-      { title: "Počasie a bezpečnosť", body: "O konečnom termíne a realizácii rozhoduje horský vodca podľa aktuálnych podmienok. Pri nevhodnom počasí hľadáme náhradný termín — vaša bezpečnosť je prednejšia než vrchol." },
+      { title: "Počasie a bezpečnosť", body: "O konečnom termíne a realizácii rozhoduje horský vodca podľa aktuálnych podmienok. Pri nevhodnom počasí hľadáme náhradný termín. Vaša bezpečnosť je prednejšia než vrchol." },
       // Zámerne bez konkrétnych termínov/percent — klient ich nemá určené, platba
       // často nejde vopred, takže storno sa rieši individuálne pri rezervácii.
       { title: "Storno podmienky", body: "Termín je možné bezplatne presunúť po dohode vopred. Konkrétne storno podmienky vám potvrdíme pri rezervácii." },
