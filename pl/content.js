@@ -46,7 +46,7 @@ window.MS_CONTENT = {
     badgeImageAlt: "IVBV/UIAGM/IFMGA — certyfikat przewodnika wysokogórskiego",
     eyebrow: "Tatry Wysokie — przeżycie na całe życie",
     heading: "Przygoda, którą będziesz wspominać przez całe życie.",
-    subheading: "Przewodnicy wysokogórscy IVBV/UIAGM/IFMGA — Tatry Wysokie i Alpy",
+    subheading: "Przewodnicy wysokogórscy IVBV/UIAGM/IFMGA — Tatry Wysokie i Alpy.",
     ctaLabel: "Wybierz swój szczyt",
     ctaHref: "#tours",
     ctaSecondaryLabel: "Mam pytanie",

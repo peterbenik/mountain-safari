@@ -46,7 +46,7 @@ window.MS_CONTENT = {
     badgeImageAlt: "IVBV/UIAGM/IFMGA — certifikát horského vodcu",
     eyebrow: "Vysoké Tatry — zážitok na celý život",
     heading: "Dobrodružstvo, na ktoré budete spomínať celý život.",
-    subheading: "Horskí vodcovia IVBV/UIAGM/IFMGA do Vysokých Tatier a Álp",
+    subheading: "Horskí vodcovia IVBV/UIAGM/IFMGA do Vysokých Tatier a Álp.",
     ctaLabel: "Vyberte si vrchol",
     ctaHref: "#tours",
     ctaSecondaryLabel: "Mám otázku",
