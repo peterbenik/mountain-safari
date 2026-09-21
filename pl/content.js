@@ -111,7 +111,7 @@ window.MS_CONTENT = {
       location: "2655 m n.p.m.",
       duration: "1 dzień",
       difficulty: 3,
-      priceFrom: 430,
+      priceFrom: 470,
       currency: "€",
       season: "leto",
       region: "tatry",
@@ -125,9 +125,9 @@ window.MS_CONTENT = {
       meetingPoint: "Tatranská Polianka, Tatry Wysokie (Słowacja)",
       meetingTime: "od ok. 4:00 do 7:30 (w zależności od sezonu i pogody)",
       pricingDetail: [
-        { label: "1 osoba", price: 430, unit: "€" },
-        { label: "2 osoby", price: 450, unit: "€ (225 €/os.)" },
-        { label: "3 osoby", price: 500, unit: "€ (167 €/os.)" },
+        { label: "1 osoba", price: 470, unit: "€" },
+        { label: "2 osoby", price: 500, unit: "€ (250 €/os.)" },
+        { label: "3 osoby", price: 530, unit: "€ (177 €/os.)" },
       ],
       winterPricingDetail: [
         { label: "1 osoba", price: 450, unit: "€" },
