@@ -111,7 +111,7 @@ window.MS_CONTENT = {
       location: "2655 m n.m.",
       duration: "1 deň",
       difficulty: 3,
-      priceFrom: 470,
+      priceFrom: 430,
       currency: "€",
       season: "leto",
       region: "tatry",
@@ -125,9 +125,9 @@ window.MS_CONTENT = {
       meetingPoint: "Tatranská Polianka, Vysoké Tatry",
       meetingTime: "cca 4:00 až 7:30 (podľa sezóny a počasia)",
       pricingDetail: [
-        { label: "1 osoba", price: 470, unit: "€" },
-        { label: "2 osoby", price: 500, unit: "€ (250 €/os.)" },
-        { label: "3 osoby", price: 530, unit: "€ (177 €/os.)" },
+        { label: "1 osoba", price: 430, unit: "€" },
+        { label: "2 osoby", price: 450, unit: "€ (225 €/os.)" },
+        { label: "3 osoby", price: 500, unit: "€ (167 €/os.)" },
       ],
       // Zimná cena (november – apríl) existuje, ale Gerlachovský štít nemá vlastnú zimnú kartu
       // na mountainsafari.sk/sezona/zima/ — pozri poznámku v odpovedi, treba ujasniť s klientom.
