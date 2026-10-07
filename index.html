@@ -550,6 +550,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   #whatsapp-fab.is-visible { opacity: 1; transform: translateY(0) scale(1); }
   #whatsapp-fab:hover { transform: translateY(-3px) scale(1.05); }
 
+  /* ===== NETLIFY BADGE =====
+     Fallback for the Netlify dashboard switch; see the same rule in
+     assets/theme.css for why it must stay hidden. */
+  #nl-badge-frame { display: none !important; }
+
   /* ===== SECTION REVEAL ON SCROLL ===== */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 640ms var(--ease-smooth), transform 640ms var(--ease-smooth); }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }

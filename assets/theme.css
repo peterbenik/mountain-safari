@@ -426,10 +426,19 @@
   .spinner { width: 1rem; height: 1rem; border-radius: 999px; border: 2px solid rgba(245,240,230,0.4); border-top-color: var(--cream); animation: spin 700ms linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ===== WHATSAPP FAB ===== */
+  /* ===== WHATSAPP FAB =====
+     --fab-lift is set by tour.css while the mobile booking bar is up. */
   #whatsapp-fab { opacity: 0; transform: translateY(16px) scale(0.9); transition: opacity 420ms var(--ease-spring) 400ms, transform 420ms var(--ease-spring) 400ms; }
-  #whatsapp-fab.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-  #whatsapp-fab:hover { transform: translateY(-3px) scale(1.05); }
+  #whatsapp-fab.is-visible { opacity: 1; transform: translateY(var(--fab-lift, 0px)) scale(1); }
+  #whatsapp-fab:hover { transform: translateY(calc(var(--fab-lift, 0px) - 3px)) scale(1.05); }
+
+  /* ===== NETLIFY BADGE =====
+     Netlify injects a fixed "Powered by Netlify" iframe in the bottom-right
+     corner of Free-plan projects. On phones it sits on top of the sticky
+     "Rezervovať" button and a tap opens a Netlify ad instead of the booking
+     form. The real off switch is Project configuration > General > Powered by
+     Netlify badge; this rule is the fallback if that ever flips back on. */
+  #nl-badge-frame { display: none !important; }
 
   /* ===== SECTION REVEAL ON SCROLL ===== */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 640ms var(--ease-smooth), transform 640ms var(--ease-smooth); }

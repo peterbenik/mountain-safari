@@ -123,6 +123,17 @@
 .tour-mobile-cta.is-visible { transform: translateY(0); }
 @media (min-width: 1024px) { .tour-mobile-cta { display: none !important; } }
 
+/* The bar covers the bottom-left WhatsApp FAB (bottom: 1.5rem), so lift the
+   FAB 0.75rem clear of it while the bar is up. tour.js measures the bar into
+   --mobile-cta-h. Lifting has no delay; dropping keeps the FAB's 400ms delay
+   so the bar slides away first. */
+@media (max-width: 1023px) {
+  body.has-mobile-cta #whatsapp-fab {
+    --fab-lift: calc(1.5rem - var(--mobile-cta-h, 5rem) - 0.75rem);
+    transition-delay: 0ms;
+  }
+}
+
 /* ===== SEASON TOGGLE (reuses .season-pill visuals from theme.css) ===== */
 .tour-pricing-panel[hidden] { display: none; }
 

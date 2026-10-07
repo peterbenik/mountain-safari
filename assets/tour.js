@@ -677,10 +677,18 @@
       btn.addEventListener('click', () => openLightbox(Number(btn.getAttribute('data-gallery-index'))));
     });
 
-    // Reveal mobile CTA after scrolling past the hero
+    // Reveal mobile CTA after scrolling past the hero; has-mobile-cta lifts
+    // the WhatsApp FAB above the bar (see tour.css)
     const mobileCta = document.getElementById('tour-mobile-cta');
     if (mobileCta) {
-      const onScroll = () => mobileCta.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+      const onScroll = () => {
+        const show = window.scrollY > window.innerHeight * 0.6;
+        mobileCta.classList.toggle('is-visible', show);
+        document.body.classList.toggle('has-mobile-cta', show);
+      };
+      new ResizeObserver(() => {
+        document.documentElement.style.setProperty('--mobile-cta-h', `${mobileCta.offsetHeight}px`);
+      }).observe(mobileCta);
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     }

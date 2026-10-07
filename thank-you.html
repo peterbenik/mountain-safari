@@ -144,6 +144,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (prefers-reduced-motion: reduce) {
     .reveal, .check-ring, .check-ring path { animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
   }
+
+  /* Fallback for the Netlify dashboard switch; see assets/theme.css. */
+  #nl-badge-frame { display: none !important; }
 </style>
 </head>
 <body>
